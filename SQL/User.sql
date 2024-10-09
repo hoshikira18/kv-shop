@@ -1,4 +1,3 @@
-use kvshop
 create table Users(
 	UserID int IDENTITY(1,1),
 	UserName nvarchar(30) not null,
@@ -7,5 +6,8 @@ create table Users(
 	Address nvarchar(50),
 	Email varchar(50) not null,
 	Password varchar(100) not null,
-	primary key (UserID)
+	RoleID int not null,
+	Create_At datetime default (getdate()),
+	primary key (UserID),
+	foreign key (RoleID) references Roles(RoleID),
 )
