@@ -98,3 +98,5 @@ create table Order_Items(
 	constraint OIO_FK foreign key (OrderID) references Orders(OrderID),
 )
 go
+
+insert into Roles (RoleName) values ('admin'), ('customer');
