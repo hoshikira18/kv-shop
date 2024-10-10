@@ -18,20 +18,19 @@ public class Product {
     double price;
     int supID;
     int inventory;
-    Date create_at;
+    Date create_at = new Date();
     ArrayList<Category> listCategories = new ArrayList<>();
 
     public Product() {
     }
 
-    public Product(int proID, String proName, String image, double price, int supID, int inventory, Date create_at) {
+    public Product(int proID, String proName, String image, double price, int supID, int inventory) {
         this.proID = proID;
         this.proName = proName;
         this.image = image;
         this.price = price;
         this.supID = supID;
         this.inventory = inventory;
-        this.create_at = create_at;
     }
 
     public int getProID() {
