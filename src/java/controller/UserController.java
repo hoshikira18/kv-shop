@@ -3,20 +3,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+
+import java.util.ArrayList;
 import models.User;
+import models.UserDAO;
+
 /**
  *
  * @author khuye
  */
 public class UserController {
 
+    UserDAO ud = new UserDAO();
+
     public UserController() {
     }
     
-    public void createAdminUser (User u) {
-        
+    // login tra ve ma loi
+    // 200 -> login thanh cong
+    // 300 -> login khong thanh cong -> Tai khoan da ton tai
+    // 400 -> login khong thanh cong -> sai password
+    public int login(String phoneNumber, String password) {
+        User u = ud.getUserByPhoneNumber(phoneNumber);
+        if(u == null){
+            return 300;
+        } else {
+            if(password.equals(u.getPassword())) {
+                return 200;
+            } else {
+                return 400;
+            }
+        }
     }
-    
-    
-    
+
+    public User createUser(User u) {
+        User newUser = ud.createUser(u);
+        return newUser;
+    }
+
+    public ArrayList<User> getAllUsers() {
+        return ud.getAllUsers();
+    }
+
 }
