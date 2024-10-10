@@ -4,10 +4,58 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author VIET
  */
 public class Order {
+    int orderID;
+    int userID;
+    double total;
+    Date create_at;
+
+    public Order() {
+    }
+
+    public Order(int orderID, int userID, double total, Date create_at) {
+        this.orderID = orderID;
+        this.userID = userID;
+        this.total = total;
+        this.create_at = create_at;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Date getCreate_at() {
+        return create_at;
+    }
+
+    public void setCreate_at(Date create_at) {
+        this.create_at = create_at;
+    }
     
 }
