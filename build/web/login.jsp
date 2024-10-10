@@ -45,7 +45,7 @@
         </div>
         <div class="text-sm text-center text-gray-500 dark:text-gray-400">
             Don't have an account?
-            <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Sign up</a>
+            <a href="signup.jsp" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Sign up</a>
         </div>
     </div>
 </body>

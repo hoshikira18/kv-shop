@@ -18,17 +18,17 @@ public class UserController {
 
     public UserController() {
     }
-    
+
     // login tra ve ma loi
     // 200 -> login thanh cong
     // 300 -> login khong thanh cong -> Tai khoan da ton tai
     // 400 -> login khong thanh cong -> sai password
     public int login(String phoneNumber, String password) {
         User u = ud.getUserByPhoneNumber(phoneNumber);
-        if(u == null){
+        if (u == null) {
             return 300;
         } else {
-            if(password.equals(u.getPassword())) {
+            if (password.equals(u.getPassword())) {
                 return 200;
             } else {
                 return 400;
@@ -36,9 +36,15 @@ public class UserController {
         }
     }
 
-    public User createUser(User u) {
+    public int createUser(User u) {
         User newUser = ud.createUser(u);
-        return newUser;
+
+        if (newUser == null) {
+            return 300;
+        } else {
+            return 200;
+        }
+
     }
 
     public ArrayList<User> getAllUsers() {
