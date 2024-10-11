@@ -50,5 +50,9 @@ public class UserController {
     public ArrayList<User> getAllUsers() {
         return ud.getAllUsers();
     }
+    
+    public User getUserByPhone (String phone) {
+        return ud.getUserByPhoneNumber(phone);
+    }
 
 }

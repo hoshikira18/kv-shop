@@ -18,12 +18,12 @@
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Sign in</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">Enter your email and password to access your account</p>
         </div>
-        <form class="space-y-4">
+        <form action="signin" method="POST" class="space-y-4">
             <div class="space-y-2">
                 <label for="email" class="text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
-                <input type="email" id="email" name="email" required
+                <input id="phone" name="phone" required
                     class="w-full px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
-                    placeholder="m@example.com">
+                    placeholder="012345678">
             </div>
             <div class="space-y-2">
                 <label for="password" class="text-sm font-medium text-gray-700 dark:text-gray-200">Password</label>
