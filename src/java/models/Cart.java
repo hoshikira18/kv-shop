@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package models;
 
 import java.util.Date;
 
@@ -11,7 +11,8 @@ import java.util.Date;
  * @author VIET
  */
 public class Cart {
-    int carID;
+
+    int cartID;
     int userID;
     double total;
     Date create_at;
@@ -19,19 +20,24 @@ public class Cart {
     public Cart() {
     }
 
+    public Cart(int userID, double total) {
+        this.userID = userID;
+        this.total = total;
+    }
+
     public Cart(int carID, int userID, double total, Date create_at) {
-        this.carID = carID;
+        this.cartID = carID;
         this.userID = userID;
         this.total = total;
         this.create_at = create_at;
     }
 
-    public int getCarID() {
-        return carID;
+    public int getCartID() {
+        return cartID;
     }
 
-    public void setCarID(int carID) {
-        this.carID = carID;
+    public void setCartID(int cartID) {
+        this.cartID = cartID;
     }
 
     public int getUserID() {
@@ -57,5 +63,16 @@ public class Cart {
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
     }
-    
+
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set total = " + total;
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "(" + userID + ", " + total + ")";
+        return insert;
+    }
 }

@@ -3,17 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/Role.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/User.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/Order_Item.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/Category.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/Cart.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/Order.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/Supplier.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/Product.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/model/Cart_Item.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/validation/Validation.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/ProductDetail.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/User.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Order.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Role.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/CartDAO.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Cart.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Cart_Item.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Product.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/ProductCategory.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Order_Item.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Category.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Supplier.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>

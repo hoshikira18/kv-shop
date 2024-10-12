@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package models;
 
 import java.util.Date;
 
@@ -16,6 +16,10 @@ public class Supplier {
     Date create_at;
 
     public Supplier() {
+    }
+
+    public Supplier(String supplierName) {
+        this.supplierName = supplierName;
     }
 
     public Supplier(int supplierID, String supplierName, Date create_at) {
@@ -48,5 +52,15 @@ public class Supplier {
         this.create_at = create_at;
     }
     
-    
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set supplierName = '" + supplierName + "'";
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "('" + supplierName+ "')";
+        return insert;
+    }
 }

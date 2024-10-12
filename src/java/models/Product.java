@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package models;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,10 +18,17 @@ public class Product {
     double price;
     int supID;
     int inventory;
-    Date create_at = new Date();
-    ArrayList<Category> listCategories = new ArrayList<>();
+    Date create_at;
 
     public Product() {
+    }
+
+    public Product(String proName, String image, double price, int supID, int inventory) {
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+        this.supID = supID;
+        this.inventory = inventory;
     }
 
     public Product(int proID, String proName, String image, double price, int supID, int inventory) {
@@ -32,6 +39,8 @@ public class Product {
         this.supID = supID;
         this.inventory = inventory;
     }
+    
+    
 
     public int getProID() {
         return proID;
@@ -88,27 +97,20 @@ public class Product {
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
     }
-
-    public ArrayList<Category> getListCategories() {
-        return listCategories;
-    }
-
-    public void setListCategories(ArrayList<Category> listCategories) {
-        this.listCategories = listCategories;
-    }
     
-    public void add(Category category){
-        this.listCategories.add(category);
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set proName = '" + proName + "'" + space + "image = '" 
+                + image + "'" + space
+                + "price = " + price + space + "supID = "
+                + supID + space + "inventory = " + inventory;
+        return string;
     }
-    
-    public void remove(Category category){
-        Category cateDelete = new Category();
-        for (Category listCategory : listCategories) {
-            if(category.categoryID==(listCategory.categoryID)){
-                cateDelete = listCategory;
-                break;
-            }
-        }
-        listCategories.remove(cateDelete);
+
+    public String forInsert() {
+        String insert = "";
+        insert = "('" + proName + "', '" + image + "', " + price + ", "
+                + supID + ", " + inventory + ")";
+        return insert;
     }
 }

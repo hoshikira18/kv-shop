@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package models;
 
 import java.util.Date;
 
@@ -11,18 +11,25 @@ import java.util.Date;
  * @author VIET
  */
 public class ProductCategory {
+
     int proCateID;
     int proID;
     int categoryID;
-    Date create_at = new Date();
+    Date create_at;
 
     public ProductCategory() {
     }
 
-    public ProductCategory(int proCateID, int proID, int categoryID) {
+    public ProductCategory(int proID, int categoryID) {
+        this.proID = proID;
+        this.categoryID = categoryID;
+    }
+
+    public ProductCategory(int proCateID, int proID, int categoryID, Date create_at) {
         this.proCateID = proCateID;
         this.proID = proID;
         this.categoryID = categoryID;
+        this.create_at = create_at;
     }
 
     public int getProCateID() {
@@ -56,5 +63,16 @@ public class ProductCategory {
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
     }
-    
+
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set proID = " + proID + ", categoryID = " + categoryID;
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "(" + proID + "," + categoryID + ")";
+        return insert;
+    }
 }

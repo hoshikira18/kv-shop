@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package models;
 
 import java.util.Date;
 
@@ -17,6 +17,11 @@ public class Order {
     Date create_at;
 
     public Order() {
+    }
+
+    public Order(int userID, double total) {
+        this.userID = userID;
+        this.total = total;
     }
 
     public Order(int orderID, int userID, double total, Date create_at) {
@@ -58,4 +63,15 @@ public class Order {
         this.create_at = create_at;
     }
     
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set total = " + total;
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "(" + userID + ", " + total + ")";
+        return insert;
+    }
 }

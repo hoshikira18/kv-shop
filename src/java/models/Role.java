@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package models;
 
 import java.util.Date;
 
@@ -16,6 +16,10 @@ public class Role {
     Date create_at;
 
     public Role() {
+    }
+
+    public Role(String roleName) {
+        this.roleName = roleName;
     }
 
     public Role(int roleID, String roleName, Date create_at) {
@@ -46,6 +50,18 @@ public class Role {
 
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
+    }
+    
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set roleName = '" + roleName + "'";
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "('" + roleName+ "')";
+        return insert;
     }
     
 }
