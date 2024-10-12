@@ -20,12 +20,13 @@ public class User {
     String email;
     String password;
     int roleID;
+    String roleName;
     Date create_at;
 
     public User() {
     }
-
-    public User(String userName, int age, String phoneNumber,
+    
+    public User( String userName, int age, String phoneNumber, 
             String address, String email, String password, int roleID) {
         this.userName = userName;
         this.age = age;
@@ -37,6 +38,7 @@ public class User {
     }
 
     public User(int userID, String userName, int age, String phoneNumber, String address, String email, String password, int roleID, Date create_at) {
+
         this.userID = userID;
         this.userName = userName;
         this.age = age;
@@ -45,7 +47,33 @@ public class User {
         this.email = email;
         this.password = password;
         this.roleID = roleID;
+    }
+    
+    public User(int userID, String userName, int age, String phoneNumber,
+            String address, String email, int roleID, Date create_at, String roleName) {
+        this.userID = userID;
+        this.userName = userName;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.email = email;
+        this.roleID = roleID;
         this.create_at = create_at;
+        this.roleName = roleName;
+    }
+    
+    public User(int userID, String userName, int age, String phoneNumber, String password, 
+            String address, String email, int roleID, Date create_at, String roleName) {
+        this.userID = userID;
+        this.userName = userName;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.address = address;
+        this.email = email;
+        this.roleID = roleID;
+        this.create_at = create_at;
+        this.roleName = roleName;
     }
 
     public int getUserID() {
