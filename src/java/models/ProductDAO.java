@@ -34,7 +34,7 @@ public class ProductDAO extends MyDAO {
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
                 Date create_At = rs.getDate("Create_At");
 
-                Product product = new Product(supID, productName, image, price, supID, inventory, create_At);
+                Product product = new Product(ID, productName, image, price, supID, inventory, create_At);
                 allProducts.add(product);
             }
             ps.close();
@@ -62,7 +62,7 @@ public class ProductDAO extends MyDAO {
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
                 Date create_At = rs.getDate("Create_At");
 
-                product = new Product(supID, productName, image, price, supID, inventory, create_At);
+                product = new Product(ID, productName, image, price, supID, inventory, create_At);
             }
             ps.close();
             rs.close();
@@ -87,7 +87,7 @@ public class ProductDAO extends MyDAO {
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
                 Date create_At = rs.getDate("Create_At");
 
-                Product product = new Product(supID, productName, image, price, supID, inventory, create_At);
+                Product product = new Product(ID, productName, image, price, supID, inventory, create_At);
                 list.add(product);
             }
             ps.close();
@@ -117,13 +117,11 @@ public class ProductDAO extends MyDAO {
     public Product insert(Product product) {
         xSql = "insert into Products (Pro_Name, Image, Price, SupID, Inventory)"
                 + " values " + product.forInsert();
-        
+
         Product p = null;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
-            
-            p = getNewestProduct();
 
             connect.close();
             result.close();
@@ -131,11 +129,13 @@ public class ProductDAO extends MyDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
+        p = getNewestProduct();
+
         return p;
     }
 
     public Product getNewestProduct() {
-        xSql = "select top(1) * from Products order by Create_At asc";
+        xSql = "select top(1) * from Products order by Create_At desc";
         Product product = null;
 
         try {
@@ -143,15 +143,15 @@ public class ProductDAO extends MyDAO {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                int ID = Integer.parseInt(rs.getString("proID"));
+                int ID = Integer.parseInt(rs.getString("ProID"));
                 String productName = rs.getString("Pro_Name");
-                String image = rs.getString("image");
+                String image = rs.getString("Image");
                 double price = Double.parseDouble(rs.getString("price"));
                 int supID = Integer.parseInt(rs.getString("supID"));
                 int inventory = Integer.parseInt(rs.getString("inventory"));
                 Date create_At = rs.getDate("create_At");
 
-                product = new Product(supID, productName, image, price, supID, inventory);
+                product = new Product(ID, productName, image, price, supID, inventory);
             }
 
         } catch (SQLException ex) {
@@ -160,7 +160,6 @@ public class ProductDAO extends MyDAO {
 
         return product;
     }
-
 
     public void delete(int id) {
         xSql = "delete from Products where ProID = " + id;

@@ -14,21 +14,20 @@ import models.*;
 public class ProductsController {
 
     ProductDAO pd = new ProductDAO();
-    
+
     public ProductsController() {
     }
-    
+
     public List<Product> getAllProducts() {
         return pd.getAllProducts();
     }
-    
+
     public void createProduct(Product p, int categoryID) {
         Product product = pd.insert(p);
         ProductCategoryDAO pcd = new ProductCategoryDAO();
-        
         if (product != null) {
-            System.out.println("Done");
             pcd.insert(new ProductCategory(product.getProID(), categoryID));
         }
     }
+
 }
