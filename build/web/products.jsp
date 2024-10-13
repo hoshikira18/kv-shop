@@ -12,6 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <div class="space-x-5 text-center pb-10">
+            <a href="/shop/admin/products.jsp">Products</a>
+            <a href="/shop/admin/categories">Categories</a>
+            <a href="/shop/admin/products.jsp">Products</a>
+        </div>
         <h1><%=id%></h1>
     </body>
 </html>

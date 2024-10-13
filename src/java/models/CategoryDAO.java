@@ -14,11 +14,10 @@ import java.util.List;
 /**
  *
  * @author VIET
- */
-public class CategoryDAO extends MyDAO {
+ */public class CategoryDAO extends MyDAO {
 
-    public List<Category> getAllCategorys() {
-        List<Category> allCategorys = new ArrayList<>();
+    public List<Category> getAllCategories() {
+        List<Category> allCategories = new ArrayList<>();
         xSql = "select * from Categories";
         try {
             ps = con.prepareStatement(xSql);
@@ -29,15 +28,14 @@ public class CategoryDAO extends MyDAO {
                 Date create_At = rs.getDate("Create_At");
 
                 Category category = new Category(categoryID, categoryName, create_At);
-                allCategorys.add(category);
+                allCategories.add(category);
             }
             ps.close();
             rs.close();
-            return allCategorys;
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return allCategorys;
+        return allCategories;
     }
 
     public Category getOne(int id) {
