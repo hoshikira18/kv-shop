@@ -4,7 +4,7 @@
  */
 package controller.admin.categories;
 
-import controller.CategoriesControler;
+import controller.CategoriesController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,7 +25,7 @@ public class CreateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         String categoryName = (String) req.getParameter("category-name");
-        CategoriesControler cc = new CategoriesControler();
+        CategoriesController cc = new CategoriesController();
         cc.insertCategory(new Category(categoryName));
         resp.sendRedirect("/shop/admin/categories");
     }

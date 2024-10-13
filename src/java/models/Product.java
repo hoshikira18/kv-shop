@@ -4,7 +4,6 @@
  */
 package models;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,6 +20,15 @@ public class Product {
     Date create_at;
 
     public Product() {
+    }
+    
+    public Product(int id, String proName, String image, double price, int supID, int inventory) {
+        this.proID = id;
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+        this.supID = supID;
+        this.inventory = inventory;
     }
 
     public Product(String proName, String image, double price, int supID, int inventory) {

@@ -11,10 +11,10 @@ import models.*;
  *
  * @author khuye
  */
-public class CategoriesControler {
+public class CategoriesController {
     CategoryDAO cd = new CategoryDAO();
 
-    public CategoriesControler() {
+    public CategoriesController() {
     }
     
     public List<Category> getAllCategories () {

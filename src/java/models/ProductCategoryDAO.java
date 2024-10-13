@@ -102,6 +102,7 @@ public class ProductCategoryDAO extends MyDAO {
     }
 
     public void insert(ProductCategory proCate) {
+
         xSql = "insert into ProductCategories (ProCateName)"
                 + " values " + proCate.forInsert();
         try {

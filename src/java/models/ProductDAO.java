@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,6 +50,7 @@ public class ProductDAO extends MyDAO {
         xSql = "select * from Products where ProID = " + id;
         Product product = new Product();
         try {
+
             PreparedStatement ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -98,6 +101,7 @@ public class ProductDAO extends MyDAO {
 
     public void update(Product product) {
         int id = product.getProID();
+
         xSql = "update Products " + product.forUpdate() + " where ProID = " + id;
         try {
             PreparedStatement ps = con.prepareStatement(xSql);
@@ -110,19 +114,53 @@ public class ProductDAO extends MyDAO {
         }
     }
 
-    public void insert(Product product) {
-        xSql = "insert into Products (ProName, Image, Price, SupID, Inventory)"
+    public Product insert(Product product) {
+        xSql = "insert into Products (Pro_Name, Image, Price, SupID, Inventory)"
                 + " values " + product.forInsert();
+        
+        Product p = null;
         try {
-            PreparedStatement ps = con.prepareStatement(xSql);
-            rs = ps.executeQuery();
+            PreparedStatement connect = connection.prepareStatement(xSql);
+            ResultSet result = connect.executeQuery();
+            
+            p = getNewestProduct();
 
-            ps.close();
-            rs.close();
+            connect.close();
+            result.close();
+
         } catch (SQLException e) {
             System.out.println(e);
         }
+        return p;
     }
+
+    public Product getNewestProduct() {
+        xSql = "select top(1) * from Products order by Create_At asc";
+        Product product = null;
+
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("proID"));
+                String productName = rs.getString("Pro_Name");
+                String image = rs.getString("image");
+                double price = Double.parseDouble(rs.getString("price"));
+                int supID = Integer.parseInt(rs.getString("supID"));
+                int inventory = Integer.parseInt(rs.getString("inventory"));
+                Date create_At = rs.getDate("create_At");
+
+                product = new Product(supID, productName, image, price, supID, inventory);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return product;
+    }
+
 
     public void delete(int id) {
         xSql = "delete from Products where ProID = " + id;
