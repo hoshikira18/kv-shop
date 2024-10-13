@@ -3,22 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/User.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Order.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Role.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/CartDAO.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Cart.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Cart_Item.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Product.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/ProductCategory.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Order_Item.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Category.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Supplier.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/UserDAO.java</file>
-=======
-            <file>file:/D:/prj-ass/KVShop/web/login.jsp</file>
->>>>>>> 6b4b99cd1ec6b32baa1d3009c24bf751815cbe03
+            <file>file:/D:/prj-ass/KVShop/web/admin/products.jsp</file>
+            <file>file:/D:/prj-ass/KVShop/src/java/controller/SignInServlet.java</file>
+            <file>file:/D:/prj-ass/KVShop/src/java/filter/Auth.java</file>
+            <file>file:/D:/prj-ass/KVShop/src/java/filter/LoginFilter.java</file>
+
         </group>
     </open-files>
 </project-private>
