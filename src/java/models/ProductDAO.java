@@ -23,22 +23,22 @@ public class ProductDAO extends MyDAO {
         List<Product> allProducts = new ArrayList<>();
         xSql = "select * from Products";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int ID = Integer.parseInt(result.getString("proID"));
-                String productName = result.getString("proName");
-                String image = result.getString("image");
-                double price = Double.parseDouble(result.getString("price"));
-                int supID = Integer.parseInt(result.getString("supID"));
-                int inventory = Integer.parseInt(result.getString("inventory"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("ProID"));
+                String productName = rs.getString("Pro_Name");
+                String image = rs.getString("Image");
+                double price = Double.parseDouble(rs.getString("Price"));
+                int supID = Integer.parseInt(rs.getString("SupID"));
+                int inventory = Integer.parseInt(rs.getString("Inventory"));
+                Date create_At = rs.getDate("Create_At");
 
-                Product product = new Product(supID, productName, image, price, supID, inventory);
+                Product product = new Product(supID, productName, image, price, supID, inventory, create_At);
                 allProducts.add(product);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return allProducts;
         } catch (SQLException e) {
             System.out.println(e);
@@ -50,21 +50,22 @@ public class ProductDAO extends MyDAO {
         xSql = "select * from Products where ProID = " + id;
         Product product = new Product();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            if (result.next()) {
-                int ID = Integer.parseInt(result.getString("proID"));
-                String productName = result.getString("proName");
-                String image = result.getString("image");
-                double price = Double.parseDouble(result.getString("price"));
-                int supID = Integer.parseInt(result.getString("supID"));
-                int inventory = Integer.parseInt(result.getString("inventory"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
 
-                product = new Product(supID, productName, image, price, supID, inventory);
+            PreparedStatement ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("ProID"));
+                String productName = rs.getString("Pro_Name");
+                String image = rs.getString("Image");
+                double price = Double.parseDouble(rs.getString("Price"));
+                int supID = Integer.parseInt(rs.getString("SupID"));
+                int inventory = Integer.parseInt(rs.getString("Inventory"));
+                Date create_At = rs.getDate("Create_At");
+
+                product = new Product(supID, productName, image, price, supID, inventory, create_At);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -75,22 +76,22 @@ public class ProductDAO extends MyDAO {
         List<Product> list = new ArrayList<>();
         xSql = "select * from Products where " + requirement;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int ID = Integer.parseInt(result.getString("proID"));
-                String productName = result.getString("proName");
-                String image = result.getString("image");
-                double price = Double.parseDouble(result.getString("price"));
-                int supID = Integer.parseInt(result.getString("supID"));
-                int inventory = Integer.parseInt(result.getString("inventory"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            PreparedStatement ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("ProID"));
+                String productName = rs.getString("Pro_Name");
+                String image = rs.getString("Image");
+                double price = Double.parseDouble(rs.getString("Price"));
+                int supID = Integer.parseInt(rs.getString("SupID"));
+                int inventory = Integer.parseInt(rs.getString("Inventory"));
+                Date create_At = rs.getDate("Create_At");
 
-                Product product = new Product(supID, productName, image, price, supID, inventory);
+                Product product = new Product(supID, productName, image, price, supID, inventory, create_At);
                 list.add(product);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return list;
         } catch (SQLException e) {
             System.out.println(e);
@@ -100,13 +101,14 @@ public class ProductDAO extends MyDAO {
 
     public void update(Product product) {
         int id = product.getProID();
-        xSql = "update Products " + product.forUpdate() + " where proID = " + id;
-        try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
 
-            connect.close();
-            result.close();
+        xSql = "update Products " + product.forUpdate() + " where ProID = " + id;
+        try {
+            PreparedStatement ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -125,6 +127,7 @@ public class ProductDAO extends MyDAO {
 
             connect.close();
             result.close();
+
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -158,14 +161,15 @@ public class ProductDAO extends MyDAO {
         return product;
     }
 
-    public void delete(int id) {
-        xSql = "delete from Products where proID = " + id;
-        try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
 
-            connect.close();
-            result.close();
+    public void delete(int id) {
+        xSql = "delete from Products where ProID = " + id;
+        try {
+            PreparedStatement ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }

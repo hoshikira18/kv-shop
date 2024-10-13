@@ -54,7 +54,7 @@ public class Role {
     
     public String forUpdate() {
         String space = ", ";
-        String string = "set roleName = '" + roleName + "'";
+        String string = "set RoleName = '" + roleName + "'";
         return string;
     }
 

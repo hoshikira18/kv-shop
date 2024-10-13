@@ -66,7 +66,7 @@ public class ProductCategory {
 
     public String forUpdate() {
         String space = ", ";
-        String string = "set proID = " + proID + ", categoryID = " + categoryID;
+        String string = "set ProID = " + proID + ", CategoryID = " + categoryID;
         return string;
     }
 

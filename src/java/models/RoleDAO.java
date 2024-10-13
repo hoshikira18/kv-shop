@@ -5,8 +5,6 @@
 package models;
 
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +18,18 @@ public class RoleDAO extends MyDAO{
         List<Role> allRoles = new ArrayList<>();
         xSql = "select * from Roles";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int roleID = Integer.parseInt(result.getString("roleID"));
-                String roleName = result.getString("roleName");
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int roleID = Integer.parseInt(rs.getString("RoleID"));
+                String roleName = rs.getString("RoleName");
+                Date create_At = rs.getDate("Create_At");
 
                 Role role = new Role(roleID, roleName, create_At);
                 allRoles.add(role);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return allRoles;
         } catch (SQLException e) {
             System.out.println(e);
@@ -43,16 +41,16 @@ public class RoleDAO extends MyDAO{
         xSql = "select * from Roles where RoleID = " + id;
         Role role = new Role();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            if (result.next()) {
-                int roleID = Integer.parseInt(result.getString("roleID"));
-                String roleName = result.getString("roleName");
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int roleID = Integer.parseInt(rs.getString("RoleID"));
+                String roleName = rs.getString("RoleName");
+                Date create_At = rs.getDate("Create_At");
 
                 role = new Role(roleID, roleName, create_At);
-                connect.close();
-                result.close();
+                ps.close();
+                rs.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -64,18 +62,18 @@ public class RoleDAO extends MyDAO{
         List<Role> list = new ArrayList<>();
         xSql = "select * from Roles where " + requirement;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int roleID = Integer.parseInt(result.getString("roleID"));
-                String roleName = result.getString("roleName");
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int roleID = Integer.parseInt(rs.getString("RoleID"));
+                String roleName = rs.getString("RoleName");
+                Date create_At = rs.getDate("Create_At");
 
                 Role role = new Role(roleID, roleName, create_At);
                 list.add(role);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return list;
         } catch (SQLException e) {
             System.out.println(e);
@@ -85,40 +83,40 @@ public class RoleDAO extends MyDAO{
 
     public void update(Role role) {
         int id = role.getRoleID();
-        xSql = "update Roles " + role.forUpdate() + " where roleID = " + id;
+        xSql = "update Roles " + role.forUpdate() + " where RoleID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     public void insert(Role role) {
-        xSql = "insert into Roles (roleName)"
-                + " value " + role.forInsert();
+        xSql = "insert into Roles (RoleName)"
+                + " values " + role.forInsert();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     public void delete(int id) {
-        xSql = "delete from Roles where roleID = " + id;
+        xSql = "delete from Roles where RoleID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }

@@ -21,19 +21,19 @@ public class CartDAO extends MyDAO {
         List<Cart> allCarts = new ArrayList<>();
         xSql = "select * from Carts";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int cartID = Integer.parseInt(result.getString("cartID"));
-                int userID = Integer.parseInt(result.getString("userID"));
-                int total = Integer.parseInt(result.getString("total"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int cartID = Integer.parseInt(rs.getString("CartID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
 
                 Cart cart = new Cart(cartID, userID, total, create_At);
                 allCarts.add(cart);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return allCarts;
         } catch (SQLException e) {
             System.out.println(e);
@@ -45,17 +45,17 @@ public class CartDAO extends MyDAO {
         xSql = "select * from Carts where CartID = " + id;
         Cart cart = new Cart();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            if (result.next()) {
-                int cartID = Integer.parseInt(result.getString("cartID"));
-                int userID = Integer.parseInt(result.getString("userID"));
-                int total = Integer.parseInt(result.getString("total"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int cartID = Integer.parseInt(rs.getString("CartID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
 
                 cart = new Cart(cartID, userID, total, create_At);
-                connect.close();
-                result.close();
+                ps.close();
+                rs.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -67,17 +67,17 @@ public class CartDAO extends MyDAO {
         xSql = "select * from Carts where UserID = " + id;
         Cart cart = new Cart();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            if (result.next()) {
-                int cartID = Integer.parseInt(result.getString("cartID"));
-                int userID = Integer.parseInt(result.getString("userID"));
-                int total = Integer.parseInt(result.getString("total"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int cartID = Integer.parseInt(rs.getString("CartID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
 
                 cart = new Cart(cartID, userID, total, create_At);
-                connect.close();
-                result.close();
+                ps.close();
+                rs.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -89,19 +89,19 @@ public class CartDAO extends MyDAO {
         List<Cart> list = new ArrayList<>();
         xSql = "select * from Carts where " + requirement;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int cartID = Integer.parseInt(result.getString("cartID"));
-                int userID = Integer.parseInt(result.getString("userID"));
-                int total = Integer.parseInt(result.getString("total"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int cartID = Integer.parseInt(rs.getString("CartID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
 
                 Cart cart = new Cart(cartID, userID, total, create_At);
                 list.add(cart);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return list;
         } catch (SQLException e) {
             System.out.println(e);
@@ -111,13 +111,13 @@ public class CartDAO extends MyDAO {
 
     public void update(Cart cart) {
         int id = cart.getCartID();
-        xSql = "update Carts " + cart.forUpdate() + " where cartID = " + id;
+        xSql = "update Carts " + cart.forUpdate() + " where CartID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -131,28 +131,75 @@ public class CartDAO extends MyDAO {
             }
         }
         xSql = "insert into Carts (UserID, Total)"
-                + " value " + cart.forInsert();
+                + " values " + cart.forInsert();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     public void delete(int id) {
-        xSql = "delete from Carts where cartID = " + id;
+        xSql = "delete from Carts where CartID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+    
+    public List<Cart_Item> getListItems(int id) {
+        List<Cart_Item> list = new ArrayList<>();
+        xSql = "select * from Cart_Items where OrderID = " + id;
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int itemID = Integer.parseInt(rs.getString("ItemID"));
+                int cartID = Integer.parseInt(rs.getString("CartID"));
+                int proID = Integer.parseInt(rs.getString("ProID"));
+                int quantity = Integer.parseInt(rs.getString("Quantity"));
+                Date create_At = rs.getDate("Create_At");
+
+                Cart_Item cart_Item = new Cart_Item(itemID, cartID, proID, quantity, create_At);
+                list.add(cart_Item);
+                
+                ps.close();
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    public Cart getCartOfCustomer(int id){
+        xSql = "select * from Carts where UserID = " + id;
+        Cart cart = new Cart();
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int cartID = Integer.parseInt(rs.getString("CartID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
+
+                cart = new Cart(cartID, userID, total, create_At);
+                ps.close();
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return cart;
     }
 }

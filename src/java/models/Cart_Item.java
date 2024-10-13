@@ -76,7 +76,7 @@ public class Cart_Item {
     
     public String forUpdate() {
         String space = ", ";
-        String string = "set proID = " + proID + space + "quantity = " + quantity;
+        String string = "set CroID = " + proID + space + "Quantity = " + quantity;
         return string;
     }
 

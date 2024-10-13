@@ -11,24 +11,28 @@ import java.util.Date;
  * @author VIET
  */
 public class Order {
+
     int orderID;
     int userID;
     double total;
     Date create_at;
+    String status;
 
     public Order() {
     }
 
-    public Order(int userID, double total) {
+    public Order(int userID, double total, String status) {
         this.userID = userID;
         this.total = total;
+        this.status = status;
     }
 
-    public Order(int orderID, int userID, double total, Date create_at) {
+    public Order(int orderID, int userID, double total, Date create_at, String status) {
         this.orderID = orderID;
         this.userID = userID;
         this.total = total;
         this.create_at = create_at;
+        this.status = status;
     }
 
     public int getOrderID() {
@@ -62,16 +66,24 @@ public class Order {
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
     }
-    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String forUpdate() {
         String space = ", ";
-        String string = "set total = " + total;
+        String string = "set Total = " + total + ", Status = '" + status + "'";
         return string;
     }
 
     public String forInsert() {
         String insert = "";
-        insert = "(" + userID + ", " + total + ")";
+        insert = "(" + userID + ", " + total + ", '" + status + "')";
         return insert;
     }
 }

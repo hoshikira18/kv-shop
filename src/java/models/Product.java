@@ -21,6 +21,15 @@ public class Product {
 
     public Product() {
     }
+    
+    public Product(int id, String proName, String image, double price, int supID, int inventory) {
+        this.proID = id;
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+        this.supID = supID;
+        this.inventory = inventory;
+    }
 
     public Product(String proName, String image, double price, int supID, int inventory) {
         this.proName = proName;
@@ -30,13 +39,14 @@ public class Product {
         this.inventory = inventory;
     }
 
-    public Product(int proID, String proName, String image, double price, int supID, int inventory) {
+    public Product(int proID, String proName, String image, double price, int supID, int inventory, Date create_At) {
         this.proID = proID;
         this.proName = proName;
         this.image = image;
         this.price = price;
         this.supID = supID;
         this.inventory = inventory;
+        this.create_at = create_At;
     }
     
     
@@ -99,10 +109,10 @@ public class Product {
     
     public String forUpdate() {
         String space = ", ";
-        String string = "set proName = '" + proName + "'" + space + "image = '" 
+        String string = "set ProName = '" + proName + "'" + space + "Image = '" 
                 + image + "'" + space
-                + "price = " + price + space + "supID = "
-                + supID + space + "inventory = " + inventory;
+                + "Price = " + price + space + "SupID = "
+                + supID + space + "Inventory = " + inventory;
         return string;
     }
 

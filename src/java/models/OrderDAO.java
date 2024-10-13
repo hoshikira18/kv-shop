@@ -15,24 +15,26 @@ import java.util.List;
  *
  * @author VIET
  */
-public class OrderDAO extends MyDAO{
+public class OrderDAO extends MyDAO {
+
     public List<Order> getAllOrders() {
         List<Order> allOrders = new ArrayList<>();
         xSql = "select * from Orders";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int orderID = Integer.parseInt(result.getString("orderID"));
-                int userID = Integer.parseInt(result.getString("userID"));
-                int total = Integer.parseInt(result.getString("total"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
+                String status = rs.getString("Status");
 
-                Order order = new Order(orderID, userID, total, create_At);
+                Order order = new Order(orderID, userID, total, create_At, status);
                 allOrders.add(order);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return allOrders;
         } catch (SQLException e) {
             System.out.println(e);
@@ -44,41 +46,43 @@ public class OrderDAO extends MyDAO{
         xSql = "select * from Orders where OrderID = " + id;
         Order order = new Order();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            if (result.next()) {
-                int orderID = Integer.parseInt(result.getString("orderID"));
-                int userID = Integer.parseInt(result.getString("userID"));
-                int total = Integer.parseInt(result.getString("total"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
+                String status = rs.getString("Status");
 
-                order = new Order(orderID, userID, total, create_At);
-                connect.close();
-                result.close();
+                order = new Order(orderID, userID, total, create_At, status);
+                ps.close();
+                rs.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return order;
     }
-    
+
     public List<Order> getOrdersByUser(int id) {
         List<Order> listOrders = new ArrayList<>();
         xSql = "select * from Orders where UserID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int orderID = Integer.parseInt(result.getString("orderID"));
-                int userID = Integer.parseInt(result.getString("userID"));
-                int total = Integer.parseInt(result.getString("total"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
+                String status = rs.getString("Status");
 
-                Order order = new Order(orderID, userID, total, create_At);
+                Order order = new Order(orderID, userID, total, create_At, status);
                 listOrders.add(order);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return listOrders;
         } catch (SQLException e) {
             System.out.println(e);
@@ -90,19 +94,20 @@ public class OrderDAO extends MyDAO{
         List<Order> list = new ArrayList<>();
         xSql = "select * from Orders where " + requirement;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int orderID = Integer.parseInt(result.getString("orderID"));
-                int userID = Integer.parseInt(result.getString("userID"));
-                int total = Integer.parseInt(result.getString("total"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
+                String status = rs.getString("Status");
 
-                Order order = new Order(orderID, userID, total, create_At);
+                Order order = new Order(orderID, userID, total, create_At, status);
                 list.add(order);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return list;
         } catch (SQLException e) {
             System.out.println(e);
@@ -112,13 +117,13 @@ public class OrderDAO extends MyDAO{
 
     public void update(Order order) {
         int id = order.getOrderID();
-        xSql = "update Orders " + order.forUpdate() + " where orderID = " + id;
+        xSql = "update Orders " + order.forUpdate() + " where OrderID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -126,28 +131,77 @@ public class OrderDAO extends MyDAO{
 
     public void insert(Order order) {
         xSql = "insert into Orders (UserID, Total)"
-                + " value " + order.forInsert();
+                + " values " + order.forInsert();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     public void delete(int id) {
-        xSql = "delete from Orders where orderID = " + id;
+        xSql = "delete from Orders where OrderID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    public List<Order_Item> getListItems(int id) {
+        List<Order_Item> list = new ArrayList<>();
+        xSql = "select * from Order_Items where OrderID = " + id;
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int itemID = Integer.parseInt(rs.getString("ItemID"));
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int proID = Integer.parseInt(rs.getString("ProID"));
+                int quantity = Integer.parseInt(rs.getString("Quantity"));
+
+                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity);
+                list.add(order_Item);
+                
+                ps.close();
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    public List<Order> getAllOrdersOfCustomer(int id){
+        List<Order> list = new ArrayList<>();
+        xSql = "select * from Order_Items where UserID = " + id;
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                int total = Integer.parseInt(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
+                String status = rs.getString("Status");
+
+                Order order = new Order(orderID, userID, total, create_At, status);
+                list.add(order);
+                
+                ps.close();
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
     }
 }

@@ -11,8 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.CategoryDAO;
 import models.MyDAO;
 import models.User;
+import models.UserDAO;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,20 +32,9 @@ public class Test extends HttpServlet {
         resp.setContentType("text/html");
 
         PrintWriter out = resp.getWriter();
-
-        UserController userController = new UserController();
-        int loginStatus = userController.login("0345812123213139", "1235");
-
-        switch (loginStatus) {
-            case 200 ->
-                out.print("Dang nhap thanh cong!");
-            case 300 ->
-                out.print("Tai khoan khong ton tai!");
-            case 400 ->
-                out.print("Sai mat khau!");
-            default -> {
-            }
-        }
+        
+        UserDAO ud = new UserDAO();
+        out.print(ud.getAllUsers().size());
 
     }
 

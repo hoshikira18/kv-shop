@@ -24,10 +24,10 @@ public class ProductCategoryDAO extends MyDAO {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
             while (result.next()) {
-                int proCateID = Integer.parseInt(result.getString("proCateID"));
-                int proID = Integer.parseInt(result.getString("proID"));
-                int categoryID = Integer.parseInt(result.getString("categoryID"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+                int proCateID = Integer.parseInt(result.getString("ProCateID"));
+                int proID = Integer.parseInt(result.getString("ProID"));
+                int categoryID = Integer.parseInt(result.getString("CategoryID"));
+                Date create_At = result.getDate("Create_At");
 
                 ProductCategory proCate = new ProductCategory(proCateID, proID, categoryID, create_At);
                 allProductCategorys.add(proCate);
@@ -42,16 +42,16 @@ public class ProductCategoryDAO extends MyDAO {
     }
 
     public ProductCategory getOne(int id) {
-        xSql = "select * from ProductCategories where proCateID = " + id;
+        xSql = "select * from ProductCategories where ProCateID = " + id;
         ProductCategory proCate = new ProductCategory();
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
             if (result.next()) {
-                int proCateID = Integer.parseInt(result.getString("proCateID"));
-                int proID = Integer.parseInt(result.getString("proID"));
-                int categoryID = Integer.parseInt(result.getString("categoryID"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+                int proCateID = Integer.parseInt(result.getString("ProCateID"));
+                int proID = Integer.parseInt(result.getString("ProID"));
+                int categoryID = Integer.parseInt(result.getString("CategoryID"));
+                Date create_At = result.getDate("Create_At");
 
                 proCate = new ProductCategory(proCateID, proID, categoryID, create_At);
                 connect.close();
@@ -70,10 +70,10 @@ public class ProductCategoryDAO extends MyDAO {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
             while (result.next()) {
-                int proCateID = Integer.parseInt(result.getString("proCateID"));
-                int proID = Integer.parseInt(result.getString("proID"));
-                int categoryID = Integer.parseInt(result.getString("categoryID"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+                int proCateID = Integer.parseInt(result.getString("ProCateID"));
+                int proID = Integer.parseInt(result.getString("ProID"));
+                int categoryID = Integer.parseInt(result.getString("CategoryID"));
+                Date create_At = result.getDate("Create_At");
 
                 ProductCategory proCate = new ProductCategory(proCateID, proID, categoryID, create_At);
                 list.add(proCate);
@@ -89,7 +89,7 @@ public class ProductCategoryDAO extends MyDAO {
 
     public void update(ProductCategory proCate) {
         int id = proCate.getProCateID();
-        xSql = "update ProductCategories " + proCate.forUpdate() + " where proCateID = " + id;
+        xSql = "update ProductCategories " + proCate.forUpdate() + " where ProCateID = " + id;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
@@ -102,7 +102,8 @@ public class ProductCategoryDAO extends MyDAO {
     }
 
     public void insert(ProductCategory proCate) {
-        xSql = "insert into ProductCategories (proCateName)"
+
+        xSql = "insert into ProductCategories (ProCateName)"
                 + " values " + proCate.forInsert();
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
@@ -116,7 +117,7 @@ public class ProductCategoryDAO extends MyDAO {
     }
 
     public void delete(int id) {
-        xSql = "delete from ProductCategories where proCateID = " + id;
+        xSql = "delete from ProductCategories where ProCateID = " + id;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
