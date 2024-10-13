@@ -18,6 +18,10 @@ public class Supplier {
     public Supplier() {
     }
 
+    public Supplier(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
     public Supplier(int supplierID, String supplierName, Date create_at) {
         this.supplierID = supplierID;
         this.supplierName = supplierName;
@@ -48,5 +52,15 @@ public class Supplier {
         this.create_at = create_at;
     }
     
-    
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set supplierName = '" + supplierName + "'";
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "('" + supplierName+ "')";
+        return insert;
+    }
 }

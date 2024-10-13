@@ -4,7 +4,6 @@
  */
 package models;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -12,12 +11,16 @@ import java.util.Date;
  * @author VIET
  */
 public class Category {
+
     int categoryID;
     String categoryName;
     Date create_at;
-    ArrayList<Product> listProducts = new ArrayList<>();
 
     public Category() {
+    }
+
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Category(int categoryID, String categoryName, Date create_at) {
@@ -50,27 +53,16 @@ public class Category {
         this.create_at = create_at;
     }
 
-    public ArrayList<Product> getListProduct() {
-        return listProducts;
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set categoryName = '" + categoryName + "'";
+        return string;
     }
 
-    public void setListProduct(ArrayList<Product> listProduct) {
-        this.listProducts = listProduct;
+    public String forInsert() {
+        String insert = "";
+        insert = "('" + categoryName + "')";
+        return insert;
     }
-    
-    public void add(Product product){
-        this.listProducts.add(product);
-    }
-    
-    public void remove(Product product){
-        Product proDelete = new Product();
-        for (Product listProduct : listProducts) {
-            if(product.proID == listProduct.proID){
-                proDelete = listProduct;
-                break;
-            }
-        }
-        listProducts.remove(proDelete);
-    }
-    
+
 }
