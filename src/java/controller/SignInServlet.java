@@ -26,7 +26,6 @@ public class SignInServlet extends HttpServlet {
         String phone = req.getParameter("phone");
         String pw = req.getParameter("password");
 
-//        UserController ud = new UserController();
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         
@@ -38,7 +37,7 @@ public class SignInServlet extends HttpServlet {
             httpSession.setAttribute("role", u.getRoleID());
             
             if (u.getRoleID() == 1) {
-                resp.sendRedirect("/shop/admin/products.jsp");
+                resp.sendRedirect("/shop/admin/products");
             } else {
                 resp.sendRedirect("/shop/");
             }

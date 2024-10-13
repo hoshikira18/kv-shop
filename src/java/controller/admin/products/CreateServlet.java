@@ -39,8 +39,6 @@ public class CreateServlet extends HttpServlet {
         Product product = new Product(productName, productName, price, supplierID, inventory);
         pc.createProduct(product, categoryID);
         
-        out.print(product.forInsert());
-
         resp.sendRedirect("/shop/admin/products");
     }
 
