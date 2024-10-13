@@ -20,18 +20,18 @@ import java.util.List;
         List<Category> allCategories = new ArrayList<>();
         xSql = "select * from Categories";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int categoryID = Integer.parseInt(result.getString("CategoryID"));
-                String categoryName = result.getString("CategoryName");
-                Date create_At = result.getDate("Create_At");
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int categoryID = Integer.parseInt(rs.getString("CategoryID"));
+                String categoryName = rs.getString("CategoryName");
+                Date create_At = rs.getDate("Create_At");
 
                 Category category = new Category(categoryID, categoryName, create_At);
                 allCategories.add(category);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -42,16 +42,16 @@ import java.util.List;
         xSql = "select * from Categories where CategoryID = " + id;
         Category category = new Category();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            if (result.next()) {
-                int categoryID = Integer.parseInt(result.getString("CategoryID"));
-                String categoryName = result.getString("categoryName");
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int categoryID = Integer.parseInt(rs.getString("CategoryID"));
+                String categoryName = rs.getString("CategoryName");
+                Date create_At = rs.getDate("Create_At");
 
                 category = new Category(categoryID, categoryName, create_At);
-                connect.close();
-                result.close();
+                ps.close();
+                rs.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -63,18 +63,18 @@ import java.util.List;
         List<Category> list = new ArrayList<>();
         xSql = "select * from Categories where " + requirement;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int categoryID = Integer.parseInt(result.getString("CategoryID"));
-                String categoryName = result.getString("categoryName");
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int categoryID = Integer.parseInt(rs.getString("CategoryID"));
+                String categoryName = rs.getString("CategoryName");
+                Date create_At = rs.getDate("Create_At");
 
                 Category category = new Category(categoryID, categoryName, create_At);
                 list.add(category);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return list;
         } catch (SQLException e) {
             System.out.println(e);
@@ -84,13 +84,13 @@ import java.util.List;
 
     public void update(Category category) {
         int id = category.getCategoryID();
-        xSql = "update Categories " + category.forUpdate() + " where categoryID = " + id;
+        xSql = "update Categories " + category.forUpdate() + " where CategoryID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -98,24 +98,26 @@ import java.util.List;
 
     public void insert(Category category) {
         xSql = "insert into Categories (CategoryName)"
-                + " values " + "('" + category.getCategoryName() + "')";
+                + " values " + category.forInsert();
         try {
             ps = con.prepareStatement(xSql);
-            ps.executeUpdate();
+            rs = ps.executeQuery();
+
             ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     public void delete(int id) {
-        xSql = "delete from Categories where categoryID = " + id;
+        xSql = "delete from Categories where CategoryID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }

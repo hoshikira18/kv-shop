@@ -66,7 +66,7 @@ public class Cart {
 
     public String forUpdate() {
         String space = ", ";
-        String string = "set total = " + total;
+        String string = "set Total = " + total;
         return string;
     }
 

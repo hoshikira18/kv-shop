@@ -4,7 +4,6 @@
  */
 package models;
 
-import java.util.Date;
 
 /**
  *
@@ -15,7 +14,6 @@ public class Order_Item {
     int orderID;
     int proID;
     int quantity;
-    Date create_at;
 
     public Order_Item() {
     }
@@ -26,12 +24,11 @@ public class Order_Item {
         this.quantity = quantity;
     }
 
-    public Order_Item(int itemID, int orderID, int proID, int quantity, Date create_at) {
+    public Order_Item(int itemID, int orderID, int proID, int quantity) {
         this.itemID = itemID;
         this.orderID = orderID;
         this.proID = proID;
         this.quantity = quantity;
-        this.create_at = create_at;
     }
 
     public int getItemID() {
@@ -66,17 +63,9 @@ public class Order_Item {
         this.quantity = quantity;
     }
 
-    public Date getCreate_at() {
-        return create_at;
-    }
-
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
-    }
-
     public String forUpdate() {
         String space = ", ";
-        String string = "set proID = " + proID + space + "quantity = " + quantity;
+        String string = "set ProID = " + proID + space + "Quantity = " + quantity;
         return string;
     }
 

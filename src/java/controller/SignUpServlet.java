@@ -34,14 +34,13 @@ public class SignUpServlet extends HttpServlet {
 
         UserController ud = new UserController();
         int customerRoleID = 2;
-        int u = ud.createUser(new User(name, age, phone, address, email, password, customerRoleID));
+        int u = ud.createUser(new User(name, age, phone, address, email, password, 1));
 
         req.setAttribute("status", false);
 
         if (u == 300) {
             req.setAttribute("status", false);
             req.setAttribute("message", "Failed! Try to use another phone number!");
-
         } else {
             req.setAttribute("status", true);
             req.setAttribute("message", "Successfuly!");

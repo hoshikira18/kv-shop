@@ -20,20 +20,19 @@ public class Order_ItemDAO extends MyDAO{
         List<Order_Item> allOrder_Items = new ArrayList<>();
         xSql = "select * from Order_Items";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int itemID = Integer.parseInt(result.getString("itemID"));
-                int userID = Integer.parseInt(result.getString("orderID"));
-                int proID = Integer.parseInt(result.getString("proID"));
-                int total = Integer.parseInt(result.getString("quantity"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int itemID = Integer.parseInt(rs.getString("ItemID"));
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int proID = Integer.parseInt(rs.getString("ProID"));
+                int quantity = Integer.parseInt(rs.getString("Quantity"));
 
-                Order_Item order_Item = new Order_Item(itemID, proID, proID, userID, create_At);
+                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity);
                 allOrder_Items.add(order_Item);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return allOrder_Items;
         } catch (SQLException e) {
             System.out.println(e);
@@ -42,21 +41,20 @@ public class Order_ItemDAO extends MyDAO{
     }
 
     public Order_Item getOne(int id) {
-        xSql = "select * from Order_Items where itemID = " + id;
+        xSql = "select * from Order_Items where ItemID = " + id;
         Order_Item order_Item = new Order_Item();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            if (result.next()) {
-                int itemID = Integer.parseInt(result.getString("itemID"));
-                int userID = Integer.parseInt(result.getString("orderID"));
-                int proID = Integer.parseInt(result.getString("proID"));
-                int total = Integer.parseInt(result.getString("quantity"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int itemID = Integer.parseInt(rs.getString("ItemID"));
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int proID = Integer.parseInt(rs.getString("ProID"));
+                int quantity = Integer.parseInt(rs.getString("Quantity"));
 
-                order_Item = new Order_Item(itemID, proID, proID, userID, create_At);
-                connect.close();
-                result.close();
+                order_Item = new Order_Item(itemID, orderID, proID, quantity);
+                ps.close();
+                rs.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -68,20 +66,19 @@ public class Order_ItemDAO extends MyDAO{
         List<Order_Item> list = new ArrayList<>();
         xSql = "select * from Order_Items where " + requirement;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int itemID = Integer.parseInt(result.getString("itemID"));
-                int userID = Integer.parseInt(result.getString("orderID"));
-                int proID = Integer.parseInt(result.getString("proID"));
-                int total = Integer.parseInt(result.getString("quantity"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int itemID = Integer.parseInt(rs.getString("ItemID"));
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int proID = Integer.parseInt(rs.getString("ProID"));
+                int quantity = Integer.parseInt(rs.getString("Quantity"));
 
-                Order_Item order_Item = new Order_Item(itemID, proID, proID, userID, create_At);
+                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity);
                 list.add(order_Item);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return list;
         } catch (SQLException e) {
             System.out.println(e);
@@ -91,13 +88,13 @@ public class Order_ItemDAO extends MyDAO{
 
     public void update(Order_Item order_Item) {
         int id = order_Item.getItemID();
-        xSql = "update Order_Items " + order_Item.forUpdate() + " where itemID = " + id;
+        xSql = "update Order_Items " + order_Item.forUpdate() + " where ItemID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -105,26 +102,26 @@ public class Order_ItemDAO extends MyDAO{
 
     public void insert(Order_Item order_Item) {
         xSql = "insert into Order_Items (UserID, Total)"
-                + " value " + order_Item.forInsert();
+                + " values " + order_Item.forInsert();
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     public void delete(int id) {
-        xSql = "delete from Order_Items where itemID = " + id;
+        xSql = "delete from Order_Items where ItemID = " + id;
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
 
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e);
         }

@@ -54,7 +54,7 @@ public class Supplier {
     
     public String forUpdate() {
         String space = ", ";
-        String string = "set supplierName = '" + supplierName + "'";
+        String string = "set SupplierName = '" + supplierName + "'";
         return string;
     }
 
