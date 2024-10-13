@@ -19,6 +19,11 @@ public class Order {
     public Order() {
     }
 
+    public Order(int userID, double total) {
+        this.userID = userID;
+        this.total = total;
+    }
+
     public Order(int orderID, int userID, double total, Date create_at) {
         this.orderID = orderID;
         this.userID = userID;
@@ -58,4 +63,15 @@ public class Order {
         this.create_at = create_at;
     }
     
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set total = " + total;
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "(" + userID + ", " + total + ")";
+        return insert;
+    }
 }

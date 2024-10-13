@@ -18,6 +18,10 @@ public class Role {
     public Role() {
     }
 
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
+
     public Role(int roleID, String roleName, Date create_at) {
         this.roleID = roleID;
         this.roleName = roleName;
@@ -46,6 +50,18 @@ public class Role {
 
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
+    }
+    
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set roleName = '" + roleName + "'";
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "('" + roleName+ "')";
+        return insert;
     }
     
 }

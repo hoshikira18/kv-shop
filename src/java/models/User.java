@@ -11,6 +11,7 @@ import java.util.Date;
  * @author VIET
  */
 public class User {
+
     int userID;
     String userName;
     int age;
@@ -36,8 +37,8 @@ public class User {
         this.roleID = roleID;
     }
 
-    public User(int userID, String userName, int age, String phoneNumber, 
-            String address, String email, String password, int roleID) {
+    public User(int userID, String userName, int age, String phoneNumber, String address, String email, String password, int roleID, Date create_at) {
+
         this.userID = userID;
         this.userName = userName;
         this.age = age;
@@ -146,6 +147,22 @@ public class User {
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
     }
-    
-    
+
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set userName = '" + userName + "'" + space + "age = " + age
+                + space + "phoneNumber = '" + phoneNumber + "'" + space
+                + "address = '" + address + "'" + space + "email = '"
+                + email + "'" + space + "password = '" + password + "'"
+                + space + "roleID = " + roleID;
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "('" + userName + "', " + age + ", '" + phoneNumber + "', '"
+                + address + "', '" + email + "', '" + password + "', " + roleID + ")";
+        return insert;
+    }
+
 }

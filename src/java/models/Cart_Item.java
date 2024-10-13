@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Cart_Item {
     int itemID;
-    int CartID;
+    int cartID;
     int proID;
     int quantity;
     Date create_at;
@@ -20,9 +20,15 @@ public class Cart_Item {
     public Cart_Item() {
     }
 
+    public Cart_Item(int CartID, int proID, int quantity) {
+        this.cartID = CartID;
+        this.proID = proID;
+        this.quantity = quantity;
+    }
+
     public Cart_Item(int itemID, int CartID, int proID, int quantity, Date create_at) {
         this.itemID = itemID;
-        this.CartID = CartID;
+        this.cartID = CartID;
         this.proID = proID;
         this.quantity = quantity;
         this.create_at = create_at;
@@ -37,11 +43,11 @@ public class Cart_Item {
     }
 
     public int getCartID() {
-        return CartID;
+        return cartID;
     }
 
-    public void setCartID(int CartID) {
-        this.CartID = CartID;
+    public void setCartID(int cartID) {
+        this.cartID = cartID;
     }
 
     public int getProID() {
@@ -68,4 +74,15 @@ public class Cart_Item {
         this.create_at = create_at;
     }
     
+    public String forUpdate() {
+        String space = ", ";
+        String string = "set proID = " + proID + space + "quantity = " + quantity;
+        return string;
+    }
+
+    public String forInsert() {
+        String insert = "";
+        insert = "(" + cartID + ", " + proID + ", " + quantity +")";
+        return insert;
+    }
 }
