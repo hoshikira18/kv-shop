@@ -14,30 +14,28 @@ import java.util.List;
 /**
  *
  * @author VIET
- */
-public class CategoryDAO extends MyDAO {
+ */public class CategoryDAO extends MyDAO {
 
-    public List<Category> getAllCategorys() {
-        List<Category> allCategorys = new ArrayList<>();
+    public List<Category> getAllCategories() {
+        List<Category> allCategories = new ArrayList<>();
         xSql = "select * from Categories";
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
             while (result.next()) {
-                int categoryID = Integer.parseInt(result.getString("categoryID"));
-                String categoryName = result.getString("categoryName");
-                Date create_At = Date.valueOf(result.getString("create_At"));
+                int categoryID = Integer.parseInt(result.getString("CategoryID"));
+                String categoryName = result.getString("CategoryName");
+                Date create_At = result.getDate("Create_At");
 
                 Category category = new Category(categoryID, categoryName, create_At);
-                allCategorys.add(category);
+                allCategories.add(category);
             }
             connect.close();
             result.close();
-            return allCategorys;
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return allCategorys;
+        return allCategories;
     }
 
     public Category getOne(int id) {
@@ -47,7 +45,7 @@ public class CategoryDAO extends MyDAO {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
             if (result.next()) {
-                int categoryID = Integer.parseInt(result.getString("categoryID"));
+                int categoryID = Integer.parseInt(result.getString("CategoryID"));
                 String categoryName = result.getString("categoryName");
                 Date create_At = Date.valueOf(result.getString("create_At"));
 
@@ -68,7 +66,7 @@ public class CategoryDAO extends MyDAO {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
             while (result.next()) {
-                int categoryID = Integer.parseInt(result.getString("categoryID"));
+                int categoryID = Integer.parseInt(result.getString("CategoryID"));
                 String categoryName = result.getString("categoryName");
                 Date create_At = Date.valueOf(result.getString("create_At"));
 
@@ -100,13 +98,11 @@ public class CategoryDAO extends MyDAO {
 
     public void insert(Category category) {
         xSql = "insert into Categories (CategoryName)"
-                + " value " + category.forInsert();
+                + " values " + "('" + category.getCategoryName() + "')";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-
-            connect.close();
-            result.close();
+            ps = con.prepareStatement(xSql);
+            ps.executeUpdate();
+            ps.close();
         } catch (SQLException e) {
             System.out.println(e);
         }

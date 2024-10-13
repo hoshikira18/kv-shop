@@ -22,25 +22,25 @@ public class UserDAO extends MyDAO {
         List<User> allUsers = new ArrayList<>();
         xSql = "select * from Users";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int ID = Integer.parseInt(result.getString("userID"));
-                String userName = result.getString("userName");
-                int age = Integer.parseInt(result.getString("age"));
-                String phoneNumber = result.getString("phoneNumber");
-                String address = result.getString("address");
-                String email = result.getString("email");
-                String password = result.getString("password");
-                int roleID = Integer.parseInt(result.getString("roleID"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = connection.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("userID"));
+                String userName = rs.getString("userName");
+                int age = Integer.parseInt(rs.getString("age"));
+                String phoneNumber = rs.getString("phoneNumber");
+                String address = rs.getString("address");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                int roleID = Integer.parseInt(rs.getString("roleID"));
+                Date create_At = Date.valueOf(rs.getString("create_At"));
 
                 User user = new User(ID, userName, age, phoneNumber, address,
                          email, password, roleID, create_At);
                 allUsers.add(user);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return allUsers;
         } catch (SQLException e) {
             System.out.println(e);
