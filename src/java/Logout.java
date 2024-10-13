@@ -1,20 +1,11 @@
 
-import controller.UserController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import models.CategoryDAO;
-import models.MyDAO;
-import models.User;
-import models.UserDAO;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,18 +15,15 @@ import models.UserDAO;
  *
  * @author khuye
  */
-@WebServlet(urlPatterns = {"/test"})
-public class Test extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/logout"})
+public class Logout extends HttpServlet {
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-
-        PrintWriter out = resp.getWriter();
-        
-        UserDAO ud = new UserDAO();
-        out.print(ud.getAllUsers().size());
-
+        HttpSession httpSession = req.getSession();
+        httpSession.removeAttribute("phone");
+        httpSession.removeAttribute("role");
+        resp.sendRedirect("login.jsp");
     }
-
+    
 }

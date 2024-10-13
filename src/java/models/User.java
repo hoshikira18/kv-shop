@@ -25,8 +25,8 @@ public class User {
 
     public User() {
     }
-    
-    public User( String userName, int age, String phoneNumber, 
+
+    public User(String userName, int age, String phoneNumber,
             String address, String email, String password, int roleID) {
         this.userName = userName;
         this.age = age;
@@ -48,7 +48,7 @@ public class User {
         this.password = password;
         this.roleID = roleID;
     }
-    
+
     public User(int userID, String userName, int age, String phoneNumber,
             String address, String email, int roleID, Date create_at, String roleName) {
         this.userID = userID;
@@ -61,8 +61,8 @@ public class User {
         this.create_at = create_at;
         this.roleName = roleName;
     }
-    
-    public User(int userID, String userName, int age, String phoneNumber, String password, 
+
+    public User(int userID, String userName, int age, String phoneNumber, String password,
             String address, String email, int roleID, Date create_at, String roleName) {
         this.userID = userID;
         this.userName = userName;

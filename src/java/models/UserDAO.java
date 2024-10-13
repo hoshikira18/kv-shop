@@ -22,25 +22,25 @@ public class UserDAO extends MyDAO {
         List<User> allUsers = new ArrayList<>();
         xSql = "select * from Users";
         try {
-            PreparedStatement connect = connection.prepareStatement(xSql);
-            ResultSet result = connect.executeQuery();
-            while (result.next()) {
-                int ID = Integer.parseInt(result.getString("userID"));
-                String userName = result.getString("userName");
-                int age = Integer.parseInt(result.getString("age"));
-                String phoneNumber = result.getString("phoneNumber");
-                String address = result.getString("address");
-                String email = result.getString("email");
-                String password = result.getString("password");
-                int roleID = Integer.parseInt(result.getString("roleID"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+            ps = connection.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("userID"));
+                String userName = rs.getString("userName");
+                int age = Integer.parseInt(rs.getString("age"));
+                String phoneNumber = rs.getString("phoneNumber");
+                String address = rs.getString("address");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                int roleID = Integer.parseInt(rs.getString("roleID"));
+                Date create_At = Date.valueOf(rs.getString("create_At"));
 
                 User user = new User(ID, userName, age, phoneNumber, address,
-                         email, password, roleID, create_At);
+                        email, password, roleID, create_At);
                 allUsers.add(user);
             }
-            connect.close();
-            result.close();
+            ps.close();
+            rs.close();
             return allUsers;
         } catch (SQLException e) {
             System.out.println(e);
@@ -54,19 +54,19 @@ public class UserDAO extends MyDAO {
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
-            if(result.next()){
-            int ID = Integer.parseInt(result.getString("userID"));
-            String userName = result.getString("userName");
-            int age = Integer.parseInt(result.getString("age"));
-            String phoneNumber = result.getString("phoneNumber");
-            String address = result.getString("address");
-            String email = result.getString("email");
-            String password = result.getString("password");
-            int roleID = Integer.parseInt(result.getString("roleID"));
-            Date create_At = Date.valueOf(result.getString("create_At"));
+            if (result.next()) {
+                int ID = Integer.parseInt(result.getString("userID"));
+                String userName = result.getString("userName");
+                int age = Integer.parseInt(result.getString("age"));
+                String phoneNumber = result.getString("phoneNumber");
+                String address = result.getString("address");
+                String email = result.getString("email");
+                String password = result.getString("password");
+                int roleID = Integer.parseInt(result.getString("roleID"));
+                Date create_At = Date.valueOf(result.getString("create_At"));
 
-            user = new User(ID, userName, age, phoneNumber, address,
-                     email, password, roleID, create_At);
+                user = new User(ID, userName, age, phoneNumber, address,
+                        email, password, roleID, create_At);
             }
             connect.close();
             result.close();
@@ -75,10 +75,10 @@ public class UserDAO extends MyDAO {
         }
         return user;
     }
-    
+
     public List<User> getList(String requirement) {
         List<User> list = new ArrayList<>();
-        xSql = "select * from Users where "+requirement ;
+        xSql = "select * from Users where " + requirement;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
@@ -94,7 +94,7 @@ public class UserDAO extends MyDAO {
                 Date create_At = Date.valueOf(result.getString("create_At"));
 
                 User user = new User(ID, userName, age, phoneNumber, address,
-                         email, password, roleID, create_At);
+                        email, password, roleID, create_At);
                 list.add(user);
             }
             connect.close();
@@ -108,38 +108,38 @@ public class UserDAO extends MyDAO {
 
     public void update(User user) {
         int id = user.getUserID();
-        xSql = "update Users "+user.forUpdate()+" where userID = "+id;
+        xSql = "update Users " + user.forUpdate() + " where userID = " + id;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
-            
+
             connect.close();
             result.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
-    public void insert(User user){
+
+    public void insert(User user) {
         xSql = "insert into Users (UserName, Age, PhoneNumber, Address, Email, Password, RoleID)"
-                + " value "+user.forInsert();
+                + " value " + user.forInsert();
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
-            
+
             connect.close();
             result.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
-    public void delete(int id){
-        xSql = "delete from Users where userID = "+id;
+
+    public void delete(int id) {
+        xSql = "delete from Users where userID = " + id;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
-            
+
             connect.close();
             result.close();
         } catch (SQLException e) {
@@ -154,6 +154,7 @@ public class UserDAO extends MyDAO {
         User newUser = null;
 
         for (User user : users) {
+
             if (user.getPhoneNumber().equals(u.getPhoneNumber())) {
                 newUser = null;
                 return newUser;
@@ -219,7 +220,7 @@ public class UserDAO extends MyDAO {
 
         return users;
     }
-    
+
     public User getUserByPhoneNumber(String phoneNumber) {
         String sql = "SELECT user_data.*, r.RoleName "
                 + "FROM (SELECT * FROM Users WHERE PhoneNumber = ?) AS user_data "
@@ -262,7 +263,6 @@ public class UserDAO extends MyDAO {
         }
         return u;
     }
-
 
     public User getUserByID(int userID) {
         String sql = "SELECT user_data.*, r.RoleName "

@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import models.User;
+import models.UserDAO;
 
 /**
  *
@@ -25,9 +26,11 @@ public class SignInServlet extends HttpServlet {
         String phone = req.getParameter("phone");
         String pw = req.getParameter("password");
 
-        UserController ud = new UserController();
-        User u = ud.getUserByPhone(phone);
-
+//        UserController ud = new UserController();
+        UserDAO ud = new UserDAO();
+        User u = ud.getUserByPhoneNumber(phone);
+        
+        if(u != null){
         if (u.getPassword().equals(pw)) {
             // Tao session
             HttpSession httpSession = req.getSession();
@@ -39,6 +42,9 @@ public class SignInServlet extends HttpServlet {
             } else {
                 resp.sendRedirect("/shop/");
             }
+        }
+        }else{
+            resp.sendRedirect("login.jsp");
         }
 
     }

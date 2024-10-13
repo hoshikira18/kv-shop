@@ -55,7 +55,7 @@ public class Category {
 
     public String forUpdate() {
         String space = ", ";
-        String string = "set categoryName = '" + categoryName + "'";
+        String string = "set CategoryName = '" + categoryName + "'";
         return string;
     }
 
