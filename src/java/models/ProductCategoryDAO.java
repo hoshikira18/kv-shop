@@ -103,7 +103,7 @@ public class ProductCategoryDAO extends MyDAO {
 
     public void insert(ProductCategory proCate) {
         xSql = "insert into ProductCategories (proCateName)"
-                + " value " + proCate.forInsert();
+                + " values " + proCate.forInsert();
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();

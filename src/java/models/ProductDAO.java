@@ -10,12 +10,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author VIET
  */
-public class ProductDAO extends MyDAO{
+public class ProductDAO extends MyDAO {
+
     public List<Product> getAllProducts() {
         List<Product> allProducts = new ArrayList<>();
         xSql = "select * from Products";
@@ -49,8 +52,8 @@ public class ProductDAO extends MyDAO{
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
-            if(result.next()){
-            int ID = Integer.parseInt(result.getString("proID"));
+            if (result.next()) {
+                int ID = Integer.parseInt(result.getString("proID"));
                 String productName = result.getString("proName");
                 String image = result.getString("image");
                 double price = Double.parseDouble(result.getString("price"));
@@ -67,10 +70,10 @@ public class ProductDAO extends MyDAO{
         }
         return product;
     }
-    
+
     public List<Product> getList(String requirement) {
         List<Product> list = new ArrayList<>();
-        xSql = "select * from Products where "+requirement ;
+        xSql = "select * from Products where " + requirement;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
@@ -97,38 +100,70 @@ public class ProductDAO extends MyDAO{
 
     public void update(Product product) {
         int id = product.getProID();
-        xSql = "update Products "+product.forUpdate()+" where proID = "+id;
+        xSql = "update Products " + product.forUpdate() + " where proID = " + id;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
-            
+
             connect.close();
             result.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
-    public void insert(Product product){
-        xSql = "insert into Products (ProName, image, price, supID, inventory)"
-                + " value "+product.forInsert();
+
+    public Product insert(Product product) {
+        xSql = "insert into Products (Pro_Name, Image, Price, SupID, Inventory)"
+                + " values " + product.forInsert();
+        
+        Product p = null;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
             
+            p = getNewestProduct();
+
             connect.close();
             result.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
+        return p;
     }
-    
-    public void delete(int id){
-        xSql = "delete from Products where proID = "+id;
+
+    public Product getNewestProduct() {
+        xSql = "select top(1) * from Products order by Create_At asc";
+        Product product = null;
+
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("proID"));
+                String productName = rs.getString("Pro_Name");
+                String image = rs.getString("image");
+                double price = Double.parseDouble(rs.getString("price"));
+                int supID = Integer.parseInt(rs.getString("supID"));
+                int inventory = Integer.parseInt(rs.getString("inventory"));
+                Date create_At = rs.getDate("create_At");
+
+                product = new Product(supID, productName, image, price, supID, inventory);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return product;
+    }
+
+    public void delete(int id) {
+        xSql = "delete from Products where proID = " + id;
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
-            
+
             connect.close();
             result.close();
         } catch (SQLException e) {

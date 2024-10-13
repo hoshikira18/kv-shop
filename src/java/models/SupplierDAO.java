@@ -25,7 +25,7 @@ public class SupplierDAO extends MyDAO{
             while (result.next()) {
                 int supplierID = Integer.parseInt(result.getString("supplierID"));
                 String supplierName = result.getString("supplierName");
-                Date create_At = Date.valueOf(result.getString("create_At"));
+                Date create_At = result.getDate("create_At");
 
                 Supplier supplier = new Supplier(supplierID, supplierName, create_At);
                 allSuppliers.add(supplier);
