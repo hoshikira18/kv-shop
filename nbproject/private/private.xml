@@ -3,24 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/web/login.jsp</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/Test.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/web/home.jsp</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/ReloadServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/SignInServlet.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Cart_ItemDAO.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/web/signup.jsp</file>
             <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/ProductDetail.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Logging.java</file>
             <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/web/products.jsp</file>
-=======
-            <file>file:/D:/prj-ass/KVShop/src/java/models/ProductDAO.java</file>
-            <file>file:/D:/prj-ass/KVShop/src/java/controller/ProductsController.java</file>
-            <file>file:/D:/prj-ass/KVShop/web/admin/products.jsp</file>
-            <file>file:/D:/prj-ass/KVShop/src/java/models/ProductCategoryDAO.java</file>
-            <file>file:/D:/prj-ass/KVShop/src/java/models/SupplierDAO.java</file>
-            <file>file:/D:/prj-ass/KVShop/src/java/controller/admin/products/CreateServlet.java</file>
-            <file>file:/D:/prj-ass/KVShop/nbproject/build-impl.xml</file>
-            <file>file:/D:/prj-ass/KVShop/src/java/models/Product.java</file>
->>>>>>> 6e21e88009d435bb4db89b8ceda7fe90954f6e32
         </group>
     </open-files>
 </project-private>
