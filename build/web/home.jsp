@@ -9,8 +9,6 @@
 <%@page import = "models.*" %>
 <%@page import = "java.util.*" %>
 <!DOCTYPE html>
-<%  
-%>
 <html lang="en">
 
 

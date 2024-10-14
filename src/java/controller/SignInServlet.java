@@ -29,7 +29,6 @@ public class SignInServlet extends HttpServlet {
         String phone = req.getParameter("phone");
         String pw = req.getParameter("password");
 
-//        UserController ud = new UserController();
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
 
@@ -40,19 +39,10 @@ public class SignInServlet extends HttpServlet {
             httpSession.setAttribute("role", u.getRoleID());
 
             if (u.getRoleID() == 1) {
-                resp.sendRedirect("/shop/admin/products.jsp");
+                resp.sendRedirect("/shop/admin/products");
             } else {
                 ProductDAO pd = new ProductDAO();
                 List<Product> list = pd.getTop(8);
-//                int i = 0;
-//                for (Product product : list) {
-//                    if (i % 2 == 0) {
-//                        product.setImage("https://images.unsplash.com/photo-1508423134147-addf71308178?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80");
-//                    } else {
-//                        product.setImage("https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80");
-//                    }
-//                    i++;
-//                }
                 req.setAttribute("list", list);
                 req.getRequestDispatcher("/").forward(req, resp);
 //                resp.sendRedirect("/shop/");

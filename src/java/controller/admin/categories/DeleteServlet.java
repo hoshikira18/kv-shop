@@ -4,7 +4,7 @@
  */
 package controller.admin.categories;
 
-import controller.CategoriesControler;
+import controller.CategoriesController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +21,7 @@ public class DeleteServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CategoriesControler cc = new CategoriesControler();
+        CategoriesController cc = new CategoriesController();
         int id = Integer.parseInt(req.getParameter("category-id"));
         cc.deleteCategory(id);
         req.getRequestDispatcher("/admin/categories").forward(req, resp);

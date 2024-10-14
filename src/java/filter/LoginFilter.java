@@ -37,7 +37,7 @@ public class LoginFilter implements Filter {
             role = (Integer) roleObj;
             // User is not authenticated, redirect to login page
             if (role == 1) {
-                httpResponse.sendRedirect("/shop/admin/products.jsp");
+                httpResponse.sendRedirect("/shop/admin/products");
             } else {
                 httpResponse.sendRedirect("/shop/");
             }

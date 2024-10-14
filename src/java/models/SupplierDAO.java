@@ -20,6 +20,7 @@ public class SupplierDAO extends MyDAO{
         List<Supplier> allSuppliers = new ArrayList<>();
         xSql = "select * from Suppliers";
         try {
+
             ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
             while (rs.next()) {

@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,7 +34,7 @@ public class ProductDAO extends MyDAO {
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
                 Date create_At = rs.getDate("Create_At");
 
-                Product product = new Product(supID, productName, image, price, supID, inventory, create_At);
+                Product product = new Product(ID, productName, image, price, supID, inventory, create_At);
                 allProducts.add(product);
             }
             ps.close();
@@ -48,6 +50,7 @@ public class ProductDAO extends MyDAO {
         xSql = "select * from Products where ProID = " + id;
         Product product = new Product();
         try {
+
             PreparedStatement ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -59,7 +62,7 @@ public class ProductDAO extends MyDAO {
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
                 Date create_At = rs.getDate("Create_At");
 
-                product = new Product(supID, productName, image, price, supID, inventory, create_At);
+                product = new Product(ID, productName, image, price, supID, inventory, create_At);
             }
             ps.close();
             rs.close();
@@ -84,7 +87,7 @@ public class ProductDAO extends MyDAO {
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
                 Date create_At = rs.getDate("Create_At");
 
-                Product product = new Product(supID, productName, image, price, supID, inventory, create_At);
+                Product product = new Product(ID, productName, image, price, supID, inventory, create_At);
                 list.add(product);
             }
             ps.close();
@@ -125,6 +128,7 @@ public class ProductDAO extends MyDAO {
 
     public void update(Product product) {
         int id = product.getProID();
+
         xSql = "update Products " + product.forUpdate() + " where ProID = " + id;
         try {
             PreparedStatement ps = con.prepareStatement(xSql);
@@ -137,18 +141,51 @@ public class ProductDAO extends MyDAO {
         }
     }
 
-    public void insert(Product product) {
-        xSql = "insert into Products (ProName, Image, Price, SupID, Inventory)"
+    public Product insert(Product product) {
+        xSql = "insert into Products (Pro_Name, Image, Price, SupID, Inventory)"
                 + " values " + product.forInsert();
-        try {
-            PreparedStatement ps = con.prepareStatement(xSql);
-            rs = ps.executeQuery();
 
-            ps.close();
-            rs.close();
+        Product p = null;
+        try {
+            PreparedStatement connect = connection.prepareStatement(xSql);
+            ResultSet result = connect.executeQuery();
+
+            connect.close();
+            result.close();
+
         } catch (SQLException e) {
             System.out.println(e);
         }
+        p = getNewestProduct();
+
+        return p;
+    }
+
+    public Product getNewestProduct() {
+        xSql = "select top(1) * from Products order by Create_At desc";
+        Product product = null;
+
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("ProID"));
+                String productName = rs.getString("Pro_Name");
+                String image = rs.getString("Image");
+                double price = Double.parseDouble(rs.getString("Price"));
+                int supID = Integer.parseInt(rs.getString("PupID"));
+                int inventory = Integer.parseInt(rs.getString("Inventory"));
+                Date create_At = rs.getDate("Create_At");
+
+                product = new Product(ID, productName, image, price, supID, inventory);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return product;
     }
 
     public void delete(int id) {
