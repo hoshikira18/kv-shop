@@ -11,6 +11,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
+import models.Product;
+import models.ProductDAO;
 import models.User;
 import models.UserDAO;
 
@@ -29,22 +32,31 @@ public class SignInServlet extends HttpServlet {
 //        UserController ud = new UserController();
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
-        
-        if(u != null){
+
         if (u.getPassword().equals(pw)) {
             // Tao session
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("phone", u.getPhoneNumber());
             httpSession.setAttribute("role", u.getRoleID());
-            
+
             if (u.getRoleID() == 1) {
                 resp.sendRedirect("/shop/admin/products.jsp");
             } else {
-                resp.sendRedirect("/shop/");
+                ProductDAO pd = new ProductDAO();
+                List<Product> list = pd.getTop(8);
+//                int i = 0;
+//                for (Product product : list) {
+//                    if (i % 2 == 0) {
+//                        product.setImage("https://images.unsplash.com/photo-1508423134147-addf71308178?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80");
+//                    } else {
+//                        product.setImage("https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80");
+//                    }
+//                    i++;
+//                }
+                req.setAttribute("list", list);
+                req.getRequestDispatcher("/").forward(req, resp);
+//                resp.sendRedirect("/shop/");
             }
-        }
-        }else{
-            resp.sendRedirect("login.jsp");
         }
 
     }

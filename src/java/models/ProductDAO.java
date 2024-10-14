@@ -95,6 +95,33 @@ public class ProductDAO extends MyDAO {
         }
         return list;
     }
+    
+    public List<Product> getTop(int n) {
+        List<Product> list = new ArrayList<>();
+        xSql = "select top " + n + " * from Products";
+        try {
+            PreparedStatement ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("ProID"));
+                String productName = rs.getString("Pro_Name");
+                String image = rs.getString("Image");
+                double price = Double.parseDouble(rs.getString("Price"));
+                int supID = Integer.parseInt(rs.getString("SupID"));
+                int inventory = Integer.parseInt(rs.getString("Inventory"));
+                Date create_At = rs.getDate("Create_At");
+
+                Product product = new Product(supID, productName, image, price, supID, inventory, create_At);
+                list.add(product);
+            }
+            ps.close();
+            rs.close();
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
 
     public void update(Product product) {
         int id = product.getProID();
