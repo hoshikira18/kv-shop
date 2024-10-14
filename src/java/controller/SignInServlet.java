@@ -11,6 +11,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
+import models.Product;
+import models.ProductDAO;
 import models.User;
 import models.UserDAO;
 
@@ -28,22 +31,22 @@ public class SignInServlet extends HttpServlet {
 
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
-        
-        if(u != null){
+
         if (u.getPassword().equals(pw)) {
             // Tao session
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("phone", u.getPhoneNumber());
             httpSession.setAttribute("role", u.getRoleID());
-            
+
             if (u.getRoleID() == 1) {
                 resp.sendRedirect("/shop/admin/products");
             } else {
-                resp.sendRedirect("/shop/");
+                ProductDAO pd = new ProductDAO();
+                List<Product> list = pd.getTop(8);
+                req.setAttribute("list", list);
+                req.getRequestDispatcher("/").forward(req, resp);
+//                resp.sendRedirect("/shop/");
             }
-        }
-        }else{
-            resp.sendRedirect("login.jsp");
         }
 
     }
