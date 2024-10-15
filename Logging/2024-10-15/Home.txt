@@ -1,0 +1,98 @@
+Oct 15, 2024 6:13:35 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:13:35 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:13:35 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:13:36 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:13:36 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:13:36 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:07 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:07 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:08 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:08 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:08 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:08 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:09 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:14 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:15 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:16 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:17 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:18 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:19 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:21 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:21 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:23 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:23 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:24 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:25 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:17:26 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:18:28 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:18:30 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:18:30 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:18:30 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:18:30 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:20:47 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:20:50 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:20:52 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:22 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:22 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:22 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:23 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:24 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:24 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:24 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:24 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:25 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:25 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:25 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:50 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:51 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:52 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:24:53 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer

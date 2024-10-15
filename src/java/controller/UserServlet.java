@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import models.Log;
 import models.Product;
 import models.ProductDAO;
 
@@ -24,7 +25,7 @@ public class UserServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDAO pd = new ProductDAO();
         
-        
+        Log log = new Log(this.getClass().getName(), req);
         
         List<Product> list = pd.getTop(8);
         

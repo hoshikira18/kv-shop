@@ -9,10 +9,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import models.Product;
 import models.ProductDAO;
+import java.util.logging.*;
+import models.Log;
 
 /**
  *
@@ -20,9 +25,12 @@ import models.ProductDAO;
  */
 @WebServlet(urlPatterns = {"/home"})
 public class HomeServlet extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        Log log = new Log(this.getClass().getName(), req);
+        
         ProductDAO pd = new ProductDAO();
         List<Product> list = pd.getTop(8);
         

@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import models.Category;
+import models.Log;
 
 /**
  *
@@ -23,6 +24,7 @@ public class CreateServlet extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
         String categoryName = (String) req.getParameter("category-name");
         CategoriesController cc = new CategoriesController();
