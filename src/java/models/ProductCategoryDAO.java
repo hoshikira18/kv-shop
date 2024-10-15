@@ -121,6 +121,7 @@ public class ProductCategoryDAO extends MyDAO {
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);
             ResultSet result = connect.executeQuery();
+
             connect.close();
             result.close();
         } catch (SQLException e) {

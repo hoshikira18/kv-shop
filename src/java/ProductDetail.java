@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import models.Product;
+import models.ProductDAO;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,9 +32,12 @@ public class ProductDetail extends HttpServlet{
         
         out.print(pathInfo);
         
-        request.setAttribute("id", pathInfo);
+        String id = pathInfo.split("/")[1];
+        request.setAttribute("id", id);
+        Product product = new ProductDAO().getOne(Integer.parseInt(id));
+        request.setAttribute("product", product);
         
-        request.getRequestDispatcher("products.jsp").forward(request, response);
+        request.getRequestDispatcher("/products.jsp").forward(request, response);
         
     }
 }

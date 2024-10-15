@@ -17,6 +17,9 @@
             <a href="/shop/admin/categories">Categories</a>
             <a href="/shop/admin/products.jsp">Products</a>
         </div>
-        <h1><%=id%></h1>
+        <h1>ProductDetailPage</h1>
+        <div>
+            ${id}
+        </div>
     </body>
 </html>

@@ -9,10 +9,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.CategoryDAO;
 import models.MyDAO;
+import models.Product;
+import models.ProductDAO;
 import models.User;
 import models.UserDAO;
 
@@ -32,9 +35,10 @@ public class Test extends HttpServlet {
         resp.setContentType("text/html");
 
         PrintWriter out = resp.getWriter();
-        
-        UserDAO ud = new UserDAO();
-        out.print(ud.getAllUsers().size());
+
+        ProductDAO pd = new ProductDAO();
+        List<Product> list = pd.getTop(8);
+        out.print(list.size());
 
     }
 
