@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import models.Log;
 import models.Product;
 
 /**
@@ -25,7 +26,7 @@ public class ListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
         ProductsController pc = new ProductsController();
 
@@ -39,6 +40,7 @@ public class ListServlet extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
         ProductsController pc = new ProductsController();
 

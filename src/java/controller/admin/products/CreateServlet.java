@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import models.Category;
+import models.Log;
 import models.Product;
 import models.Supplier;
 import models.SupplierDAO;
@@ -28,6 +29,7 @@ public class CreateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
         String productName = (String) req.getParameter("product-name");
         int supplierID = Integer.parseInt(req.getParameter("product-supplier"));
