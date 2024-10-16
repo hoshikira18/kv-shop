@@ -17,7 +17,7 @@
     <body class="py-10 min-h-screen">
 
     <navigation-component></navigation-component>
-    <form action="create" method="POST" class="border shadow p-5 rounded-md max-w-screen-md mx-auto space-y-3">
+    <form action="create" method="POST" enctype="multipart/form-data" class="border shadow p-5 rounded-md max-w-screen-md mx-auto space-y-3">
         <button onclick='window.history.go(-1);' class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-to-line"><path d="M3 19V5"/><path d="m13 6-6 6 6 6"/><path d="M7 12h14"/></svg>
             <p>Back
@@ -55,6 +55,10 @@
                     <label class="block pb-2">Inventory</label>
                     <input name="product-inventory" value="" required="true" class="w-full border-2 px-2 py-1 outline-none rounded-md border-black/60" placeholder="100" />
                 </div>
+            </div>
+            <div>
+                <label class="block pb-2">Image</label>
+                <input type="file" name="product-image" class="w-full border-2 outline-none rounded-sm border-black/60"/>
             </div>
         </div>
 
