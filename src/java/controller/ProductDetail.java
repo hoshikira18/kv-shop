@@ -1,5 +1,6 @@
+package controller;
 
-import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -37,7 +38,8 @@ public class ProductDetail extends HttpServlet{
         Product product = new ProductDAO().getOne(Integer.parseInt(id));
         request.setAttribute("product", product);
         
-        request.getRequestDispatcher("/products.jsp").forward(request, response);
+        
+        request.getRequestDispatcher("/product-detail.jsp").forward(request, response);
         
     }
 }

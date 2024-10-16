@@ -114,7 +114,7 @@ public class ProductDAO extends MyDAO {
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
                 Date create_At = rs.getDate("Create_At");
 
-                Product product = new Product(supID, productName, image, price, supID, inventory, create_At);
+                Product product = new Product(ID, productName, image, price, supID, inventory, create_At);
                 list.add(product);
             }
             ps.close();
