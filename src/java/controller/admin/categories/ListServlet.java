@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import models.Category;
+import models.Log;
 
 /**
  *
@@ -24,7 +25,7 @@ public class ListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
         CategoriesController cc = new CategoriesController();
 
@@ -35,7 +36,7 @@ public class ListServlet extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
         CategoriesController cc = new CategoriesController();
 

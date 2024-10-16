@@ -1,0 +1,6 @@
+Oct 16, 2024 11:51:12 AM models.Log <init>
+INFO: Trang Logout đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 16, 2024 12:35:41 PM models.Log <init>
+INFO: Trang Logout đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:38:55 PM models.Log <init>
+INFO: Trang Logout đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

@@ -223,17 +223,19 @@
         <div class="tab__items">
           <div class="tab__item active-tab" content id="featured">
             <div class="products__container grid">
+                
+                <!--display product-->
                 <c:forEach items="${list}" var="product">
               <div class="product__item">
                 <div class="product__banner">
                   <a href="details.html" class="product__images">
                     <img
-                      src="assets/img/product-1-1.jpg"
+                      src="${product.image}"
                       alt=""
                       class="product__img default"
                     />
                     <img
-                      src="assets/img/product-1-2.jpg"
+                      src="${product.image}"
                       alt=""
                       class="product__img hover"
                     />

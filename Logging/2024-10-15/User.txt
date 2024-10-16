@@ -1,0 +1,18 @@
+Oct 15, 2024 6:27:08 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:27:08 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:27:08 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:27:08 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:27:08 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:27:09 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:27:09 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:27:09 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer
+Oct 15, 2024 6:27:09 PM models.Log <init>
+INFO: Trang UserServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: Customer

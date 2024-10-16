@@ -1,0 +1,46 @@
+Oct 16, 2024 11:51:21 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:23:58 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:24:02 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:24:05 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:24:08 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:24:12 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:24:30 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:25:14 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 12:32:29 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:02:25 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:03:16 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:03:19 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:03:23 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:03:26 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:03:30 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:04:07 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:04:11 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:05:49 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:07:55 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:08:12 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:10:53 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:10:55 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 3:10:57 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

@@ -28,7 +28,7 @@ public class ProductDAO extends MyDAO {
             while (rs.next()) {
                 int ID = Integer.parseInt(rs.getString("ProID"));
                 String productName = rs.getString("Pro_Name");
-                String image = rs.getString("Image");
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
                 double price = Double.parseDouble(rs.getString("Price"));
                 int supID = Integer.parseInt(rs.getString("SupID"));
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
@@ -56,7 +56,7 @@ public class ProductDAO extends MyDAO {
             if (rs.next()) {
                 int ID = Integer.parseInt(rs.getString("ProID"));
                 String productName = rs.getString("Pro_Name");
-                String image = rs.getString("Image");
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
                 double price = Double.parseDouble(rs.getString("Price"));
                 int supID = Integer.parseInt(rs.getString("SupID"));
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
@@ -81,7 +81,7 @@ public class ProductDAO extends MyDAO {
             while (rs.next()) {
                 int ID = Integer.parseInt(rs.getString("ProID"));
                 String productName = rs.getString("Pro_Name");
-                String image = rs.getString("Image");
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
                 double price = Double.parseDouble(rs.getString("Price"));
                 int supID = Integer.parseInt(rs.getString("SupID"));
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
@@ -101,14 +101,14 @@ public class ProductDAO extends MyDAO {
     
     public List<Product> getTop(int n) {
         List<Product> list = new ArrayList<>();
-        xSql = "select top " + n + " * from Products";
+        xSql = "select top " + n + " * from Products order by ProID desc";
         try {
             PreparedStatement ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int ID = Integer.parseInt(rs.getString("ProID"));
                 String productName = rs.getString("Pro_Name");
-                String image = rs.getString("Image");
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
                 double price = Double.parseDouble(rs.getString("Price"));
                 int supID = Integer.parseInt(rs.getString("SupID"));
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
@@ -172,7 +172,7 @@ public class ProductDAO extends MyDAO {
             if (rs.next()) {
                 int ID = Integer.parseInt(rs.getString("ProID"));
                 String productName = rs.getString("Pro_Name");
-                String image = rs.getString("Image");
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
                 double price = Double.parseDouble(rs.getString("Price"));
                 int supID = Integer.parseInt(rs.getString("PupID"));
                 int inventory = Integer.parseInt(rs.getString("Inventory"));

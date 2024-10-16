@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import models.Log;
 import models.Product;
 import models.ProductDAO;
 
@@ -26,7 +27,7 @@ public class ProductDetail extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         // Get the full path info (e.g., "/pid_1234")
-       
+        Log log = new Log(this.getClass().getName(), request);
         PrintWriter out = response.getWriter();
         
         String pathInfo = request.getPathInfo();
