@@ -42,7 +42,7 @@ public class SignInServlet extends HttpServlet {
                 resp.sendRedirect("/shop/admin/products");
             } else {
                 ProductDAO pd = new ProductDAO();
-                List<Product> list = pd.getTop(8);
+                List<Product> list = pd.getAllProducts();
                 req.setAttribute("list", list);
                 req.getRequestDispatcher("/home").forward(req, resp);
 //                resp.sendRedirect("/shop/");
