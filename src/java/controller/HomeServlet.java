@@ -40,6 +40,7 @@ public class HomeServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         ProductDAO pd = new ProductDAO();
+
         List<Product> list = pd.getTop(8);
         for (Product product : list) {
 
@@ -88,7 +89,7 @@ public class HomeServlet extends HttpServlet {
 //        }
 
         req.setAttribute("list", list);
-//        req.getRequestDispatcher("/").forward(req, resp);
+
         req.getRequestDispatcher("/home.jsp").forward(req, resp);
     }
 
