@@ -25,9 +25,10 @@ import java.util.List;
             while (rs.next()) {
                 int categoryID = Integer.parseInt(rs.getString("CategoryID"));
                 String categoryName = rs.getString("CategoryName");
+                String image = rs.getString("Image");
                 Date create_At = rs.getDate("Create_At");
 
-                Category category = new Category(categoryID, categoryName, create_At);
+                Category category = new Category(categoryID, categoryName, image, create_At);
                 allCategories.add(category);
             }
             ps.close();
@@ -47,9 +48,10 @@ import java.util.List;
             if (rs.next()) {
                 int categoryID = Integer.parseInt(rs.getString("CategoryID"));
                 String categoryName = rs.getString("CategoryName");
+                String image = rs.getString("Image");
                 Date create_At = rs.getDate("Create_At");
 
-                category = new Category(categoryID, categoryName, create_At);
+                category = new Category(categoryID, categoryName, image, create_At);
                 ps.close();
                 rs.close();
             }
@@ -68,9 +70,10 @@ import java.util.List;
             while (rs.next()) {
                 int categoryID = Integer.parseInt(rs.getString("CategoryID"));
                 String categoryName = rs.getString("CategoryName");
+                String image = rs.getString("Image");
                 Date create_At = rs.getDate("Create_At");
 
-                Category category = new Category(categoryID, categoryName, create_At);
+                Category category = new Category(categoryID, categoryName, image, create_At);
                 list.add(category);
             }
             ps.close();
@@ -97,7 +100,7 @@ import java.util.List;
     }
 
     public void insert(Category category) {
-        xSql = "insert into Categories (CategoryName)"
+        xSql = "insert into Categories (CategoryName, Image)"
                 + " values " + category.forInsert();
         try {
             ps = con.prepareStatement(xSql);
@@ -121,5 +124,27 @@ import java.util.List;
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+    
+    public Category getNewest(){
+        xSql = "select top 1 * from Categories order by Create_At desc";
+        Category category = new Category();
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int categoryID = Integer.parseInt(rs.getString("CategoryID"));
+                String categoryName = rs.getString("CategoryName");
+                String image = rs.getString("Image");
+                Date create_At = rs.getDate("Create_At");
+
+                category = new Category(categoryID, categoryName, image, create_At);
+                ps.close();
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return category;
     }
 }

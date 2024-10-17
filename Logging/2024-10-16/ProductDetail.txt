@@ -44,3 +44,9 @@ Oct 16, 2024 3:10:55 PM models.Log <init>
 INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 Oct 16, 2024 3:10:57 PM models.Log <init>
 INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 4:18:54 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 4:18:58 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 16, 2024 4:19:00 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

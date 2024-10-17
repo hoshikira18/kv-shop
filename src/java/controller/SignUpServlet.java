@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import models.Log;
 import models.User;
 
 /**
@@ -34,15 +35,18 @@ public class SignUpServlet extends HttpServlet {
 
         UserController ud = new UserController();
         int customerRoleID = 2;
-        int u = ud.createUser(new User(name, age, phone, address, email, password, 1));
-
+        User user = new User(name, age, phone, address, email, password, customerRoleID);
+        int u = ud.createUser(user);
+        
         req.setAttribute("status", false);
 
         if (u == 300) {
             req.setAttribute("status", false);
+            Log log = new Log(this.getClass().getName(), req, user, false);
             req.setAttribute("message", "Failed! Try to use another phone number!");
         } else {
             req.setAttribute("status", true);
+            Log log = new Log(this.getClass().getName(), req, user, true);
             req.setAttribute("message", "Successfuly!");
         }
 

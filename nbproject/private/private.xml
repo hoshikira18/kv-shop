@@ -5,14 +5,8 @@
         <group>
             <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/admin/categories/CreateServlet.java</file>
             <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Log.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/admin/products/ListServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/Logout.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/SignUpServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/admin/categories/DeleteServlet.java</file>
             <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/admin/products/CreateServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/SignInServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/UserServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/admin/categories/ListServlet.java</file>
+            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Category.java</file>
         </group>
     </open-files>
 </project-private>

@@ -28,4 +28,8 @@ public class CategoriesController {
     public void deleteCategory (int id) {
         cd.delete(id);
     }
+    
+    public Category getNewest(){
+        return cd.getNewest();
+    }
 }

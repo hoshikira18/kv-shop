@@ -1,0 +1,20 @@
+Oct 17, 2024 4:02:55 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:02:57 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:07 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:07 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:11 PM models.Log <init>
+INFO: Trang DeleteServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:11 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:15 PM models.Log <init>
+INFO: Trang DeleteServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:15 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:17 PM models.Log <init>
+INFO: Trang DeleteServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:17 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin

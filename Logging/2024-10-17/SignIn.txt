@@ -1,0 +1,22 @@
+Oct 17, 2024 4:54:26 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 11111111
+Oct 17, 2024 4:56:29 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 111111
+Oct 17, 2024 4:56:32 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 11111
+Oct 17, 2024 4:56:35 PM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 17, 2024 4:58:39 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 111
+Oct 17, 2024 4:58:43 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 111111
+Oct 17, 2024 4:58:45 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 11111
+Oct 17, 2024 4:59:09 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 2222
+Oct 17, 2024 5:02:18 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 222
+Oct 17, 2024 5:02:20 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 222
+Oct 17, 2024 5:02:22 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 12322

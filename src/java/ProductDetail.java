@@ -27,7 +27,6 @@ public class ProductDetail extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         // Get the full path info (e.g., "/pid_1234")
-        Log log = new Log(this.getClass().getName(), request);
         PrintWriter out = response.getWriter();
         
         String pathInfo = request.getPathInfo();
@@ -35,6 +34,7 @@ public class ProductDetail extends HttpServlet{
         out.print(pathInfo);
         
         String id = pathInfo.split("/")[1];
+        Log log = new Log(this.getClass().getName(), request, Integer.parseInt(id));
         request.setAttribute("id", id);
         Product product = new ProductDAO().getOne(Integer.parseInt(id));
         request.setAttribute("product", product);

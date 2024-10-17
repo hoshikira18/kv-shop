@@ -37,20 +37,23 @@ public class CreateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
         String productName = (String) req.getParameter("product-name");
         int supplierID = Integer.parseInt(req.getParameter("product-supplier"));
         int categoryID = Integer.parseInt(req.getParameter("product-category"));
         int price = Integer.parseInt(req.getParameter("product-price"));
         int inventory = Integer.parseInt(req.getParameter("product-inventory"));
-        String image = image = this.image((Part) req.getPart("product-image"));
+        String image = this.image((Part) req.getPart("product-image"));
 //        String image = this.image();
 
         ProductsController pc = new ProductsController();
         Product product = new Product(productName, image, price, supplierID, inventory);
         pc.createProduct(product, categoryID);
+        product = pc.getNewest();
+        Log log = new Log(this.getClass().getName(), req, product, categoryID);
         resp.sendRedirect("/shop/admin/products");
+//        out.println(productName);
+//        out.println(product.forInsert());
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
