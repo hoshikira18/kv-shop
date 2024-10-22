@@ -14,18 +14,21 @@ public class Category {
 
     int categoryID;
     String categoryName;
+    String image;
     Date create_at;
 
     public Category() {
     }
 
-    public Category(String categoryName) {
+    public Category(String categoryName, String image) {
         this.categoryName = categoryName;
+        this.image = image;
     }
 
-    public Category(int categoryID, String categoryName, Date create_at) {
+    public Category(int categoryID, String categoryName, String image, Date create_at) {
         this.categoryID = categoryID;
         this.categoryName = categoryName;
+        this.image = image;
         this.create_at = create_at;
     }
 
@@ -53,15 +56,23 @@ public class Category {
         this.create_at = create_at;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String forUpdate() {
         String space = ", ";
-        String string = "set CategoryName = '" + categoryName + "'";
+        String string = "set CategoryName = '" + categoryName + "'" + space + "Image = '" + image + "'";
         return string;
     }
 
     public String forInsert() {
         String insert = "";
-        insert = "('" + categoryName + "')";
+        insert = "('" + categoryName + "', '" + image + "')";
         return insert;
     }
 

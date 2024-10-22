@@ -15,6 +15,11 @@
     </head>
     <body class="py-10">
     <navigation-component></navigation-component>
+    <div class="space-x-5 text-left pb-10">
+        <a href="/shop/admin/products.jsp">Products</a>
+        <a href="/shop/admin/categories">Categories</a>
+        <a href="/shop/admin/products.jsp">Products</a>
+    </div>
     <div class="bg-white shadow border rounded-lg p-6 max-w-screen-xl mx-auto mt-10">
         <button onclick='window.history.go(-1);' class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-to-line"><path d="M3 19V5"/><path d="m13 6-6 6 6 6"/><path d="M7 12h14"/></svg>

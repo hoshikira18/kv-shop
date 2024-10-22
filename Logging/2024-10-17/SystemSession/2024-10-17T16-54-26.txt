@@ -1,0 +1,2 @@
+Oct 17, 2024 4:54:26 PM models.Log <init>
+INFO: Có người dùng đăng nhập sai thông tin: Phone: 123, password: 11111111

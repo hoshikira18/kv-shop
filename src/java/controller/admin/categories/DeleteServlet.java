@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import models.Category;
+import models.CategoryDAO;
 import models.Log;
 
 /**
@@ -22,9 +24,11 @@ public class DeleteServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Log log = new Log(this.getClass().getName(), req);
+        
         CategoriesController cc = new CategoriesController();
         int id = Integer.parseInt(req.getParameter("category-id"));
+        Category category = new CategoryDAO().getOne(id);
+        Log log = new Log(this.getClass().getName(), req, category, false);
         cc.deleteCategory(id);
         req.getRequestDispatcher("/admin/categories").forward(req, resp);
     }

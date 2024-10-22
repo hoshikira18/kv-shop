@@ -11,7 +11,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+import models.Log;
 import models.Product;
 import models.ProductDAO;
 import models.User;
@@ -26,6 +30,18 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //tạo file log ghi nhật kí của system
+        String datetime = LocalDateTime.now().toString().split("[.]")[0];
+        String date = "";
+        String[] listPart = datetime.split("[:]");
+        for (int i = 0; i < listPart.length - 1; i++) {
+            date += listPart[i] + "-";
+        }
+        date += listPart[listPart.length - 1];
+        HttpSession httpSession = req.getSession();
+        httpSession.setAttribute("runningSession", date);
+        //get user infor
         String phone = req.getParameter("phone");
         String pw = req.getParameter("password");
 
@@ -34,10 +50,12 @@ public class SignInServlet extends HttpServlet {
 
         if (u.getPassword().equals(pw)) {
             // Tao session
-            HttpSession httpSession = req.getSession();
+
             httpSession.setAttribute("phone", u.getPhoneNumber());
             httpSession.setAttribute("role", u.getRoleID());
 
+            // gọi log
+            Log log = new Log(this.getClass().getName(), phone, pw, date, true);
             if (u.getRoleID() == 1) {
                 resp.sendRedirect("/shop/admin/products");
             } else {
@@ -47,6 +65,9 @@ public class SignInServlet extends HttpServlet {
                 req.getRequestDispatcher("/home").forward(req, resp);
 //                resp.sendRedirect("/shop/");
             }
+        } else {
+            Log log = new Log(this.getClass().getName(), phone, pw, date, false);
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
 
     }

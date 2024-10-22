@@ -47,16 +47,17 @@ public class Test extends HttpServlet {
         }
     }
 
+    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
         PrintWriter out = resp.getWriter();
 
-        ProductDAO pd = new ProductDAO();
-        List<Product> list = pd.getTop(8);
-        out.print(list.size());
-        out.print(this.getServletName());
+        String proID = (String) req.getAttribute("proID");
+        out.print(proID);
+        out.print("test link 123");
 
     }
 

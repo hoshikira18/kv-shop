@@ -1,0 +1,14 @@
+Oct 17, 2024 5:31:33 PM models.Log <init>
+INFO: Người dùng tạo tài khoản không thành công. UserPhone: 1234, Email: 1234@fpt.edu.vn, UserName: VietNT
+Oct 17, 2024 5:31:42 PM models.Log <init>
+INFO: Người dùng tạo tài khoản không thành công. UserPhone: 1234, Email: vietnthe186437@fpt.edu.vn, UserName: VietNT
+Oct 17, 2024 5:32:34 PM models.Log <init>
+INFO: Người dùng tạo tài khoản thành công. UserPhone: 12, Email: a@gmail.com, UserName: Nguyen Van A, Password: 12
+Oct 17, 2024 5:43:52 PM models.Log <init>
+INFO: Người dùng tạo tài khoản không thành công. UserPhone: 12, Email: 1234@fpt.edu.vn, UserName: Nguyen Van A
+Oct 17, 2024 5:44:06 PM models.Log <init>
+INFO: Người dùng tạo tài khoản không thành công. UserPhone: 12, Email: 1234@fpt.edu.vn, UserName: Nguyen Van A
+Oct 17, 2024 5:44:46 PM models.Log <init>
+INFO: Người dùng tạo tài khoản thành công. UserPhone: 121, Email: 1234@fpt.edu.vn, UserName: Nguyen Van A, Password: 121
+Oct 17, 2024 5:46:45 PM models.Log <init>
+INFO: Người dùng tạo tài khoản không thành công. UserPhone: 12, Email: 1234@fpt.edu.vn, UserName: Nguyen Van A

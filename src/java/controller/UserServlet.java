@@ -27,7 +27,7 @@ public class UserServlet extends HttpServlet{
         
         Log log = new Log(this.getClass().getName(), req);
         
-        List<Product> list = pd.getTop(8);
+        List<Product> list = pd.getTop(8, "desc");
         
         req.setAttribute("list", list);
         req.getRequestDispatcher("/").forward(req, resp);
