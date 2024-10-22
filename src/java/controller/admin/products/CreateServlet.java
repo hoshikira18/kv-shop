@@ -26,6 +26,7 @@ import models.Supplier;
 import models.SupplierDAO;
 import jakarta.servlet.http.Part;
 import java.io.ByteArrayOutputStream;
+import java.nio.file.Paths;
 
 /**
  *
@@ -39,18 +40,18 @@ public class CreateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
+
         String productName = (String) req.getParameter("product-name");
         int supplierID = Integer.parseInt(req.getParameter("product-supplier"));
         int categoryID = Integer.parseInt(req.getParameter("product-category"));
         int price = Integer.parseInt(req.getParameter("product-price"));
         int inventory = Integer.parseInt(req.getParameter("product-inventory"));
         String image = this.image((Part) req.getPart("product-image"));
-//        String image = this.image();
 
         ProductsController pc = new ProductsController();
         Product product = new Product(productName, image, price, supplierID, inventory);
         pc.createProduct(product, categoryID);
-        
+
 //        out.print(supplierID + "\n" + categoryID + "\n" + price + "\n" + inventory + "\n" + image );
         resp.sendRedirect("/shop/admin/products");
     }

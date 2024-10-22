@@ -24,9 +24,14 @@
             <p>Back
         </button>
         <h2 class="text-2xl font-semibold">Create new Category</h2>
+
         <div>
             <label class="font-medium block pb-2">Category Name: </label>
-            <input name="category-name" value="" required="true" class="border-2 px-2 py-1 outline-none rounded-md border-black/60" placeholder="Category A" />
+            <input name="category-name" value="" required="true" class="w-full border-2 px-2 py-1 outline-none rounded-md border-black/60" placeholder="Category A" />
+        </div>
+        <div>
+            <label class="block pb-2">Image</label>
+            <input type="file" name="category-image" class="w-full border-2 outline-none rounded-sm border-black/60"/>
         </div>
         <input class="bg-black p-2 text-white rounded-md cursor-pointer" type="submit" value="Create" />
     </form>

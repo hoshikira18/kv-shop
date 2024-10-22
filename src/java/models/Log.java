@@ -4,16 +4,12 @@
  */
 package models;
 
-import controller.HomeServlet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.logging.*;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  *
@@ -25,19 +21,22 @@ public class Log {
 
     private void init(String fileName) throws ServletException {
         String date = LocalDate.now().toString();
-        String path = "D:\\02.LearningDocument\\SE IV\\PRJ\\Assignment\\kv-shop\\Logging\\";
-        path+=date;
-        File directory = new File(path);
-        if(!directory.exists()){
-            directory.mkdirs();
+
+        // Get the real path relative to the web app root directory
+        String relativePath = "/LOG/" + date; // Store logs in a "logs" directory
+
+
+        File directory = new File(relativePath);
+        if (!directory.exists()) {
+            directory.mkdirs(); // Create the directory if it doesn't exist
         }
-        
+
         try {
-            // Tạo file handler để ghi log vào file
-            FileHandler fileHandler = new FileHandler(path + "\\" + fileName + ".txt", true); // true để append vào file
-            fileHandler.setFormatter(new SimpleFormatter()); // Định dạng log
+            // Create a file handler to write log into the file
+            FileHandler fileHandler = new FileHandler(relativePath + "/" + fileName + ".txt", true); // Append to file
+            fileHandler.setFormatter(new SimpleFormatter()); // Set log format
             logger.addHandler(fileHandler);
-            logger.setUseParentHandlers(false); // Tắt ghi log ra console
+            logger.setUseParentHandlers(false); // Disable logging to console
         } catch (IOException | SecurityException e) {
             e.printStackTrace();
         }
@@ -53,8 +52,8 @@ public class Log {
     public Log(String className, HttpServletRequest req) {
         String phone = (String) req.getSession().getAttribute("phone");
         String[] list = className.split("[.]");
-        String fileName = list[list.length-1].split("Servlet")[0];
-        
+        String fileName = list[list.length - 1].split("Servlet")[0];
+
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         logger = Logger.getLogger(className);
@@ -63,7 +62,7 @@ public class Log {
         } catch (ServletException ex) {
             Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
         }
-        String infor = "Trang " + list[list.length-1] + " đã được truy cập bởi: " + u.getUserName() 
+        String infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
                 + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName;
         logger.info(infor);
         destroy();
