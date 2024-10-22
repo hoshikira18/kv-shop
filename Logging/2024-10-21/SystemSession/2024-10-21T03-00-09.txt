@@ -1,0 +1,12 @@
+Oct 21, 2024 3:00:09 AM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 21, 2024 3:00:09 AM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 21, 2024 3:00:11 AM models.Log <init>
+INFO: Trang DisplayAllProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 21, 2024 3:00:15 AM models.Log <init>
+INFO: Trang DisplayAllProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 21, 2024 3:00:20 AM models.Log <init>
+INFO: Trang DisplayAllProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 21, 2024 3:00:22 AM models.Log <init>
+INFO: Trang Logout đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

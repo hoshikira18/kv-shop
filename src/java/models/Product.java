@@ -31,6 +31,13 @@ public class Product {
         this.supID = supID;
         this.inventory = inventory;
     }
+    
+    public Product(int id, String proName, String image, double price) {
+        this.proID = id;
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+    }
 
     public Product(String proName, String image, double price, int supID, int inventory) {
         this.proName = proName;

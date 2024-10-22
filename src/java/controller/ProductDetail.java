@@ -38,8 +38,6 @@ public class ProductDetail extends HttpServlet{
         request.setAttribute("id", id);
         Product product = new ProductDAO().getOne(Integer.parseInt(id));
         request.setAttribute("product", product);
-        
-        
         request.getRequestDispatcher("/product-detail.jsp").forward(request, response);
         
     }

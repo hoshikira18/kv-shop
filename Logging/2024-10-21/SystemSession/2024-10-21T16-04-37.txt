@@ -1,0 +1,31 @@
+Oct 21, 2024 4:04:37 PM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 21, 2024 4:04:37 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 21, 2024 4:05:43 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 2 và proName: Product 2
+Oct 21, 2024 4:06:03 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 8 và proName: Product 8
+Oct 21, 2024 4:08:38 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 8 và proName: Product 8
+Oct 21, 2024 4:09:09 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 8 và proName: Product 8
+Oct 21, 2024 4:09:54 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 8 và proName: Product 8
+Oct 21, 2024 4:10:01 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 8 và proName: Product 8
+Oct 21, 2024 4:11:04 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 8 và proName: Product 8
+Oct 21, 2024 4:11:20 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 6 và proName: Product 6
+Oct 21, 2024 4:11:51 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 6 và proName: Product 6

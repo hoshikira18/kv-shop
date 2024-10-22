@@ -1,0 +1,12 @@
+Oct 22, 2024 2:47:00 AM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 22, 2024 2:47:04 AM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 22, 2024 2:47:08 AM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 22, 2024 2:47:11 AM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 22, 2024 2:47:21 AM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 22, 2024 3:49:10 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin

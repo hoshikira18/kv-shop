@@ -15,7 +15,8 @@ import java.util.List;
  *
  * @author VIET
  */
-public class Cart_ItemDAO extends MyDAO{
+public class Cart_ItemDAO extends MyDAO {
+
     public List<Cart_Item> getAllCart_Items() {
         List<Cart_Item> allCart_Items = new ArrayList<>();
         xSql = "select * from Cart_Items";
@@ -64,6 +65,66 @@ public class Cart_ItemDAO extends MyDAO{
         return cart_Item;
     }
 
+    public Cart_Item getNewest() {
+        xSql = "select top 1 * from Cart_Items order by create_At desc";
+        Cart_Item cart_Item = new Cart_Item();
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int itemID = Integer.parseInt(rs.getString("ItemID"));
+                int cartID = Integer.parseInt(rs.getString("CartID"));
+                int proID = Integer.parseInt(rs.getString("ProID"));
+                int quantity = Integer.parseInt(rs.getString("Quantity"));
+                Date create_At = rs.getDate("Create_At");
+
+                cart_Item = new Cart_Item(itemID, cartID, proID, quantity, create_At);
+                ps.close();
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return cart_Item;
+    }
+
+    public List<String[]> getListByUserID(int userID) {
+        List[] listMain = new List[2];
+        List<String[]> list = new ArrayList<>();
+        List<Cart_Item> listItems = new ArrayList<>();
+        List<Product> listProducts = new ArrayList<>();
+        xSql = "select C.CartID, P.ProID, P.Pro_Name, P.Image, COUNT(*) as Quantity"
+                + ", P.Price from Cart_Items CI join Products P "
+                + "on CI.ProID = P.ProID join Carts C on CI.CartID = C.CartID "
+                + "where C.UserID = " + userID + " group by C.CartID, P.ProID, P.Pro_Name, P.Image"
+                + ", P.Price order by C.CartID desc, P.ProID asc";
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String[] record = new String[6];
+                record[0] = rs.getString("CartID");
+                record[1] = rs.getString("ProID");
+                record[2] = rs.getString("Pro_Name");
+                record[3] = "data:image/jpeg;base64,"+rs.getString("Image");
+                record[4] = rs.getString("Quantity");
+                record[5] = rs.getString("Price");
+///////                
+/// --(int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price)--
+//////                
+                list.add(record);
+            }
+            ps.close();
+            rs.close();
+            listMain[0] = listItems;
+            listMain[1] = listProducts;
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
     public List<Cart_Item> getList(String requirement) {
         List<Cart_Item> list = new ArrayList<>();
         xSql = "select * from Cart_Items where " + requirement;
@@ -104,7 +165,7 @@ public class Cart_ItemDAO extends MyDAO{
     }
 
     public void insert(Cart_Item cart_Item) {
-        xSql = "insert into Cart_Items (UserID, Total)"
+        xSql = "insert into Cart_Items (CartID, ProID, Quantity)"
                 + " values " + cart_Item.forInsert();
         try {
             ps = con.prepareStatement(xSql);

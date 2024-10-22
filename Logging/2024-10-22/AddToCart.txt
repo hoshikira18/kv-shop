@@ -1,0 +1,36 @@
+Oct 22, 2024 2:21:09 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 6 với số lượng = 1
+Oct 22, 2024 2:21:20 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 7 với số lượng = 1
+Oct 22, 2024 2:31:37 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 15 với số lượng = 1
+Oct 22, 2024 2:32:18 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 15 với số lượng = 1
+Oct 22, 2024 2:36:14 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 24 với số lượng = 1
+Oct 22, 2024 2:36:24 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 13 với số lượng = 1
+Oct 22, 2024 2:39:20 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 2 với số lượng = 1
+Oct 22, 2024 2:39:25 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 2 với số lượng = 1
+Oct 22, 2024 2:39:43 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 6 với số lượng = 1
+Oct 22, 2024 2:39:59 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 10 với số lượng = 1
+Oct 22, 2024 2:41:11 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 0 và proID = 24 với số lượng = 1
+Oct 22, 2024 2:44:36 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 24 và proID = 25 với số lượng = 1

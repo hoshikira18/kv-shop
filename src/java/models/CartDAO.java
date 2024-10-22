@@ -26,7 +26,7 @@ public class CartDAO extends MyDAO {
             while (rs.next()) {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
 
                 Cart cart = new Cart(cartID, userID, total, create_At);
@@ -50,7 +50,7 @@ public class CartDAO extends MyDAO {
             if (rs.next()) {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
 
                 cart = new Cart(cartID, userID, total, create_At);
@@ -72,7 +72,7 @@ public class CartDAO extends MyDAO {
             if (rs.next()) {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
 
                 cart = new Cart(cartID, userID, total, create_At);
@@ -94,7 +94,7 @@ public class CartDAO extends MyDAO {
             while (rs.next()) {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
 
                 Cart cart = new Cart(cartID, userID, total, create_At);
@@ -190,7 +190,7 @@ public class CartDAO extends MyDAO {
             if (rs.next()) {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
 
                 cart = new Cart(cartID, userID, total, create_At);

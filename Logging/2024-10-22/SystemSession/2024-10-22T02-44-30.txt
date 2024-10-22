@@ -1,0 +1,9 @@
+Oct 22, 2024 2:44:30 AM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 22, 2024 2:44:31 AM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 22, 2024 2:44:36 AM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 24 và proID = 25 với số lượng = 1
+Oct 22, 2024 2:46:57 AM models.Log <init>
+INFO: Trang Logout đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

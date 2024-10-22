@@ -45,6 +45,33 @@ public class ProductDAO extends MyDAO {
         }
         return allProducts;
     }
+    
+    public List<Product> getAllProductsDown() {
+        List<Product> allProducts = new ArrayList<>();
+        xSql = "select * from Products order by create_At desc";
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("ProID"));
+                String productName = rs.getString("Pro_Name");
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
+                double price = Double.parseDouble(rs.getString("Price"));
+                int supID = Integer.parseInt(rs.getString("SupID"));
+                int inventory = Integer.parseInt(rs.getString("Inventory"));
+                Date create_At = rs.getDate("Create_At");
+
+                Product product = new Product(ID, productName, image, price, supID, inventory, create_At);
+                allProducts.add(product);
+            }
+            ps.close();
+            rs.close();
+            return allProducts;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return allProducts;
+    }
 
     public Product getOne(int id) {
         xSql = "select * from Products where ProID = " + id;
@@ -99,9 +126,9 @@ public class ProductDAO extends MyDAO {
         return list;
     }
     
-    public List<Product> getTop(int n) {
+    public List<Product> getTop(int n, String ascOrDesc) {
         List<Product> list = new ArrayList<>();
-        xSql = "select top " + n + " * from Products order by ProID desc";
+        xSql = "select top " + n + " * from Products order by ProID "+ascOrDesc;
         try {
             PreparedStatement ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
