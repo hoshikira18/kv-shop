@@ -25,7 +25,7 @@ import java.util.List;
             while (rs.next()) {
                 int categoryID = Integer.parseInt(rs.getString("CategoryID"));
                 String categoryName = rs.getString("CategoryName");
-                String image = rs.getString("Image");
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
                 Date create_At = rs.getDate("Create_At");
 
                 Category category = new Category(categoryID, categoryName, image, create_At);

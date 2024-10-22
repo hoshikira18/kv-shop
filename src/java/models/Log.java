@@ -4,16 +4,12 @@
  */
 package models;
 
-import controller.HomeServlet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.logging.*;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  *
@@ -25,6 +21,7 @@ public class Log {
 
     private void init(String fileName, String systemFile) throws ServletException {
         String date = LocalDate.now().toString();
+
         String path = "D:\\02.LearningDocument\\SE IV\\PRJ\\Assignment\\kv-shop\\Logging\\";
         path += date;//folder day by day
 
@@ -38,10 +35,11 @@ public class Log {
         }
 
         try {
-            // Tạo file handler để ghi log vào file
-            FileHandler fileHandler = new FileHandler(path + "\\" + fileName + ".txt", true); // true để append vào file
-            fileHandler.setFormatter(new SimpleFormatter()); // Định dạng log
+            // Create a file handler to write log into the file
+            FileHandler fileHandler = new FileHandler("ádasd" + "/" + fileName + ".txt", true); // Append to file
+            fileHandler.setFormatter(new SimpleFormatter()); // Set log format
             logger.addHandler(fileHandler);
+
             // Tạo hander để ghi vào file system
             FileHandler fileHandlerSystem = new FileHandler(path + "\\SystemSession\\" + systemFile + ".txt", true);
             fileHandlerSystem.setFormatter(new SimpleFormatter());
@@ -85,6 +83,7 @@ public class Log {
         //get data from req
         String phone = (String) req.getSession().getAttribute("phone");
         String[] list = className.split("[.]");
+
         // page name to write log by visit
         String fileName = list[list.length - 1].split("Servlet")[0];
         // page name to write log by sesstion
@@ -274,6 +273,7 @@ public class Log {
         } catch (ServletException ex) {
             Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
         }
+
         String infor;
         if(create){
         infor = "Người dùng tạo tài khoản thành công. UserPhone: "+user.getPhoneNumber()

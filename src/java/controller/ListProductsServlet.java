@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller.display;
+package controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,8 +23,8 @@ import models.ProductDAO;
  *
  * @author VIET
  */
-@WebServlet(urlPatterns = {"/allProducts"})
-public class DisplayAllProductsServlet extends HttpServlet{
+@WebServlet(urlPatterns = {"/products"})
+public class ListProductsServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
@@ -47,7 +47,7 @@ public class DisplayAllProductsServlet extends HttpServlet{
         req.setAttribute("allProducts", allProducts);
         req.setAttribute("allProductsDown", allProductsDown);
         req.setAttribute("listCate", listCate);
-        req.getRequestDispatcher("all-products.jsp").forward(req, resp);
+        req.getRequestDispatcher("products.jsp").forward(req, resp);
     }
     
 }

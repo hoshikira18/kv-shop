@@ -24,6 +24,7 @@
             <p>Back
         </button>
         <h2 class="text-2xl font-semibold">Create new Category</h2>
+
         <div class="grid grid-cols-2 gap-4 pb-5">
             <div>
                 <label class="font-medium block pb-2">Category Name: </label>
