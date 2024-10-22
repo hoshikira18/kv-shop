@@ -17,7 +17,11 @@ import java.util.Base64;
 import java.util.List;
 import models.Product;
 import models.ProductDAO;
+
+import java.util.logging.*;
+import javax.imageio.ImageIO;
 import models.Category;
+import models.CategoryDAO;
 import models.Log;
 
 /**
@@ -35,10 +39,16 @@ public class HomeServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         ProductDAO pd = new ProductDAO();
-        List<Product> list = pd.getTop(8);
 
-        req.setAttribute("listProducts", list);
+        CategoryDAO cc = new CategoryDAO();
+        List<Category> listCate = cc.getAllCategories();
 
+        List<Product> list = pd.getTop(8, "asc");
+        List<Product> list2 = pd.getTop(8, "desc");
+        
+        req.setAttribute("list2", list2);
+        req.setAttribute("list", list);
+        req.setAttribute("listCate", listCate);
         req.getRequestDispatcher("/home.jsp").forward(req, resp);
 
     }
@@ -51,14 +61,16 @@ public class HomeServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         ProductDAO pd = new ProductDAO();
-        List<Product> listProducts = pd.getTop(8);
 
-        CategoriesController cc = new CategoriesController();
-        List<Category> cs = cc.getAllCategories();
-        req.setAttribute("cs", cs);
-
-        req.setAttribute("listProducts", listProducts);
-
+        CategoryDAO cc = new CategoryDAO();
+        List<Category> listCate = cc.getAllCategories();
+        
+        List<Product> list = pd.getTop(8, "asc");
+        List<Product> list2 = pd.getTop(8, "desc");
+        
+        req.setAttribute("list2", list2);
+        req.setAttribute("list", list);
+        req.setAttribute("listCate", listCate);
         req.getRequestDispatcher("/home.jsp").forward(req, resp);
     }
 

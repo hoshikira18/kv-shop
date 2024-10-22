@@ -31,6 +31,7 @@ public class ListServlet extends HttpServlet {
 
     List<Category> cs = cc.getAllCategories();
     req.setAttribute("cs", cs);
+    out.print(cs.size());
         req.getRequestDispatcher("/admin/categories.jsp").forward(req, resp);
 
     }

@@ -38,7 +38,6 @@ public class CreateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
 
         String productName = (String) req.getParameter("product-name");
@@ -52,8 +51,13 @@ public class CreateServlet extends HttpServlet {
         Product product = new Product(productName, image, price, supplierID, inventory);
         pc.createProduct(product, categoryID);
 
+        product = pc.getNewest();
+        Log log = new Log(this.getClass().getName(), req, product, categoryID);
+
 //        out.print(supplierID + "\n" + categoryID + "\n" + price + "\n" + inventory + "\n" + image );
         resp.sendRedirect("/shop/admin/products");
+//        out.println(productName);
+//        out.println(product.forInsert());
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

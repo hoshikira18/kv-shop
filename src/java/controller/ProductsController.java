@@ -29,5 +29,9 @@ public class ProductsController {
             pcd.insert(new ProductCategory(product.getProID(), categoryID));
         }
     }
+    
+    public Product getNewest(){
+        return pd.getNewestProduct();
+    }
 
 }

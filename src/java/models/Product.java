@@ -11,6 +11,7 @@ import java.util.Date;
  * @author VIET
  */
 public class Product {
+
     int proID;
     String proName;
     String image;
@@ -21,7 +22,7 @@ public class Product {
 
     public Product() {
     }
-    
+
     public Product(int id, String proName, String image, double price, int supID, int inventory) {
         this.proID = id;
         this.proName = proName;
@@ -29,6 +30,13 @@ public class Product {
         this.price = price;
         this.supID = supID;
         this.inventory = inventory;
+    }
+    
+    public Product(int id, String proName, String image, double price) {
+        this.proID = id;
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
     }
 
     public Product(String proName, String image, double price, int supID, int inventory) {
@@ -48,8 +56,6 @@ public class Product {
         this.inventory = inventory;
         this.create_at = create_At;
     }
-    
-    
 
     public int getProID() {
         return proID;
@@ -106,10 +112,10 @@ public class Product {
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
     }
-    
+
     public String forUpdate() {
         String space = ", ";
-        String string = "set ProName = '" + proName + "'" + space + "Image = '" 
+        String string = "set ProName = '" + proName + "'" + space + "Image = '"
                 + image + "'" + space
                 + "Price = " + price + space + "SupID = "
                 + supID + space + "Inventory = " + inventory;
@@ -117,9 +123,25 @@ public class Product {
     }
 
     public String forInsert() {
+        String newName = checkName();
         String insert = "";
-        insert = "('" + proName + "', '" + image + "', " + price + ", "
+        insert = "('" + newName + "', '" + image + "', " + price + ", "
                 + supID + ", " + inventory + ")";
         return insert;
+    }
+    
+    private String checkName(){
+        String newName = "";
+        if(!this.proName.contains("'")){
+            return this.proName;
+        }else{
+            String[] list = this.proName.split("[']");
+            for (int i = 0; i < list.length-1; i++) {
+                newName += list[i];
+                newName += "''";
+            }
+            newName += list[list.length - 1];
+            return newName;
+        }
     }
 }

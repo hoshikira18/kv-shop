@@ -1,0 +1,25 @@
+Oct 17, 2024 12:58:32 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 12:59:30 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 3:42:11 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 3:48:45 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 3:49:07 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 3:51:21 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 3:51:50 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 3:52:30 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 3:59:27 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:02:17 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:03:07 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:07:12 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+VietNT đã khởi tạo new Category có categoryName là: Category 2

@@ -48,6 +48,5 @@ public class ListServlet extends HttpServlet {
         List<Product> ps = pc.getAllProducts();
         req.setAttribute("ps", ps);
         req.getRequestDispatcher("/admin/products.jsp").forward(req, resp);
-
     }
 }

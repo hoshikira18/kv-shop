@@ -1,0 +1,9 @@
+Oct 17, 2024 4:06:55 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:06:57 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 17, 2024 4:07:12 PM models.Log <init>
+INFO: Trang CreateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+VietNT đã khởi tạo new Category có categoryName là: Category 2
+Oct 17, 2024 4:07:12 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
