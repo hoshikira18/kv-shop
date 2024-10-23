@@ -29,7 +29,7 @@
 
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="./assets/css/styles.css" />
-
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
         <title>Ecommerce Website</title>
     </head>
     <body>
@@ -60,7 +60,7 @@
                 </a>
                 <div class="nav__menu" id="nav-menu">
                     <div class="nav__menu-top">
-                        <a href="index.html" class="nav__menu-logo">
+                        <a href="home" class="nav__menu-logo">
                             <img src="./assets/img/logo.svg" alt="">
                         </a>
                         <div class="nav__close" id="nav-close">
@@ -75,10 +75,10 @@
                             <a href="allProducts" class="nav__link">Shop</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">My Account</a>
+                            <a href="" class="nav__link">My Account</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">Compare</a>
+                            <a href="" class="nav__link">Compare</a>
                         </li>
                         <li class="nav__item">
                             <a href="logout" class="nav__link">Login</a>
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <div class="header__user-actions">
-                    <a href="wishlist.html" class="header__action-btn" title="Wishlist">
+                    <a href="#" class="header__action-btn" title="Wishlist">
                         <img src="https://billalben.github.io/evara-ecommerce/assets/img/icon-heart.svg" alt="" />
                         <span class="count">3</span>
                     </a>
