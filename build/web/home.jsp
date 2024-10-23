@@ -75,7 +75,7 @@
                             <a href="home" class="nav__link active-link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="allProducts" class="nav__link">Shop</a>
+                            <a href="product" class="nav__link">Shop</a>
                         </li>
                         <li class="nav__item">
                             <a href="#" class="nav__link">My Account</a>
@@ -228,7 +228,7 @@
                                                 <i class="fi fi-rs-star"></i>
                                             </div>
                                             <div class="product__price flex">
-                                                <span class="new__price">$238.85</span>
+                                                <span class="new__price">${product.price}</span>
                                                 <span class="old__price">$245.8</span>
                                             </div>
 
@@ -297,7 +297,7 @@
                                                 <i class="fi fi-rs-star"></i>
                                             </div>
                                             <div class="product__price flex">
-                                                <span class="new__price">$238.85</span>
+                                                <span class="new__price">$ ${product.price}</span>
                                                 <span class="old__price">$245.8</span>
                                             </div>
                                             <button
@@ -362,7 +362,7 @@
                                                 <i class="fi fi-rs-star"></i>
                                             </div>
                                             <div class="product__price flex">
-                                                <span class="new__price">$238.85</span>
+                                                <span class="new__price">${product.price}</span>
                                                 <span class="old__price">$245.8</span>
                                             </div>
                                             <button
@@ -506,7 +506,7 @@
                                             <i class="fi fi-rs-star"></i>
                                         </div>
                                         <div class="product__price flex">
-                                            <span class="new__price">$238.85</span>
+                                            <span class="new__price">${product.price}</span>
                                             <span class="old__price">$245.8</span>
                                         </div>
                                         <button

@@ -25,12 +25,10 @@ public class ProductsController {
     public void createProduct(Product p, int categoryID) {
         Product product = pd.insert(p);
         ProductCategoryDAO pcd = new ProductCategoryDAO();
-        if (product != null) {
-            pcd.insert(new ProductCategory(product.getProID(), categoryID));
-        }
+        pcd.insert(new ProductCategory(product.getProID(), categoryID));
     }
-    
-    public Product getNewest(){
+
+    public Product getNewest() {
         return pd.getNewestProduct();
     }
 
