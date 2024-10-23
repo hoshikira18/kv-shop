@@ -48,9 +48,29 @@ public class ProductDAO extends MyDAO {
 
     public List<Product> getProductsByCategory(int categoryID) {
         List<Product> products = new ArrayList<>();
-        xSql = "select * from Products where ProID";
-        
-        return null;
+        xSql = "select * from Products where ProID in (select ProID from ProductCategories where CategoryID = " + categoryID + ")";
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("ProID"));
+                String productName = rs.getString("Pro_Name");
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
+                double price = Double.parseDouble(rs.getString("Price"));
+                int supID = Integer.parseInt(rs.getString("SupID"));
+                int inventory = Integer.parseInt(rs.getString("Inventory"));
+                Date create_At = rs.getDate("Create_At");
+
+                Product product = new Product(ID, productName, image, price, supID, inventory, create_At);
+                products.add(product);
+            }
+            ps.close();
+            rs.close();
+            return products;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return products;
 
     }
 
