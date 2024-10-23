@@ -1,0 +1,24 @@
+Oct 23, 2024 2:17:37 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 3 và proName: Product 3
+Oct 23, 2024 2:39:19 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 23, 2024 2:39:40 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 23, 2024 3:22:25 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 23, 2024 5:16:21 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 4 và proName: Product 4
+Oct 23, 2024 1:35:32 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 23, 2024 1:35:37 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 2 và proName: Product 2
+Oct 23, 2024 1:35:41 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 6 và proName: Product 6
