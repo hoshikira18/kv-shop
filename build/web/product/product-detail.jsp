@@ -432,192 +432,193 @@
             <section class="products container section--lg">
                 <h3 class="section__title"><span>Related</span> Products</h3>
                 <div class="products__container grid">
-                    <c:forEach items="">
-                    <div class="product__item">
-                        <div class="product__banner">
-                            <a href="details.html" class="product__images">
-                                <img
-                                    src="assets/img/product-1-1.jpg"
-                                    alt=""
-                                    class="product__img default"
-                                    />
-                                <img
-                                    src="assets/img/product-1-2.jpg"
-                                    alt=""
-                                    class="product__img hover"
-                                    />
-                            </a>
-                            <div class="product__actions">
-                                <a href="#" class="action__btn" aria-label="Quick View">
-                                    <i class="fi fi-rs-eye"></i>
+                    <c:forEach items="${relatedProducts}" var="product">
+                        <div class="product__item">
+                            <div class="product__banner">
+                                <a href="details.html" class="product__images">
+                                    <img
+                                        src="${product.image}"
+                                        alt=""
+                                        class="product__img default"
+                                        />
+                                    <img
+                                        src="${product.image}"
+                                        alt=""
+                                        class="product__img hover"
+                                        />
                                 </a>
+                                <div class="product__actions">
+                                    <a href="#" class="action__btn" aria-label="Quick View">
+                                        <i class="fi fi-rs-eye"></i>
+                                    </a>
+                                    <a
+                                        href="#"
+                                        class="action__btn"
+                                        aria-label="Add to Wishlist"
+                                        >
+                                        <i class="fi fi-rs-heart"></i>
+                                    </a>
+                                    <a href="#" class="action__btn" aria-label="Compare">
+                                        <i class="fi fi-rs-shuffle"></i>
+                                    </a>
+                                </div>
+                                <div class="product__badge light-pink">Hot</div>
+                            </div>
+                            <div class="product__content">
+                                <span class="product__category">Clothing</span>
+                                <a href="details.html">
+                                    <h3 class="product__title">${product.proName}</h3>
+                                </a>
+                                <div class="product__rating">
+                                    <i class="fi fi-rs-star"></i>
+                                    <i class="fi fi-rs-star"></i>
+                                    <i class="fi fi-rs-star"></i>
+                                    <i class="fi fi-rs-star"></i>
+                                    <i class="fi fi-rs-star"></i>
+                                </div>
+                                <div class="product__price flex">
+                                    <span class="new__price">${product.price}</span>
+                                    <span class="old__price">$245.8</span>
+                                </div>
                                 <a
                                     href="#"
-                                    class="action__btn"
-                                    aria-label="Add to Wishlist"
+                                    class="action__btn cart__btn"
+                                    aria-label="Add To Cart"
                                     >
-                                    <i class="fi fi-rs-heart"></i>
-                                </a>
-                                <a href="#" class="action__btn" aria-label="Compare">
-                                    <i class="fi fi-rs-shuffle"></i>
+                                    <i class="fi fi-rs-shopping-bag-add"></i>
                                 </a>
                             </div>
-                            <div class="product__badge light-pink">Hot</div>
                         </div>
-                        <div class="product__content">
-                            <span class="product__category">Clothing</span>
-                            <a href="details.html">
-                                <h3 class="product__title">Colorful Pattern Shirts</h3>
-                            </a>
-                            <div class="product__rating">
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
+                    </c:forEach>
+
+                    </div>
+                </section>
+
+                <!--=============== NEWSLETTER ===============-->
+                <section class="newsletter section">
+                    <div class="newsletter__container container grid">
+                        <h3 class="newsletter__title flex">
+                            <img
+                                src="./assets/img/icon-email.svg"
+                                alt=""
+                                class="newsletter__icon"
+                                />
+                            Sign in to Newsletter
+                        </h3>
+                        <p class="newsletter__description">
+                            ...and receive $25 coupon for first shopping.
+                        </p>
+                        <form action="" class="newsletter__form">
+                            <input
+                                type="text"
+                                placeholder="Enter Your Email"
+                                class="newsletter__input"
+                                />
+                            <button type="submit" class="newsletter__btn">Subscribe</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+
+            <!--=============== FOOTER ===============-->
+            <footer class="footer container">
+                <div class="footer__container grid">
+                    <div class="footer__content">
+                        <a href="index.html" class="footer__logo">
+                            <img src="./assets/img/logo.svg" alt="" class="footer__logo-img" />
+                        </a>
+                        <h4 class="footer__subtitle">Contact</h4>
+                        <p class="footer__description">
+                            <span>Address:</span> 13 Tlemcen Road, Street 32, Beb-Wahren
+                        </p>
+                        <p class="footer__description">
+                            <span>Phone:</span> +01 2222 365 /(+91) 01 2345 6789
+                        </p>
+                        <p class="footer__description">
+                            <span>Hours:</span> 10:00 - 18:00, Mon - Sat
+                        </p>
+                        <div class="footer__social">
+                            <h4 class="footer__subtitle">Follow Me</h4>
+                            <div class="footer__links flex">
+                                <a href="#">
+                                    <img
+                                        src="./assets/img/icon-facebook.svg"
+                                        alt=""
+                                        class="footer__social-icon"
+                                        />
+                                </a>
+                                <a href="#">
+                                    <img
+                                        src="./assets/img/icon-twitter.svg"
+                                        alt=""
+                                        class="footer__social-icon"
+                                        />
+                                </a>
+                                <a href="#">
+                                    <img
+                                        src="./assets/img/icon-instagram.svg"
+                                        alt=""
+                                        class="footer__social-icon"
+                                        />
+                                </a>
+                                <a href="#">
+                                    <img
+                                        src="./assets/img/icon-pinterest.svg"
+                                        alt=""
+                                        class="footer__social-icon"
+                                        />
+                                </a>
+                                <a href="#">
+                                    <img
+                                        src="./assets/img/icon-youtube.svg"
+                                        alt=""
+                                        class="footer__social-icon"
+                                        />
+                                </a>
                             </div>
-                            <div class="product__price flex">
-                                <span class="new__price">$238.85</span>
-                                <span class="old__price">$245.8</span>
-                            </div>
-                            <a
-                                href="#"
-                                class="action__btn cart__btn"
-                                aria-label="Add To Cart"
-                                >
-                                <i class="fi fi-rs-shopping-bag-add"></i>
-                            </a>
                         </div>
                     </div>
-                    
-                </div>
-            </section>
-
-            <!--=============== NEWSLETTER ===============-->
-            <section class="newsletter section">
-                <div class="newsletter__container container grid">
-                    <h3 class="newsletter__title flex">
+                    <div class="footer__content">
+                        <h3 class="footer__title">Address</h3>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">About Us</a></li>
+                            <li><a href="#" class="footer__link">Delivery Information</a></li>
+                            <li><a href="#" class="footer__link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer__link">Terms & Conditions</a></li>
+                            <li><a href="#" class="footer__link">Contact Us</a></li>
+                            <li><a href="#" class="footer__link">Support Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__content">
+                        <h3 class="footer__title">My Account</h3>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Sign In</a></li>
+                            <li><a href="#" class="footer__link">View Cart</a></li>
+                            <li><a href="#" class="footer__link">My Wishlist</a></li>
+                            <li><a href="#" class="footer__link">Track My Order</a></li>
+                            <li><a href="#" class="footer__link">Help</a></li>
+                            <li><a href="#" class="footer__link">Order</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__content">
+                        <h3 class="footer__title">Secured Payed Gateways</h3>
                         <img
-                            src="./assets/img/icon-email.svg"
+                            src="./assets/img/payment-method.png"
                             alt=""
-                            class="newsletter__icon"
+                            class="payment__img"
                             />
-                        Sign in to Newsletter
-                    </h3>
-                    <p class="newsletter__description">
-                        ...and receive $25 coupon for first shopping.
-                    </p>
-                    <form action="" class="newsletter__form">
-                        <input
-                            type="text"
-                            placeholder="Enter Your Email"
-                            class="newsletter__input"
-                            />
-                        <button type="submit" class="newsletter__btn">Subscribe</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <!--=============== FOOTER ===============-->
-        <footer class="footer container">
-            <div class="footer__container grid">
-                <div class="footer__content">
-                    <a href="index.html" class="footer__logo">
-                        <img src="./assets/img/logo.svg" alt="" class="footer__logo-img" />
-                    </a>
-                    <h4 class="footer__subtitle">Contact</h4>
-                    <p class="footer__description">
-                        <span>Address:</span> 13 Tlemcen Road, Street 32, Beb-Wahren
-                    </p>
-                    <p class="footer__description">
-                        <span>Phone:</span> +01 2222 365 /(+91) 01 2345 6789
-                    </p>
-                    <p class="footer__description">
-                        <span>Hours:</span> 10:00 - 18:00, Mon - Sat
-                    </p>
-                    <div class="footer__social">
-                        <h4 class="footer__subtitle">Follow Me</h4>
-                        <div class="footer__links flex">
-                            <a href="#">
-                                <img
-                                    src="./assets/img/icon-facebook.svg"
-                                    alt=""
-                                    class="footer__social-icon"
-                                    />
-                            </a>
-                            <a href="#">
-                                <img
-                                    src="./assets/img/icon-twitter.svg"
-                                    alt=""
-                                    class="footer__social-icon"
-                                    />
-                            </a>
-                            <a href="#">
-                                <img
-                                    src="./assets/img/icon-instagram.svg"
-                                    alt=""
-                                    class="footer__social-icon"
-                                    />
-                            </a>
-                            <a href="#">
-                                <img
-                                    src="./assets/img/icon-pinterest.svg"
-                                    alt=""
-                                    class="footer__social-icon"
-                                    />
-                            </a>
-                            <a href="#">
-                                <img
-                                    src="./assets/img/icon-youtube.svg"
-                                    alt=""
-                                    class="footer__social-icon"
-                                    />
-                            </a>
-                        </div>
                     </div>
                 </div>
-                <div class="footer__content">
-                    <h3 class="footer__title">Address</h3>
-                    <ul class="footer__links">
-                        <li><a href="#" class="footer__link">About Us</a></li>
-                        <li><a href="#" class="footer__link">Delivery Information</a></li>
-                        <li><a href="#" class="footer__link">Privacy Policy</a></li>
-                        <li><a href="#" class="footer__link">Terms & Conditions</a></li>
-                        <li><a href="#" class="footer__link">Contact Us</a></li>
-                        <li><a href="#" class="footer__link">Support Center</a></li>
-                    </ul>
+                <div class="footer__bottom">
+                    <p class="copyright">&copy; 2024 Evara. All right reserved</p>
+                    <span class="designer">Designer by Crypticalcoder</span>
                 </div>
-                <div class="footer__content">
-                    <h3 class="footer__title">My Account</h3>
-                    <ul class="footer__links">
-                        <li><a href="#" class="footer__link">Sign In</a></li>
-                        <li><a href="#" class="footer__link">View Cart</a></li>
-                        <li><a href="#" class="footer__link">My Wishlist</a></li>
-                        <li><a href="#" class="footer__link">Track My Order</a></li>
-                        <li><a href="#" class="footer__link">Help</a></li>
-                        <li><a href="#" class="footer__link">Order</a></li>
-                    </ul>
-                </div>
-                <div class="footer__content">
-                    <h3 class="footer__title">Secured Payed Gateways</h3>
-                    <img
-                        src="./assets/img/payment-method.png"
-                        alt=""
-                        class="payment__img"
-                        />
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p class="copyright">&copy; 2024 Evara. All right reserved</p>
-                <span class="designer">Designer by Crypticalcoder</span>
-            </div>
-        </footer>
+            </footer>
 
-        <!--=============== SWIPER JS ===============-->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+            <!--=============== SWIPER JS ===============-->
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-        <!--=============== MAIN JS ===============-->
-        <script src="assets/js/main.js"></script>
-    </body>
-</html>
+            <!--=============== MAIN JS ===============-->
+            <script src="assets/js/main.js"></script>
+        </body>
+    </html>
