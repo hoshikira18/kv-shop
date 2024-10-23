@@ -9,18 +9,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Base64;
-import java.util.Date;
 import java.util.List;
 import models.Product;
 import models.ProductDAO;
+
 import java.util.logging.*;
 import javax.imageio.ImageIO;
 import models.Category;
@@ -42,6 +39,7 @@ public class HomeServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         ProductDAO pd = new ProductDAO();
+
         CategoryDAO cc = new CategoryDAO();
         List<Category> listCate = cc.getAllCategories();
 
@@ -52,6 +50,7 @@ public class HomeServlet extends HttpServlet {
         req.setAttribute("list", list);
         req.setAttribute("listCate", listCate);
         req.getRequestDispatcher("/home.jsp").forward(req, resp);
+
     }
 
     @Override
@@ -62,6 +61,7 @@ public class HomeServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         ProductDAO pd = new ProductDAO();
+
         CategoryDAO cc = new CategoryDAO();
         List<Category> listCate = cc.getAllCategories();
         

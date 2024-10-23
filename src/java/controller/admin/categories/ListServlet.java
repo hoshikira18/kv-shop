@@ -27,10 +27,11 @@ public class ListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Log log = new Log(this.getClass().getName(), req);
         PrintWriter out = resp.getWriter();
-        CategoriesController cc = new CategoriesController();
+    CategoriesController cc = new CategoriesController();
 
-        List<Category> cs = cc.getAllCategories();
-        req.setAttribute("cs", cs);
+    List<Category> cs = cc.getAllCategories();
+    req.setAttribute("cs", cs);
+    out.print(cs.size());
         req.getRequestDispatcher("/admin/categories.jsp").forward(req, resp);
 
     }

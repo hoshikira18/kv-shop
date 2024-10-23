@@ -44,6 +44,7 @@
                     <p class="header__alert-news">
                         Super Values Deals - Save more coupons
                     </p>
+
                     <a href="logout" class="header__top-action">
                         Log In / Sign Up
                     </a>
@@ -51,6 +52,7 @@
             </div>
 
             <nav class="nav container">
+
                 <a href="home" class="nav__logo">
                     <img
                         class="nav__logo-img"
@@ -69,10 +71,11 @@
                     </div>
                     <ul class="nav__list">
                         <li class="nav__item">
+
                             <a href="home" class="nav__link active-link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="allProducts" class="nav__link">Shop</a>
+                            <a href="product" class="nav__link">Shop</a>
                         </li>
                         <li class="nav__item">
                             <a href="" class="nav__link">My Account</a>
@@ -100,6 +103,7 @@
                         <img src="https://billalben.github.io/evara-ecommerce/assets/img/icon-heart.svg" alt="" />
                         <span class="count">3</span>
                     </a>
+
                     <a href="cart" class="header__action-btn" title="Cart">
                         <img src="https://billalben.github.io/evara-ecommerce/assets/img/icon-cart.svg" alt="" />
                         <span class="count">3</span>
@@ -124,6 +128,7 @@
                         <p class="home__description">
                             Save more with coupons & up tp 20% off
                         </p>
+
                         <a href="allProducts" class="btn">Shop Now</a>
                     </div>
                     <img src="https://billalben.github.io/evara-ecommerce/assets/img/home-img.png" class="home__img" alt="hats" />
@@ -135,13 +140,15 @@
                 <h3 class="section__title"><span>Popular</span> Categories</h3>
                 <div class="categories__container swiper">
                     <div class="swiper-wrapper">
+
                         <c:forEach items="${listCate}" var="cate">
                             <a href="home" class="category__item swiper-slide">
                                 <img
-                                    src="assets/img/category-1.jpg"
+                                    src="${cate.image}"
                                     alt=""
                                     class="category__img"
                                     />
+
                                 <h3 class="category__title">${cate.categoryName}</h3>
                             </a>
                         </c:forEach>
@@ -171,6 +178,7 @@
                         <div class="products__container grid">
 
                             <!--display product-->
+
                             <c:forEach items="${list}" var="product">
                                 <div class="product__item">
                                     <div class="product__banner">
@@ -203,6 +211,7 @@
                                         </div>
                                         <div class="product__badge light-pink">Hot</div>
                                     </div>
+
                                     <form action="addToCarts" method="POST"> 
                                         <input name="proID" value="${product.proID}" hidden="true" />
                                         <input name="from" value="home" hidden="true" />
@@ -219,7 +228,7 @@
                                                 <i class="fi fi-rs-star"></i>
                                             </div>
                                             <div class="product__price flex">
-                                                <span class="new__price">$238.85</span>
+                                                <span class="new__price">${product.price}</span>
                                                 <span class="old__price">$245.8</span>
                                             </div>
 
@@ -248,6 +257,7 @@
                                                 class="product__img default"
                                                 />
                                             <img
+
                                                 src="${product.image}"
                                                 alt=""
                                                 class="product__img hover"
@@ -270,6 +280,7 @@
                                         </div>
                                         <div class="product__badge light-pink">Hot</div>
                                     </div>
+
                                     <form action="addToCarts" method="POST"> 
                                         <input name="proID" value="${product.proID}" hidden="true" />
                                         <input name="from" value="home" hidden="true" />
@@ -286,7 +297,7 @@
                                                 <i class="fi fi-rs-star"></i>
                                             </div>
                                             <div class="product__price flex">
-                                                <span class="new__price">$238.85</span>
+                                                <span class="new__price">$ ${product.price}</span>
                                                 <span class="old__price">$245.8</span>
                                             </div>
                                             <button
@@ -351,7 +362,7 @@
                                                 <i class="fi fi-rs-star"></i>
                                             </div>
                                             <div class="product__price flex">
-                                                <span class="new__price">$238.85</span>
+                                                <span class="new__price">${product.price}</span>
                                                 <span class="old__price">$245.8</span>
                                             </div>
                                             <button
@@ -450,6 +461,7 @@
                 <h3 class="section__title"><span>New</span> Arrivals</h3>
                 <div class="new__container swiper">
                     <div class="swiper-wrapper">
+
                         <c:forEach items="${list2}" var="product">
                             <div class="product__item swiper-slide">
                                 <div class="product__banner">
@@ -494,7 +506,7 @@
                                             <i class="fi fi-rs-star"></i>
                                         </div>
                                         <div class="product__price flex">
-                                            <span class="new__price">$238.85</span>
+                                            <span class="new__price">${product.price}</span>
                                             <span class="old__price">$245.8</span>
                                         </div>
                                         <button
@@ -519,250 +531,7 @@
             </section>
 
             <!--=============== SHOWCASE ===============-->
-            <section class="showcase section">
-                <div class="showcase__container container grid">
-                    <div class="showcase__wrapper">
-                        <h3 class="section__title">Hot Releases</h3>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-1.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Floral Print Casual Cotton Dress
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-2.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Ruffled Solid Long Sleeve Blouse
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-3.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Multi-Color Print V-neck T-shirt
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="showcase__wrapper">
-                        <h3 class="section__title">Deals & Outlet</h3>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-4.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Fish Print Patched T-shirt</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-5.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Fintage Floral Print Dress</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-6.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Multi-Color Stripe Circle T-shirt
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="showcase__wrapper">
-                        <h3 class="section__title">Top Selling</h3>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-7.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Geometric Printed Long Sleeve Blouse
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-8.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Print Patchwork Maxi Dress</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-9.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Daisy Floral Print Straps Jumpsuit
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="showcase__wrapper">
-                        <h3 class="section__title">Trendy</h3>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-7.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Floral Print Casual Cotton</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-8.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Ruffled Solid Long Sleeve</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-9.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Multi-Color Print V-neck</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+           
 
             <!--=============== NEWSLETTER ===============-->
             <section class="newsletter section home__newsletter">
