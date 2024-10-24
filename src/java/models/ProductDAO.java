@@ -197,7 +197,7 @@ public class ProductDAO extends MyDAO {
     }
 
     public Product insert(Product product) {
-        xSql = "insert into Products (Pro_Name, Image, Price, SupID, Inventory)"
+        xSql = "insert into Products (Pro_Name, Image, Price, SupID, Inventory, Size, Description)"
                 + " values " + product.forInsert();
 
         Product p = null;

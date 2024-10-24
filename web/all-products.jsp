@@ -72,13 +72,13 @@
                             <a href="./home" class="nav__link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="allProducts" class="nav__link active-link">Shop</a>
+                            <a href="products" class="nav__link active-link">Shop</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">My Account</a>
+                            <a href="" class="nav__link">My Account</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">Compare</a>
+                            <a href="" class="nav__link">Compare</a>
                         </li>
                         <li class="nav__item">
                             <a href="logout" class="nav__link">Login</a>
@@ -124,7 +124,7 @@
                         <p class="home__description">
                             Save more with coupons & up tp 20% off
                         </p>
-                        <a href="allProducts" class="btn">Shop Now</a>
+                        <a href="products" class="btn">Shop Now</a>
                     </div>
                     <img src="https://billalben.github.io/evara-ecommerce/assets/img/home-img.png" class="home__img" alt="hats" />
                 </div>
