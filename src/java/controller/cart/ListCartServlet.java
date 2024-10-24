@@ -49,15 +49,18 @@ public class ListCartServlet extends HttpServlet {
         Cart_ItemDAO cid = new Cart_ItemDAO();
         List<String[]> listMain = cid.getListByUserID(u.getUserID());
         List<Product> listPro = new ArrayList<>();
-        
+
 // (Đừng xóa, đây là NOTE)String[6] bao gom:
 // (int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price)
-        
         double sum = 0;
         for (String[] record : listMain) {
-            Product p = new Product(Integer.parseInt(record[1]), record[2]
-                    , record[3], Double.parseDouble(record[5]));
+            Product p = new Product(Integer.parseInt(record[1]), record[2],
+                     record[3], Double.parseDouble(record[5]));
             listPro.add(p);
+            /////////
+            double value = Double.parseDouble(record[5]);
+            record[5] = String.valueOf((int)value);
+            ////////
             sum += (Integer.parseInt(record[4])) * (Double.parseDouble(record[5]));
 //            out.println(record[1] + "-" + record[4] + "-" + record[5]);
         }
@@ -73,8 +76,6 @@ public class ListCartServlet extends HttpServlet {
 //            out.println(product.getProID() + "-" +product.getPrice());
 //        }
 //        
-        
-
         req.setAttribute("listItem", listMain);
         req.setAttribute("listPro", listPro);
         req.setAttribute("sum", sum);

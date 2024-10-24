@@ -31,6 +31,7 @@
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="./assets/css/styles.css" />
         <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <title>Ecommerce Website</title>
     </head>
     <body>
@@ -129,36 +130,97 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listItem}" var="item">
-                            <tr>
-                                <td>
-                                    <a href="products/${item[1]}">
-                                    <!--class cu cua image la table__img-->
-                                    <img
-                                        src="${item[3]}"
-                                        alt=""
-                                        class="product__img w-150px"
-                                        />
-                                    </a>
-                                </td>
-                                <td>
-                                    <h3 class="table__title max-w-250px">
-                                        ${item[2]}
-                                    </h3>
-                                    <p class="table__description max-w-250px">
-                                        Lorem ipsum dolor sit amet consectetur.
-                                    </p>
-                                </td>
-                                <td>
-                                    <span class="table__price"><fmt:formatNumber value="${item[5]}" pattern="#,###,###,000" /> (VNĐ)</span>
-                                </td>
-                                <td><input type="number" value="${item[4]}" class="quantity" /></td>
-                                <td><span class="subtotal"><fmt:formatNumber 
-                                            value="${Double.parseDouble(item[5])*Integer.parseInt(item[4])}" 
-                                            pattern="#,###,###,000" /> (VNĐ)</span></td>
-                                <td><i class="fi fi-rs-trash table__trash"></i></td>
-                            </tr>
+                            <%int count = 0;%>
+                            <c:forEach items="${listItem}" var="item" >
+                                <tr>
+                                    <td>
+                                        <a href="products/${item[1]}">
+                                            <!--class cu cua image la table__img-->
+                                            <img
+                                                src="${item[3]}"
+                                                alt=""
+                                                class="product__img w-150px"
+                                                />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <h3 class="table__title max-w-250px">
+                                            ${item[2]}
+                                        </h3>
+                                        <p class="table__description max-w-250px">
+                                            Lorem ipsum dolor sit amet consectetur.
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <span class="table__price font-bold">${item[5]} (VNĐ)</span>
+                                    </td>
+                                    <td>
+                                        <!--<input type="number" value="${item[4]}" class="quantity" />-->
+                                        <div style="color: black; font-weight: 100;" class="my-1">
+                                            <button class="border-solid px-2 rounded" 
+                                                    type="button" id="button-minus<%=++count%>"
+                                                    onclick="minus(<%=count%>, ${Integer.parseInt(item[5])})">
+                                                <i class="fas fa-minus text-sm"></i>
+                                            </button>
+                                            <input type="text" id="quantity-input<%=count%>" style="width: 40px" 
+                                                   oninput="input(<%=count%>, ${Integer.parseInt(item[5])})"
+                                                   class="text-center font-medium"" value="${item[4]}"/>
+                                            <button class="border-solid px-2 my-1 rounded" 
+                                                    type="button" id="button-plus<%=count%>" 
+                                                    onclick="plus(<%=count%>, ${Integer.parseInt(item[5])})">
+                                                <i class="fas fa-plus text-sm"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="subtotal table__price">
+                                            <input type="text" id="subtotal<%=count%>" disabled
+                                                   class="text-center font-bold" 
+                                                   value="${Integer.parseInt(item[5])} (VNĐ)" />
+                                        </span>
+                                    </td>
+                                    <td><i class="fi fi-rs-trash table__trash"></i></td>
+                                </tr>
                             </c:forEach>
+                            <!--up-->
+                        <script>
+                            function plus(count, price) {
+                                var quantityInput = document.getElementById('quantity-input' + count);
+                                var subtotal = document.getElementById('subtotal' + count);
+                                var currentValue = parseInt(quantityInput.value) || 0;
+                                var subtotalValue = parseFloat(subtotal.value);
+                                subtotal.value = price * (currentValue + 1) + " (VNĐ)";
+                                quantityInput.value = currentValue + 1;
+                            }
+                            ;
+                            function minus(count, price) {
+                                var quantityInput = document.getElementById('quantity-input' + count);
+                                var subtotal = document.getElementById('subtotal' + count);
+                                var currentValue = parseInt(quantityInput.value) || 0;
+                                var subtotalValue = parseFloat(subtotal.value);
+                                if (currentValue > 0) {
+                                    subtotal.value = price * (currentValue - 1) + " (VNĐ)";
+                                    quantityInput.value = currentValue - 1;
+                                }
+                            }
+                            ;
+                            function input(count, price) {
+                                var quantityInput = document.getElementById('quantity-input' + count);
+                                var subtotal = document.getElementById('subtotal' + count);
+                                var currentValue = parseInt(quantityInput.value) || 0;
+                                var subtotalValue = parseFloat(subtotal.value);
+                                if (currentValue >= 0) {
+                                    subtotal.value = price * (currentValue) + " (VNĐ)";
+                                    quantityInput.value = currentValue;
+                                }else{
+                                    currentValue = 0;
+                                    subtotal.value = price * (currentValue) + " (VNĐ)";
+                                    quantityInput.value = currentValue;
+                                }
+                            }
+                            ;
+                        </script>
+                        <!--down-->
                         </tbody>
                     </table>
                 </div>

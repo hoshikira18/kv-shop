@@ -66,10 +66,10 @@
                     <ul class="nav__list">
                         <li class="nav__item">
 
-                            <a href="home" class="nav__link active-link">Home</a>
+                            <a href="home" class="nav__link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="allProducts" class="nav__link">Shop</a>
+                            <a href="products" class="nav__link active-link">Shop</a>
                         </li>
                         <li class="nav__item">
                             <a href="#" class="nav__link">My Account</a>
