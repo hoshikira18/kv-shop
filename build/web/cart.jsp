@@ -66,7 +66,7 @@
                             <a href="home" class="nav__link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="allProducts" class="nav__link">Shop</a>
+                            <a href="products" class="nav__link">Shop</a>
                         </li>
                         <li class="nav__item">
                             <a href="" class="nav__link">My Account</a>
@@ -109,7 +109,7 @@
                 <ul class="breadcrumb__list flex container">
                     <li><a href="home" class="breadcrumb__link">Home</a></li>
                     <li><span class="breadcrumb__link"></span>></li>
-                    <li><a href="allProducts" class="breadcrumb__link">Shop</a></li>
+                    <li><a href="products" class="breadcrumb__link">Shop</a></li>
                     <li><span class="breadcrumb__link"></span>></li>
                     <li><span class="breadcrumb__link">Cart</span></li>
                 </ul>
@@ -117,20 +117,24 @@
 
             <!--=============== CART ===============-->
             <section class="cart section--lg container">
-                <div class="table__container">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Subtotal</th>
-                                <th>Rename</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%int count = 0;%>
+                <form action="updateCarts" method="POST">
+                    <input type="text" name="userID" value="${userID}" hidden="true" />
+                    <input type="text" name="cartID" value="${cartID}" hidden="true" />
+                    <div class="table__container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>
+                                    <th>Rename</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%int count = 0;%>
+                            <input type="text" id="length" value="${length}" hidden="true"/>
                             <c:forEach items="${listItem}" var="item" >
                                 <tr>
                                     <td>
@@ -162,7 +166,8 @@
                                                     onclick="minus(<%=count%>, ${Integer.parseInt(item[5])})">
                                                 <i class="fas fa-minus text-sm"></i>
                                             </button>
-                                            <input type="text" id="quantity-input<%=count%>" style="width: 40px" 
+                                            <input name="proID" value="${item[1]}" hidden="true" />
+                                            <input type="text" name="quantity-input" id="quantity-input<%=count%>" style="width: 40px" 
                                                    oninput="input(<%=count%>, ${Integer.parseInt(item[5])})"
                                                    class="text-center font-medium"" value="${item[4]}"/>
                                             <button class="border-solid px-2 my-1 rounded" 
@@ -176,63 +181,86 @@
                                         <span class="subtotal table__price">
                                             <input type="text" id="subtotal<%=count%>" disabled
                                                    class="text-center font-bold" 
-                                                   value="${Integer.parseInt(item[5])} (VNĐ)" />
+                                                   value="${Integer.parseInt(item[5])*Integer.parseInt(item[4])} (VNĐ)" />
                                         </span>
                                     </td>
-                                    <td><i class="fi fi-rs-trash table__trash"></i></td>
+                                    <td><i class="fi fi-rs-trash table__trash" onclick="" ></i></td>
                                 </tr>
                             </c:forEach>
                             <!--up-->
-                        <script>
-                            function plus(count, price) {
-                                var quantityInput = document.getElementById('quantity-input' + count);
-                                var subtotal = document.getElementById('subtotal' + count);
-                                var currentValue = parseInt(quantityInput.value) || 0;
-                                var subtotalValue = parseFloat(subtotal.value);
-                                subtotal.value = price * (currentValue + 1) + " (VNĐ)";
-                                quantityInput.value = currentValue + 1;
-                            }
-                            ;
-                            function minus(count, price) {
-                                var quantityInput = document.getElementById('quantity-input' + count);
-                                var subtotal = document.getElementById('subtotal' + count);
-                                var currentValue = parseInt(quantityInput.value) || 0;
-                                var subtotalValue = parseFloat(subtotal.value);
-                                if (currentValue > 0) {
-                                    subtotal.value = price * (currentValue - 1) + " (VNĐ)";
-                                    quantityInput.value = currentValue - 1;
+                            <script>
+                                function plus(count, price) {
+                                    var quantityInput = document.getElementById('quantity-input' + count);
+                                    var subtotal = document.getElementById('subtotal' + count);
+                                    var currentValue = parseInt(quantityInput.value) || 0;
+                                    var subtotalValue = parseFloat(subtotal.value);
+                                    var sum = document.getElementById("sum");
+                                    var sum2 = document.getElementById("sum2");
+                                    var sumValue = parseInt(sum.value);
+                                    subtotal.value = price * (currentValue + 1) + " (VNĐ)";
+                                    quantityInput.value = currentValue + 1;
+                                    sum.value = sumValue + price + " (VNĐ)";
+                                    sum2.value = sumValue + price + 10000 + " (VNĐ)";
                                 }
-                            }
-                            ;
-                            function input(count, price) {
-                                var quantityInput = document.getElementById('quantity-input' + count);
-                                var subtotal = document.getElementById('subtotal' + count);
-                                var currentValue = parseInt(quantityInput.value) || 0;
-                                var subtotalValue = parseFloat(subtotal.value);
-                                if (currentValue >= 0) {
-                                    subtotal.value = price * (currentValue) + " (VNĐ)";
-                                    quantityInput.value = currentValue;
-                                }else{
-                                    currentValue = 0;
-                                    subtotal.value = price * (currentValue) + " (VNĐ)";
-                                    quantityInput.value = currentValue;
+                                ;
+                                function minus(count, price) {
+                                    var quantityInput = document.getElementById('quantity-input' + count);
+                                    var subtotal = document.getElementById('subtotal' + count);
+                                    var currentValue = parseInt(quantityInput.value) || 0;
+                                    var subtotalValue = parseFloat(subtotal.value);
+                                    var sum = document.getElementById("sum");
+                                    var sum2 = document.getElementById("sum2");
+                                    var sumValue = parseInt(sum.value);
+                                    if (currentValue > 1) {
+                                        subtotal.value = price * (currentValue - 1) + " (VNĐ)";
+                                        quantityInput.value = currentValue - 1;
+                                        sum.value = sumValue - price + " (VNĐ)";
+                                        sum2.value = sumValue - price + 10000 + " (VNĐ)";
+                                    }
                                 }
-                            }
-                            ;
-                        </script>
-                        <!--down-->
-                        </tbody>
-                    </table>
-                </div>
+                                ;
+                                function input(count, price) {
+                                    var length = document.getElementById('length').value;
+                                    var quantityInput = document.getElementById('quantity-input' + count);
+                                    var subtotal = document.getElementById('subtotal' + count);
+                                    var currentValue = parseInt(quantityInput.value) || 0;
+                                    var subtotalValue = parseFloat(subtotal.value);
+                                    var sum = document.getElementById("sum");
+                                    var sum2 = document.getElementById("sum2");
+                                    if (currentValue > 0) {
+                                        subtotal.value = price * (currentValue) + " (VNĐ)";
+                                        quantityInput.value = currentValue;
+                                    } else {
+                                        currentValue = 1;
+                                        subtotal.value = price * (currentValue) + " (VNĐ)";
+                                        quantityInput.value = currentValue;
+                                    }
+                                    var total = 0;
+                                    for (var i = 1, max = length; i <= max; i++) {
+                                        let item = document.getElementById('subtotal' + i).value;
+                                        let values = item.split(" ")[0];
+                                        total += parseInt(values);
+                                    }
+                                    sum.value = total +" (VNĐ)";
+                                    sum2.value = (total +10000) + " (VNĐ)";
 
-                <div class="cart__actions">
-                    <a href="#" class="btn flex btn__md">
-                        <i class="fi-rs-shuffle"></i> Update Cart
-                    </a>
-                    <a href="#" class="btn flex btn__md">
-                        <i class="fi-rs-shopping-bag"></i> Continue Shopping
-                    </a>
-                </div>
+                                }
+                                ;
+                            </script>
+                            <!--down-->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="cart__actions">
+                        <button href="updateCarts" class="btn flex btn__md">
+                            <i class="fi-rs-shuffle"></i> Update Cart 
+                        </button>
+                        <a href="products" class="btn flex btn__md">
+                            <i class="fi-rs-shopping-bag"></i> Continue Shopping
+                        </a>
+                    </div>
+                </form>
 
                 <div class="divider">
                     <i class="fi fi-rs-fingerprint"></i>
@@ -287,15 +315,19 @@
                         <table class="cart__total-table">
                             <tr>
                                 <td><span class="cart__total-title">Cart Subtotal</span></td>
-                                <td><span class="cart__total-price">$240.00</span></td>
+                                <td><span class="cart__total-price">
+                                        <input type="text" id="sum" class="cart__total-price" value="${sum} (VNĐ)" />
+                                    </span></td>
                             </tr>
                             <tr>
                                 <td><span class="cart__total-title">Shipping</span></td>
-                                <td><span class="cart__total-price">$10.00</span></td>
+                                <td><span class="cart__total-price">10000 (VNĐ)</span></td>
                             </tr>
                             <tr>
                                 <td><span class="cart__total-title">Total</span></td>
-                                <td><span class="cart__total-price">$250.00</span></td>
+                                <td><span class="cart__total-price">
+                                        <input type="text" id="sum2" class="cart__total-price" value="${sum + 10000} (VNĐ)" />
+                                    </span></td>
                             </tr>
                         </table>
                         <a href="checkout.html" class="btn flex btn--md">

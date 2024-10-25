@@ -15,14 +15,58 @@ add Size nvarchar(100),
 
 update Products
 set Price = '100000'
+---------
 
-
-/*select p.ProID, p.Pro_Name, p.Price, p.Size, p.Description, p.Image, s.SupplierName, c.CategoryName, c.Image
+select top 1 p.ProID, p.Pro_Name, p.Price, p.Size, p.Description, p.Image, s.SupplierName, c.CategoryName, c.Image
 from Products p
 join Suppliers s on s.SupplierID = p.SupID
 join ProductCategories pc on p.ProID = pc.ProID
 join Categories c on pc.CategoryID = c.CategoryID
-where p.ProID = 11*/
+where p.ProID = 2
+
+-- categoryID
+select top 1 c.CategoryID
+from Products p
+join Suppliers s on s.SupplierID = p.SupID
+join ProductCategories pc on p.ProID = pc.ProID
+join Categories c on pc.CategoryID = c.CategoryID
+where p.ProID = 2
+
+select p.ProID, p.Pro_Name, p.Price, p.Size, p.Description, p.Image, s.SupplierName, c.CategoryName, c.Image
+from Products p
+join Suppliers s on s.SupplierID = p.SupID
+join ProductCategories pc on p.ProID = pc.ProID
+join Categories c on pc.CategoryID = c.CategoryID
+where pc.CategoryID =  (
+	select top 1 c.CategoryID
+	from Products p
+	join Suppliers s on s.SupplierID = p.SupID
+	join ProductCategories pc on p.ProID = pc.ProID
+	join Categories c on pc.CategoryID = c.CategoryID
+	where p.ProID = 2
+)
+
+
+select p.ProID, p.Pro_Name, p.Price, p.Size, p.Description, p.Image as ProImage,s.SupplierID
+, s.SupplierName, c.CategoryID, c.CategoryName, c.Image as CateImage
+from (
+	select top 1 c.CategoryID
+	from Products p
+	join Suppliers s on s.SupplierID = p.SupID
+	join ProductCategories pc on p.ProID = pc.ProID
+	join Categories c on pc.CategoryID = c.CategoryID
+	where p.ProID = 2
+) as cateID, Products p
+join Suppliers s on s.SupplierID = p.SupID
+join ProductCategories pc on p.ProID = pc.ProID
+join Categories c on pc.CategoryID = c.CategoryID
+where pc.CategoryID =  cateID.CategoryID
+
+select * from ProductCategories pc, Categories c where pc.CategoryID = c.CategoryID and c.CategoryName like 'Clothing'
+
+
+
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 2
 
 update Products
 set Description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
@@ -31,3 +75,38 @@ aperiam placeat, quis maxime nam officiis illum? Optio et nisi eius, inventore
 impedit ratione sunt, cumque, eligendi asperiores iste porro non error?',
 Size = 'M,L,XL,XXL,XXXL'
 
+
+select C.CartID, P.ProID, P.Pro_Name, P.Image, COUNT(*) as Quantity, P.Price from Cart_Items CI 
+join Products P on CI.ProID = P.ProID join Carts C on CI.CartID = C.CartID 
+where C.UserID = 11
+group by C.CartID, P.ProID, P.Pro_Name, P.Image
+, P.Price order by C.CartID desc, P.ProID asc
+
+select CI.ItemID, CartID.CartID, P.ProID, P.Pro_Name, P.Image, Quantity, P.Price 
+from (select CartID from Carts where UserID = 11) as CartID, Cart_Items CI 
+join Products P on CI.ProID = P.ProID 
+where CartID.CartID = CI.CartID order by ProID asc
+
+select * from Cart_Items where CartID = 11 order by ProID asc
+
+select * from Products where ProID in (select ProID from ProductCategories where CategoryID = 1)
+----
+select * from Cart_Items where CartID =11 order by ProID asc
+
+update Cart_Items
+set Quantity = 1 where CartID = 11 and ProID = 2
+
+----
+update Cart_Items set Quantity = 2 where CartID = 11 and ProID = 1 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 2 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 3 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 4 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 6 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 6 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 7 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 10 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 13 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 15 
+update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 24 
+update Cart_Items set Quantity = 4 where CartID = 11 and ProID = 25 
+----
