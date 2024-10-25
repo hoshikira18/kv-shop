@@ -35,5 +35,9 @@ public class ProductsController {
     public void deleteProduct (int id) {
         pd.delete(id);
     }
+    
+    public void updateProduct (Product product) {
+        pd.update(product);
+    }
 
 }

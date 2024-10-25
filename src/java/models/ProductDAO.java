@@ -37,6 +37,7 @@ public class ProductDAO extends MyDAO {
                 String productName = rs.getString("Pro_Name");
                 String supName = rs.getString("supName");
                 String cateName = rs.getString("cateName");
+                int cateID = rs.getInt("cateID");
                 String size = rs.getString("Size");
                 String description = rs.getString("Description");
 
@@ -45,7 +46,7 @@ public class ProductDAO extends MyDAO {
                 int supID = rs.getInt("SupID");
                 int inventory = rs.getInt("Inventory");
 
-                Product product = new Product(ID, productName, image, price, supID, inventory, size, description, supName, cateName);
+                Product product = new Product(ID, productName, image, price, supID, cateID, inventory, size, description, supName, cateName);
                 allProducts.add(product);
             }
             ps.close();
@@ -68,7 +69,7 @@ public class ProductDAO extends MyDAO {
                 String productName = rs.getString("Pro_Name");
                 String image = "data:image/jpeg;base64," + rs.getString("Image");
                 double price = Double.parseDouble(rs.getString("Price"));
-                int supID = Integer.parseInt(rs.getString("SupID"));
+                int supID = rs.getInt("SupID");
                 int inventory = Integer.parseInt(rs.getString("Inventory"));
                 Date create_At = rs.getDate("Create_At");
 
@@ -131,6 +132,7 @@ public class ProductDAO extends MyDAO {
                 String productName = rs.getString("Pro_Name");
                 String supName = rs.getString("supName");
                 String cateName = rs.getString("cateName");
+                int cateID = rs.getInt("cateID");
                 String size = rs.getString("Size");
                 String description = rs.getString("Description");
 
@@ -139,7 +141,7 @@ public class ProductDAO extends MyDAO {
                 int supID = rs.getInt("SupID");
                 int inventory = rs.getInt("Inventory");
 
-                product = new Product(ID, productName, image, price, supID, inventory, size, description, supName, cateName);
+                product = new Product(ID, productName, image, price, supID, cateID,inventory, size, description, supName, cateName);
             }
             ps.close();
             rs.close();
