@@ -93,20 +93,20 @@ public class Cart_ItemDAO extends MyDAO {
         List<String[]> list = new ArrayList<>();
         List<Cart_Item> listItems = new ArrayList<>();
         List<Product> listProducts = new ArrayList<>();
-        xSql = "select C.CartID, P.ProID, P.Pro_Name, P.Image, COUNT(*) as Quantity"
-                + ", P.Price from Cart_Items CI join Products P "
-                + "on CI.ProID = P.ProID join Carts C on CI.CartID = C.CartID "
-                + "where C.UserID = " + userID + " group by C.CartID, P.ProID, P.Pro_Name, P.Image"
-                + ", P.Price order by C.CartID desc, P.ProID asc";
+        xSql = "select CI.ItemID, CartID.CartID, P.ProID, P.Pro_Name, P.Image, Quantity, P.Price \n"
+                + "from (select CartID from Carts where UserID = ?) as CartID, Cart_Items CI \n"
+                + "join Products P on CI.ProID = P.ProID \n"
+                + "where CartID.CartID = CI.CartID order by ProID asc";
         try {
             ps = con.prepareStatement(xSql);
+            ps.setString(1, String.valueOf(userID));
             rs = ps.executeQuery();
             while (rs.next()) {
                 String[] record = new String[6];
                 record[0] = rs.getString("CartID");
                 record[1] = rs.getString("ProID");
                 record[2] = rs.getString("Pro_Name");
-                record[3] = "data:image/jpeg;base64,"+rs.getString("Image");
+                record[3] = "data:image/jpeg;base64," + rs.getString("Image");
                 record[4] = rs.getString("Quantity");
                 record[5] = rs.getString("Price");
 ///////                

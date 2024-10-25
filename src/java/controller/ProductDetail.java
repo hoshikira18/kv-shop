@@ -42,4 +42,24 @@ public class ProductDetail extends HttpServlet {
         request.setAttribute("relatedProducts", relatedProducts);
         request.getRequestDispatcher("/product/product-detail.jsp").forward(request, response);
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Get the full path info (e.g., "/pid_1234")
+        PrintWriter out = response.getWriter();
+
+        String pathInfo = request.getPathInfo();
+
+        out.print(pathInfo);
+
+        String id = pathInfo.split("/")[1];
+        Log log = new Log(this.getClass().getName(), request, Integer.parseInt(id));
+        request.setAttribute("id", id);
+        Product product = new ProductDAO().getOne(Integer.parseInt(id));
+        List<Product> relatedProducts = new ProductDAO().getProductsByCategory(11);
+        request.setAttribute("product", product);
+        request.setAttribute("relatedProducts", relatedProducts);
+        request.getRequestDispatcher("/product/product-detail.jsp").forward(request, response);
+    }
 }

@@ -10,17 +10,86 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import models.Cart_ItemDAO;
+import models.Product;
 
 /**
  *
  * @author VIET
  */
-@WebServlet(urlPatterns = {"/updateCart"})
-public class UpdateCartServlet extends HttpServlet{
+@WebServlet(urlPatterns = {"/updateCarts"})
+public class UpdateCartServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        ///// get information
+        out.println("Check Post");
+        String pathInfo = req.getPathInfo();
+        String userID = req.getParameter("userID");
+        String cartID = req.getParameter("cartID");
+        out.println(userID);
+
+        String[] quantities = req.getParameterValues("quantity-input");
+        String[] proIDs = req.getParameterValues("proID");
+        //// work with infor
+        
+        //// print out
+        Cart_ItemDAO cid = new Cart_ItemDAO();
+        List<String[]> listMain = cid.getListByUserID(Integer.parseInt(userID));
+        List<Product> listPro = new ArrayList<>();
+
+// (Đừng xóa, đây là NOTE)String[6] bao gom:
+// (int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price)
+        double sum = 0;
+        for (String[] record : listMain) {
+            Product p = new Product(Integer.parseInt(record[1]), record[2],
+                    record[3], Double.parseDouble(record[5]));
+            listPro.add(p);
+            /////////
+            double value = Double.parseDouble(record[5]);
+            record[5] = String.valueOf((int) value);
+            ////////
+            sum += (Integer.parseInt(record[4])) * (Double.parseDouble(record[5]));
+//            out.println(record[1] + "-" + record[4] + "-" + record[5]);
+        }
+        String result = String.format("%.0f", sum);
+//        sum = Integer.parseInt(String.format("%.3f", sum));
+//        out.println("\nPRODUCTS\n");
+//        out.printf("%.3f",sum);
+//        out.println(sum);
+//        out.println("\nAFTER SORT\n");
+
+//        for (Product product : listPro) {
+//            out.println(product.getProID() + "-" +product.getPrice());
+//        }
+//        
+        req.setAttribute("userID", userID);
+        req.setAttribute("cartID", cartID);
+        req.setAttribute("listItem", listMain);
+        req.setAttribute("listPro", listPro);
+        req.setAttribute("sum", result);
+        req.setAttribute("length", listMain.size());
+        req.getRequestDispatcher("/cart.jsp").forward(req, resp);
+        
+        
         
     }
-    
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+
+        out.println("Check Get");
+        String pathInfo = req.getPathInfo();
+        String cartID = pathInfo.split("/")[1];
+        out.println(cartID);
+        String check1 = (String) req.getAttribute("quantity-input1");
+        out.println(check1);
+
+    }
+
 }

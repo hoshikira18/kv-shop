@@ -4,6 +4,7 @@
  */
 package controller.cart;
 
+import controller.ProductDetail;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,7 +32,7 @@ import models.UserDAO;
  */
 @WebServlet(urlPatterns = {"/addToCarts"})
 public class AddToCart extends HttpServlet {
-
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
@@ -90,9 +91,15 @@ public class AddToCart extends HttpServlet {
             req.setAttribute("allProductsDown", allProductsDown);
             req.setAttribute("listCate", listCate);
             req.getRequestDispatcher("all-products.jsp").forward(req, resp);
-        } else {
-            req.setAttribute("product", p);
-            req.getRequestDispatcher("/product-detail.jsp").forward(req, resp);
+        } else if(from.equals("detail")){
+//            req.setAttribute("product", p);
+//            req.getRequestDispatcher("./product/product-detail.jsp").forward(req, resp);
+
+        
+        List<Product> relatedProducts = new ProductDAO().getProductsByCategory(1);
+        req.setAttribute("product", p);
+        req.setAttribute("relatedProducts", relatedProducts);
+        req.getRequestDispatcher("./product/product-detail.jsp").forward(req, resp);
 
         }
 //        req.setAttribute("product", p);
@@ -130,8 +137,12 @@ public class AddToCart extends HttpServlet {
 
         Log log = new Log(this.getClass().getName(), req, isCreate, cart, cart_Item);
 
+        req.setAttribute("id", proID);
+//            Product product = new ProductDAO().getOne(proID);
+        List<Product> relatedProducts = new ProductDAO().getProductsByCategory(11);
         req.setAttribute("product", p);
-        req.getRequestDispatcher("/product-detail.jsp").forward(req, resp);
+        req.setAttribute("relatedProducts", relatedProducts);
+        req.getRequestDispatcher("./product/product-details.jsp").forward(req, resp);
 
     }
 }

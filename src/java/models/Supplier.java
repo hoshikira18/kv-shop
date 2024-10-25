@@ -11,6 +11,7 @@ import java.util.Date;
  * @author VIET
  */
 public class Supplier {
+
     int supplierID;
     String supplierName;
     Date create_at;
@@ -19,6 +20,11 @@ public class Supplier {
     }
 
     public Supplier(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
+    public Supplier(int supplierID, String supplierName) {
+        this.supplierID = supplierID;
         this.supplierName = supplierName;
     }
 
@@ -51,7 +57,7 @@ public class Supplier {
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
     }
-    
+
     public String forUpdate() {
         String space = ", ";
         String string = "set SupplierName = '" + supplierName + "'";
@@ -60,7 +66,7 @@ public class Supplier {
 
     public String forInsert() {
         String insert = "";
-        insert = "('" + supplierName+ "')";
+        insert = "('" + supplierName + "')";
         return insert;
     }
 }
