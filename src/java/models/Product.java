@@ -19,6 +19,8 @@ public class Product {
     String proName;
     String image;
     double price;
+    String supName;
+    String cateName;
     int supID;
     int inventory;
     Date create_at;
@@ -26,6 +28,18 @@ public class Product {
     String description;
 
     public Product() {
+    }
+
+    public Product(int proID, String proName, String image, double price, String supName, String cateName, int inventory, String size, String description) {
+        this.proID = proID;
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+        this.supName = supName;
+        this.cateName = cateName;
+        this.inventory = inventory;
+        this.size = size;
+        this.description = description;
     }
 
     public Product(int id, String proName, String image, double price, int supID, int inventory) {
@@ -72,16 +86,17 @@ public class Product {
         this.description = description;
     }
 
-    public Product(int proID, String proName, String image, double price, int supID, int inventory, Date create_at, String size, String description) {
+    public Product(int proID, String proName, String image, double price, int supID, int inventory, String size, String description, String supName, String cateName) {
         this.proID = proID;
         this.proName = proName;
         this.image = image;
         this.price = price;
         this.supID = supID;
         this.inventory = inventory;
-        this.create_at = create_at;
         this.size = size;
         this.description = description;
+        this.supName = supName;
+        this.cateName = cateName;
     }
 
     public int getProID() {
@@ -159,6 +174,24 @@ public class Product {
     public List<String> listSize(){
         return Arrays.asList(this.size.toUpperCase().split(","));
     }
+
+    public String getSupName() {
+        return supName;
+    }
+
+    public void setSupName(String supName) {
+        this.supName = supName;
+    }
+
+    public String getCateName() {
+        return cateName;
+    }
+
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
+    }
+    
+    
 
     public String forUpdate() {
         String space = ", ";

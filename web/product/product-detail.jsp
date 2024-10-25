@@ -123,7 +123,7 @@
                     <li><span class="breadcrumb__link"></span>></li>
                     <li><span class="breadcrumb__link">Fashion</span></li>
                     <li><span class="breadcrumb__link"></span>></li>
-                    <li><span class="breadcrumb__link">Henley Shirt</span></li>
+                    <li><span class="breadcrumb__link">${product.proName}</span></li>
                 </ul>
             </section>
 
