@@ -21,20 +21,31 @@ public class ProductDAO extends MyDAO {
 
     public List<Product> getAllProducts() {
         List<Product> allProducts = new ArrayList<>();
-        xSql = "select * from Products";
+        xSql = """
+               select 
+               p.*,
+               s.SupplierName as supName, 
+               c.CategoryName as cateName,
+               c.CategoryID as cateID
+               from Products p join Suppliers s on p.SupID = s.SupplierID join ProductCategories pc on p.ProID = pc.ProID join Categories c on pc.CategoryID = c.CategoryID""";
+
         try {
             ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                int ID = Integer.parseInt(rs.getString("ProID"));
+                int ID = rs.getInt("ProID");
                 String productName = rs.getString("Pro_Name");
-                String image = "data:image/jpeg;base64," + rs.getString("Image");
-                double price = Double.parseDouble(rs.getString("Price"));
-                int supID = Integer.parseInt(rs.getString("SupID"));
-                int inventory = Integer.parseInt(rs.getString("Inventory"));
-                Date create_At = rs.getDate("Create_At");
+                String supName = rs.getString("supName");
+                String cateName = rs.getString("cateName");
+                String size = rs.getString("Size");
+                String description = rs.getString("Description");
 
-                Product product = new Product(ID, productName, image, price, supID, inventory, create_At);
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
+                double price = rs.getDouble("Price");
+                int supID = rs.getInt("SupID");
+                int inventory = rs.getInt("Inventory");
+
+                Product product = new Product(ID, productName, image, price, supID, inventory, size, description, supName, cateName);
                 allProducts.add(product);
             }
             ps.close();
@@ -102,22 +113,33 @@ public class ProductDAO extends MyDAO {
     }
 
     public Product getOne(int id) {
-        xSql = "select * from Products where ProID = " + id;
+        xSql = """
+               select 
+               p.*,
+               s.SupplierName as supName, 
+               c.CategoryName as cateName,
+               c.CategoryID as cateID
+               from (select * from Products where ProID = """ + id + ") p join Suppliers s on p.SupID = s.SupplierID join ProductCategories pc on p.ProID = pc.ProID join Categories c on pc.CategoryID = c.CategoryID";
+
         Product product = new Product();
         try {
 
             PreparedStatement ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
             if (rs.next()) {
-                int ID = Integer.parseInt(rs.getString("ProID"));
+                int ID = rs.getInt("ProID");
                 String productName = rs.getString("Pro_Name");
-                String image = "data:image/jpeg;base64," + rs.getString("Image");
-                double price = Double.parseDouble(rs.getString("Price"));
-                int supID = Integer.parseInt(rs.getString("SupID"));
-                int inventory = Integer.parseInt(rs.getString("Inventory"));
-                Date create_At = rs.getDate("Create_At");
+                String supName = rs.getString("supName");
+                String cateName = rs.getString("cateName");
+                String size = rs.getString("Size");
+                String description = rs.getString("Description");
 
-                product = new Product(ID, productName, image, price, supID, inventory, create_At);
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
+                double price = rs.getDouble("Price");
+                int supID = rs.getInt("SupID");
+                int inventory = rs.getInt("Inventory");
+
+                product = new Product(ID, productName, image, price, supID, inventory, size, description, supName, cateName);
             }
             ps.close();
             rs.close();
@@ -211,7 +233,7 @@ public class ProductDAO extends MyDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        
+
         p = getNewestProduct();
 
         return p;
@@ -245,7 +267,7 @@ public class ProductDAO extends MyDAO {
     }
 
     public void delete(int id) {
-        xSql = "delete from Cart_Items where ProID = " + id +";delete from ProductCategories where ProID = " + id + ";delete from Products where ProID = " + id;
+        xSql = "delete from Cart_Items where ProID = " + id + ";delete from ProductCategories where ProID = " + id + ";delete from Products where ProID = " + id;
         try {
             PreparedStatement ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
