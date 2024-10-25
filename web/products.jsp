@@ -126,65 +126,68 @@
                 <p class="total__products">We found <span>${allProducts.size()}</span> items for you!</p>
                 <div class="products__container grid">
                     <c:forEach items="${allProducts}" var="product">
-                    <div class="product__item">
-                        <div class="product__banner">
-                            <a href="details.html" class="product__images">
-                                <img
-                                    src="${product.image}"
-                                    alt=""
-                                    class="product__img default"
-                                    />
-                                <img
-                                    src="${product.image}"
-                                    alt=""
-                                    class="product__img hover"
-                                    />
-                            </a>
-                            <div class="product__actions">
-                                <a href="#" class="action__btn" aria-label="Quick View">
-                                    <i class="fi fi-rs-eye"></i>
+                        <div class="product__item">
+                            <div class="product__banner">
+                                <a href="products/${product.proID}" class="product__images">
+                                    <img
+                                        src="${product.image}"
+                                        alt=""
+                                        class="product__img default"
+                                        />
+                                    <img
+                                        src="${product.image}"
+                                        alt=""
+                                        class="product__img hover"
+                                        />
                                 </a>
-                                <a
-                                    href="#"
-                                    class="action__btn"
-                                    aria-label="Add to Wishlist"
-                                    >
-                                    <i class="fi fi-rs-heart"></i>
-                                </a>
-                                <a href="#" class="action__btn" aria-label="Compare">
-                                    <i class="fi fi-rs-shuffle"></i>
-                                </a>
+                                <div class="product__actions">
+                                    <a href="#" class="action__btn" aria-label="Quick View">
+                                        <i class="fi fi-rs-eye"></i>
+                                    </a>
+                                    <a
+                                        href="#"
+                                        class="action__btn"
+                                        aria-label="Add to Wishlist"
+                                        >
+                                        <i class="fi fi-rs-heart"></i>
+                                    </a>
+                                    <a href="#" class="action__btn" aria-label="Compare">
+                                        <i class="fi fi-rs-shuffle"></i>
+                                    </a>
+                                </div>
+                                <div class="product__badge light-pink">Hot</div>
                             </div>
-                            <div class="product__badge light-pink">Hot</div>
+                            <form action="addToCarts" method="POST"> 
+                                <input name="proID" value="${product.proID}" hidden="true" />
+                                <input name="from" value="shop" hidden="true" />
+                                <div class="product__content">
+                                    <span class="product__category">Clothing</span>
+                                    <a href="details.html">
+                                        <h3 class="product__title">Colorful Pattern Shirts</h3>
+                                    </a>
+                                    <div class="product__rating">
+                                        <i class="fi fi-rs-star"></i>
+                                        <i class="fi fi-rs-star"></i>
+                                        <i class="fi fi-rs-star"></i>
+                                        <i class="fi fi-rs-star"></i>
+                                        <i class="fi fi-rs-star"></i>
+                                    </div>
+                                    <div class="product__price flex">
+                                        <span class="new__price">$238.85</span>
+                                        <span class="old__price">$245.8</span>
+                                    </div>
+                                    <button
+                                        class="action__btn cart__btn"
+                                        aria-label="Add To Cart"
+                                        >
+                                        <i class="fi fi-rs-shopping-bag-add"></i>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="product__content">
-                            <span class="product__category">Clothing</span>
-                            <a href="details.html">
-                                <h3 class="product__title">Colorful Pattern Shirts</h3>
-                            </a>
-                            <div class="product__rating">
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                            </div>
-                            <div class="product__price flex">
-                                <span class="new__price">$238.85</span>
-                                <span class="old__price">$245.8</span>
-                            </div>
-                            <a
-                                href="#"
-                                class="action__btn cart__btn"
-                                aria-label="Add To Cart"
-                                >
-                                <i class="fi fi-rs-shopping-bag-add"></i>
-                            </a>
-                        </div>
-                    </div>
                     </c:forEach>
                 </div>
-                    
+
                 <ul class="pagination">
                     <li><a href="#" class="pagination__link active">01</a></li>
                     <li><a href="#" class="pagination__link">02</a></li>

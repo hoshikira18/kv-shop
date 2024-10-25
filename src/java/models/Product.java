@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class Product {
         this.image = image;
         this.price = price;
     }
-
+    
     public Product(String proName, String image, double price, int supID, int inventory) {
         this.proName = proName;
         this.image = image;
@@ -58,6 +60,16 @@ public class Product {
         this.supID = supID;
         this.inventory = inventory;
         this.create_at = create_At;
+    }
+    
+    public Product(int proID, String proName, String image, double price, int supID, String size, String description) {
+        this.proID = proID;
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+        this.supID = supID;
+        this.size = size;
+        this.description = description;
     }
 
     public Product(int proID, String proName, String image, double price, int supID, int inventory, Date create_at, String size, String description) {
@@ -143,6 +155,10 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public List<String> listSize(){
+        return Arrays.asList(this.size.toUpperCase().split(","));
+    }
 
     public String forUpdate() {
         String space = ", ";
@@ -150,7 +166,7 @@ public class Product {
                 + image + "'" + space
                 + "Price = " + price + space + "SupID = "
                 + supID + space + "Inventory = " + inventory + space
-                + "Size = '" + size + "'" + space + "Description = '" + description + "'";
+                + "Size = '" + size.toUpperCase() + "'" + space + "Description = '" + description + "'";
         return string;
     }
 
@@ -158,7 +174,7 @@ public class Product {
         String newName = checkName();
         String insert = "";
         insert = "('" + newName + "', '" + image + "', " + price + ", "
-                + supID + ", " + inventory + ", '" + size + "', '" + description + "')";
+                + supID + ", " + inventory + ", '" + size.toUpperCase() + "', '" + description + "')";
         return insert;
     }
 

@@ -25,6 +25,12 @@ public class Category {
         this.image = image;
     }
 
+    public Category(int categoryID, String categoryName, String image) {
+        this.categoryID = categoryID;
+        this.categoryName = categoryName;
+        this.image = image;
+    }
+    
     public Category(int categoryID, String categoryName, String image, Date create_at) {
         this.categoryID = categoryID;
         this.categoryName = categoryName;

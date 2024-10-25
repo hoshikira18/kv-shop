@@ -211,7 +211,7 @@ public class ProductDAO extends MyDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        
+
         p = getNewestProduct();
 
         return p;
@@ -255,5 +255,68 @@ public class ProductDAO extends MyDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    public List[] getSameCategory(int proID) {
+        List[] list = new ArrayList[3];
+//        list[0] là listProducts, list[1] là listSuppliers, list[2] là Category
+        xSql = """
+               select p.ProID, p.Pro_Name, p.Price, p.Size, p.Description, p.Image as ProImage,s.SupplierID
+               , s.SupplierName, c.CategoryID, c.CategoryName, c.Image as CateImage
+               from (
+               \tselect top 1 c.CategoryID
+               \tfrom Products p
+               \tjoin Suppliers s on s.SupplierID = p.SupID
+               \tjoin ProductCategories pc on p.ProID = pc.ProID
+               \tjoin Categories c on pc.CategoryID = c.CategoryID
+               \twhere p.ProID = ?
+               ) as cateID, Products p
+               join Suppliers s on s.SupplierID = p.SupID
+               join ProductCategories pc on p.ProID = pc.ProID
+               join Categories c on pc.CategoryID = c.CategoryID
+               where pc.CategoryID =  cateID.CategoryID""";
+        
+        Product p = null;
+        Supplier s = null;
+        Category c = null;
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(xSql);
+            ps.setString(1, String.valueOf(proID));
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("ProID"));
+                String productName = rs.getString("Pro_Name");
+                String image = "data:image/jpeg;base64," + rs.getString("ProImage");
+                double price = Double.parseDouble(rs.getString("Price"));
+                String size = rs.getString("Size");
+                String description =  rs.getString("Description");
+                
+                
+                int supID = Integer.parseInt(rs.getString("SupID"));
+                String supplierName = rs.getString("SupplierName");
+                
+                int categoryID = Integer.parseInt(rs.getString("categoryID"));
+                String categoryName = rs.getString("CategoryName");
+                String cateImage = "data:image/jpeg;base64," + rs.getString("CateImage");
+                
+                //product
+                p = new Product(proID, productName, image, price, supID, size, description);
+                list[0].add(p);
+                //supplier
+                s = new Supplier(supID, supplierName);
+                list[1].add(s);
+                //category -- chỉ có 1 cate nên để đó add sau khi vòng lặp kết thúc
+                c = new Category(categoryID, categoryName, cateImage);
+            }
+            list[2].add(c);
+            ps.close();
+            rs.close();
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return list;
     }
 }
