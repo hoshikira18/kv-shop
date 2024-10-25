@@ -31,5 +31,9 @@ public class ProductsController {
     public Product getNewest() {
         return pd.getNewestProduct();
     }
+    
+    public void deleteProduct (int id) {
+        pd.delete(id);
+    }
 
 }

@@ -45,7 +45,7 @@
                         Super Values Deals - Save more coupons
                     </p>
 
-                    <a href="logout" class="header__top-action">
+                   <a href="logout" class="header__top-action">
                         Log In / Sign Up
                     </a>
                 </div>
@@ -72,7 +72,7 @@
                     <ul class="nav__list">
                         <li class="nav__item">
 
-                            <a href="home" class="nav__link active-link">Home</a>
+                            <a href="/shop/home" class="nav__link active-link">Home</a>
                         </li>
                         <li class="nav__item">
                             <a href="product" class="nav__link">Shop</a>
@@ -123,7 +123,7 @@
                     <li><span class="breadcrumb__link"></span>></li>
                     <li><span class="breadcrumb__link">Fashion</span></li>
                     <li><span class="breadcrumb__link"></span>></li>
-                    <li><span class="breadcrumb__link">Henley Shirt</span></li>
+                    <li><span class="breadcrumb__link">${product.proName}</span></li>
                 </ul>
             </section>
 

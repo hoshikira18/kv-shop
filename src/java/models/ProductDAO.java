@@ -245,7 +245,7 @@ public class ProductDAO extends MyDAO {
     }
 
     public void delete(int id) {
-        xSql = "delete from Products where ProID = " + id;
+        xSql = "delete from Cart_Items where ProID = " + id +";delete from ProductCategories where ProID = " + id + ";delete from Products where ProID = " + id;
         try {
             PreparedStatement ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
