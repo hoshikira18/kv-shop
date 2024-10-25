@@ -78,10 +78,10 @@
                             <a href="products" class="nav__link">Shop</a>
                         </li>
                         <li class="nav__item">
-                            <a href="" class="nav__link">My Account</a>
+                            <a href="#" class="nav__link">My Account</a>
                         </li>
                         <li class="nav__item">
-                            <a href="" class="nav__link">Compare</a>
+                            <a href="#" class="nav__link">Compare</a>
                         </li>
                         <li class="nav__item">
                             <a href="logout" class="nav__link">Login</a>

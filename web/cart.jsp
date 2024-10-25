@@ -211,7 +211,7 @@
                                     var sum = document.getElementById("sum");
                                     var sum2 = document.getElementById("sum2");
                                     var sumValue = parseInt(sum.value);
-                                    if (currentValue > 0) {
+                                    if (currentValue > 1) {
                                         subtotal.value = price * (currentValue - 1) + " (VNĐ)";
                                         quantityInput.value = currentValue - 1;
                                         sum.value = sumValue - price + " (VNĐ)";
@@ -227,11 +227,11 @@
                                     var subtotalValue = parseFloat(subtotal.value);
                                     var sum = document.getElementById("sum");
                                     var sum2 = document.getElementById("sum2");
-                                    if (currentValue >= 0) {
+                                    if (currentValue > 0) {
                                         subtotal.value = price * (currentValue) + " (VNĐ)";
                                         quantityInput.value = currentValue;
                                     } else {
-                                        currentValue = 0;
+                                        currentValue = 1;
                                         subtotal.value = price * (currentValue) + " (VNĐ)";
                                         quantityInput.value = currentValue;
                                     }
@@ -256,7 +256,7 @@
                         <button href="updateCarts" class="btn flex btn__md">
                             <i class="fi-rs-shuffle"></i> Update Cart 
                         </button>
-                        <a href="home" class="btn flex btn__md">
+                        <a href="products" class="btn flex btn__md">
                             <i class="fi-rs-shopping-bag"></i> Continue Shopping
                         </a>
                     </div>
