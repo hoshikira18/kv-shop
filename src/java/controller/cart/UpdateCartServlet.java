@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import models.Cart_ItemDAO;
+import models.Log;
 import models.Product;
 
 /**
@@ -26,6 +27,7 @@ public class UpdateCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
+        Log log = new Log(this.getClass().getName(), req);
         ///// get information
         out.println("Check Post");
         String pathInfo = req.getPathInfo();
@@ -36,9 +38,16 @@ public class UpdateCartServlet extends HttpServlet {
         String[] quantities = req.getParameterValues("quantity-input");
         String[] proIDs = req.getParameterValues("proID");
         //// work with infor
-        
+        int length = quantities.length;
+        String xSQL = "";
+        for (int i = 0; i < length; i++) {
+            xSQL += ("update Cart_Items set Quantity = "+quantities[i]
+                    +" where CartID = "+cartID+ " and ProID = "+proIDs[i]+" \n");
+        }
+        out.print(xSQL);
         //// print out
         Cart_ItemDAO cid = new Cart_ItemDAO();
+        cid.update(xSQL);
         List<String[]> listMain = cid.getListByUserID(Integer.parseInt(userID));
         List<Product> listPro = new ArrayList<>();
 
@@ -64,7 +73,7 @@ public class UpdateCartServlet extends HttpServlet {
 //        out.println("\nAFTER SORT\n");
 
 //        for (Product product : listPro) {
-//            out.println(product.getProID() + "-" +product.getPrice());
+//            out.println(product.getProID() + "-" +product.getProName()+"-"+product.getPrice());
 //        }
 //        
         req.setAttribute("userID", userID);
@@ -74,9 +83,7 @@ public class UpdateCartServlet extends HttpServlet {
         req.setAttribute("sum", result);
         req.setAttribute("length", listMain.size());
         req.getRequestDispatcher("/cart.jsp").forward(req, resp);
-        
-        
-        
+
     }
 
     @Override

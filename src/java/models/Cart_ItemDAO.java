@@ -163,6 +163,19 @@ public class Cart_ItemDAO extends MyDAO {
             System.out.println(e);
         }
     }
+    
+    public void update(String query){
+        xSql = query;
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
     public void insert(Cart_Item cart_Item) {
         xSql = "insert into Cart_Items (CartID, ProID, Quantity)"
