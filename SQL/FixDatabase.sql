@@ -6,7 +6,7 @@ go
 update Categories
 set Image = (select Image from Products where ProID = 1)
 go*/
-
+/*
 use kvshop
 go
 alter table Products
@@ -15,7 +15,7 @@ add Size nvarchar(100),
 
 update Products
 set Price = '100000'
----------
+---------*/
 
 select top 1 p.ProID, p.Pro_Name, p.Price, p.Size, p.Description, p.Image, s.SupplierName, c.CategoryName, c.Image
 from Products p
@@ -96,17 +96,7 @@ select * from Cart_Items where CartID =11 order by ProID asc
 update Cart_Items
 set Quantity = 1 where CartID = 11 and ProID = 2
 
-----
-update Cart_Items set Quantity = 2 where CartID = 11 and ProID = 1 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 2 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 3 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 4 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 6 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 6 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 7 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 10 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 13 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 15 
-update Cart_Items set Quantity = 1 where CartID = 11 and ProID = 24 
-update Cart_Items set Quantity = 4 where CartID = 11 and ProID = 25 
-----
+delete from Cart_Items where ItemID = 13
+
+---
+select Image from Products where ProID = 26
