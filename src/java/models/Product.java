@@ -22,6 +22,7 @@ public class Product {
     String supName;
     String cateName;
     int supID;
+    int cateID;
     int inventory;
     Date create_at;
     String size;
@@ -29,7 +30,8 @@ public class Product {
 
     public Product() {
     }
-
+    
+    
     public Product(int proID, String proName, String image, double price, String supName, String cateName, int inventory, String size, String description) {
         this.proID = proID;
         this.proName = proName;
@@ -86,12 +88,13 @@ public class Product {
         this.description = description;
     }
 
-    public Product(int proID, String proName, String image, double price, int supID, int inventory, String size, String description, String supName, String cateName) {
+    public Product(int proID, String proName, String image, double price, int supID, int cateID, int inventory, String size, String description, String supName, String cateName) {
         this.proID = proID;
         this.proName = proName;
         this.image = image;
         this.price = price;
         this.supID = supID;
+        this.cateID = cateID;
         this.inventory = inventory;
         this.size = size;
         this.description = description;
@@ -99,6 +102,14 @@ public class Product {
         this.cateName = cateName;
     }
 
+    public int getCateID() {
+        return cateID;
+    }
+
+    public void setCateID(int cateID) {
+        this.cateID = cateID;
+    }
+    
     public int getProID() {
         return proID;
     }
