@@ -40,7 +40,10 @@
                             <td class="px-6 py-4 whitespace-nowrap">${product.proID}</td>
                             <td class="px-6 py-4 whitespace-nowrap">${product.proName}</td>
                             <td>
-                                <form action="/shop/admin/products/delete-product" method="POST">
+                                <a href="/shop/admin/edit-product/${product.proID}">Edit</button>
+                            </td>
+                            <td>
+                                <form action="/shop/admin/delete-product" method="POST">
                                     <input name="product-id" value="${product.proID}" hidden="true" />
                                     <button type="submit">Delete</button>
                                 </form>
