@@ -8,8 +8,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import = "models.*" %>
 <%@page import = "java.util.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,8 +30,9 @@
 
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="./assets/css/styles.css" />
-
-        <title>Cart Page</title>
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <title>Ecommerce Website</title>
     </head>
     <body>
         <!--=============== HEADER ===============-->
@@ -58,26 +61,18 @@
                         />
                 </a>
                 <div class="nav__menu" id="nav-menu">
-                    <div class="nav__menu-top">
-                        <a href="index.html" class="nav__menu-logo">
-                            <img src="./assets/img/logo.svg" alt="">
-                        </a>
-                        <div class="nav__close" id="nav-close">
-                            <i class="fi fi-rs-cross-small"></i>
-                        </div>
-                    </div>
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="home" class="nav__link active-link">Home</a>
+                            <a href="home" class="nav__link">Home</a>
                         </li>
                         <li class="nav__item">
                             <a href="allProducts" class="nav__link">Shop</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">My Account</a>
+                            <a href="" class="nav__link">My Account</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">Compare</a>
+                            <a href="" class="nav__link">Compare</a>
                         </li>
                         <li class="nav__item">
                             <a href="logout" class="nav__link">Login</a>
@@ -95,7 +90,7 @@
                     </div>
                 </div>
                 <div class="header__user-actions">
-                    <a href="wishlist.html" class="header__action-btn" title="Wishlist">
+                    <a href="#" class="header__action-btn" title="Wishlist">
                         <img src="https://billalben.github.io/evara-ecommerce/assets/img/icon-heart.svg" alt="" />
                         <span class="count">3</span>
                     </a>
@@ -103,740 +98,215 @@
                         <img src="https://billalben.github.io/evara-ecommerce/assets/img/icon-cart.svg" alt="" />
                         <span class="count">3</span>
                     </a>
-                    <div class="header__action-btn nav__toggle" id="nav-toggle">
-                        <img src="https://billalben.github.io/evara-ecommerce/assets//img/menu-burger.svg" alt="">
-                    </div>
                 </div>
             </nav>
         </header>
 
         <!--=============== MAIN ===============-->
         <main class="main">
-            <!--=============== HOME ===============-->
-            <!--            <section class="home section--lg">
-                            <div class="home__container container grid">
-                                <div class="home__content">
-                                    <span class="home__subtitle">Hot Promotions</span>
-                                    <h1 class="home__title">
-                                        Fashion Trending <span>Great Collection</span>
-                                    </h1>
-                                    <p class="home__description">
-                                        Save more with coupons & up tp 20% off
-                                    </p>
-                                    <a href="allProducts" class="btn">Shop Now</a>
-                                </div>
-                                <img src="https://billalben.github.io/evara-ecommerce/assets/img/home-img.png" class="home__img" alt="hats" />
-                            </div>
-                        </section>-->
+            <!--=============== BREADCRUMB ===============-->
+            <section class="breadcrumb">
+                <ul class="breadcrumb__list flex container">
+                    <li><a href="home" class="breadcrumb__link">Home</a></li>
+                    <li><span class="breadcrumb__link"></span>></li>
+                    <li><a href="allProducts" class="breadcrumb__link">Shop</a></li>
+                    <li><span class="breadcrumb__link"></span>></li>
+                    <li><span class="breadcrumb__link">Cart</span></li>
+                </ul>
+            </section>
 
-            <!--=============== CATEGORIES ===============-->
-            <section class="categories container section">
-                <h3 class="section__title"><span>Your</span> Categories</h3>
-                <!--                <div class="categories__container swiper">
-                                    <div class="swiper-wrapper">
-                <c:forEach items="${listCate}" var="cate">
-                    <a href="home" class="category__item swiper-slide">
-                        <img
-                            src="assets/img/category-1.jpg"
-                            alt=""
-                            class="category__img"
-                            />
-                        <h3 class="category__title">${cate.categoryName}</h3>
+            <!--=============== CART ===============-->
+            <section class="cart section--lg container">
+                <div class="table__container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>
+                                <th>Rename</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%int count = 0;%>
+                            <c:forEach items="${listItem}" var="item" >
+                                <tr>
+                                    <td>
+                                        <a href="products/${item[1]}">
+                                            <!--class cu cua image la table__img-->
+                                            <img
+                                                src="${item[3]}"
+                                                alt=""
+                                                class="product__img w-150px"
+                                                />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <h3 class="table__title max-w-250px">
+                                            ${item[2]}
+                                        </h3>
+                                        <p class="table__description max-w-250px">
+                                            Lorem ipsum dolor sit amet consectetur.
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <span class="table__price font-bold">${item[5]} (VNĐ)</span>
+                                    </td>
+                                    <td>
+                                        <!--<input type="number" value="${item[4]}" class="quantity" />-->
+                                        <div style="color: black; font-weight: 100;" class="my-1">
+                                            <button class="border-solid px-2 rounded" 
+                                                    type="button" id="button-minus<%=++count%>"
+                                                    onclick="minus(<%=count%>, ${Integer.parseInt(item[5])})">
+                                                <i class="fas fa-minus text-sm"></i>
+                                            </button>
+                                            <input type="text" id="quantity-input<%=count%>" style="width: 40px" 
+                                                   oninput="input(<%=count%>, ${Integer.parseInt(item[5])})"
+                                                   class="text-center font-medium"" value="${item[4]}"/>
+                                            <button class="border-solid px-2 my-1 rounded" 
+                                                    type="button" id="button-plus<%=count%>" 
+                                                    onclick="plus(<%=count%>, ${Integer.parseInt(item[5])})">
+                                                <i class="fas fa-plus text-sm"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="subtotal table__price">
+                                            <input type="text" id="subtotal<%=count%>" disabled
+                                                   class="text-center font-bold" 
+                                                   value="${Integer.parseInt(item[5])} (VNĐ)" />
+                                        </span>
+                                    </td>
+                                    <td><i class="fi fi-rs-trash table__trash"></i></td>
+                                </tr>
+                            </c:forEach>
+                            <!--up-->
+                        <script>
+                            function plus(count, price) {
+                                var quantityInput = document.getElementById('quantity-input' + count);
+                                var subtotal = document.getElementById('subtotal' + count);
+                                var currentValue = parseInt(quantityInput.value) || 0;
+                                var subtotalValue = parseFloat(subtotal.value);
+                                subtotal.value = price * (currentValue + 1) + " (VNĐ)";
+                                quantityInput.value = currentValue + 1;
+                            }
+                            ;
+                            function minus(count, price) {
+                                var quantityInput = document.getElementById('quantity-input' + count);
+                                var subtotal = document.getElementById('subtotal' + count);
+                                var currentValue = parseInt(quantityInput.value) || 0;
+                                var subtotalValue = parseFloat(subtotal.value);
+                                if (currentValue > 0) {
+                                    subtotal.value = price * (currentValue - 1) + " (VNĐ)";
+                                    quantityInput.value = currentValue - 1;
+                                }
+                            }
+                            ;
+                            function input(count, price) {
+                                var quantityInput = document.getElementById('quantity-input' + count);
+                                var subtotal = document.getElementById('subtotal' + count);
+                                var currentValue = parseInt(quantityInput.value) || 0;
+                                var subtotalValue = parseFloat(subtotal.value);
+                                if (currentValue >= 0) {
+                                    subtotal.value = price * (currentValue) + " (VNĐ)";
+                                    quantityInput.value = currentValue;
+                                }else{
+                                    currentValue = 0;
+                                    subtotal.value = price * (currentValue) + " (VNĐ)";
+                                    quantityInput.value = currentValue;
+                                }
+                            }
+                            ;
+                        </script>
+                        <!--down-->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cart__actions">
+                    <a href="#" class="btn flex btn__md">
+                        <i class="fi-rs-shuffle"></i> Update Cart
                     </a>
-                </c:forEach>
-            </div>
+                    <a href="#" class="btn flex btn__md">
+                        <i class="fi-rs-shopping-bag"></i> Continue Shopping
+                    </a>
+                </div>
 
-            <div class="swiper-button-prev">
-                <i class="fi fi-rs-angle-left"></i>
-            </div>
-            <div class="swiper-button-next">
-                <i class="fi fi-rs-angle-right"></i>
-            </div>
-        </div>-->
-            </section>
+                <div class="divider">
+                    <i class="fi fi-rs-fingerprint"></i>
+                </div>
 
-            <!--=============== SHOW TABLE ===============-->
-
-            <div class="products__container grid">
-                <!--                listItem là List<String[]> và String[6] bao gồm
-                                (CartID,ProID,Pro_Name,Image,Quantity,Price)-->
-                <c:forEach items="${listPro}" var="item">
-                    <div class="product__item">
-                        <div class="product__banner">
-                            <a href="products/${item.proID}" class="product__images">
-                                <img
-                                    src="${item.image}"
-                                    alt=""
-                                    class="product__img default"
+                <div class="cart__group grid">
+                    <div>
+                        <div class="cart__shippinp">
+                            <h3 class="section__title">Calculate Shipping</h3>
+                            <form action="" class="form grid">
+                                <input
+                                    type="text"
+                                    class="form__input"
+                                    placeholder="State / Country"
                                     />
-                                <img
-                                    src="${item.image}"
-                                    alt=""
-                                    class="product__img hover"
-                                    />
-                            </a>
-                            <div class="product__actions">
-                                <a href="#" class="action__btn" aria-label="Quick View">
-                                    <i class="fi fi-rs-eye"></i>
-                                </a>
-                                <a
-                                    href="#"
-                                    class="action__btn"
-                                    aria-label="Add to Wishlist"
-                                    >
-                                    <i class="fi fi-rs-heart"></i>
-                                </a>
-                                <a href="#" class="action__btn" aria-label="Compare">
-                                    <i class="fi fi-rs-shuffle"></i>
-                                </a>
-                            </div>
-                            <div class="product__badge light-pink">Hot</div>
-                        </div>
-<!--                        <form action="addToCarts" method="POST"> 
-                            <input name="proID" value="${product.proID}" hidden="true" />
-                            <input name="from" value="home" hidden="true" />-->
-                            <div class="product__content">
-                                <span class="product__category">Clothing</span>
-                                <a href="details.html">
-                                    <h3 class="product__title">${item.proName}</h3>
-                                </a>
-                                <div class="product__rating">
-                                    <i class="fi fi-rs-star"></i>
-                                    <i class="fi fi-rs-star"></i>
-                                    <i class="fi fi-rs-star"></i>
-                                    <i class="fi fi-rs-star"></i>
-                                    <i class="fi fi-rs-star"></i>
+                                <div class="form__group grid">
+                                    <input type="text" class="form__input" placeholder="City" />
+                                    <input
+                                        type="text"
+                                        class="form__input"
+                                        placeholder="PostCode"
+                                        />
                                 </div>
-                                <div class="product__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
+                                <div class="form__btn">
+                                    <button class="btn flex btn--sm">
+                                        <i class="fi-rs-shuffle"></i> Update
+                                    </button>
                                 </div>
-
-                                <button 
-                                    class="action__btn cart__btn"
-                                    aria-label="Add To Cart"
-                                    type="submit"
-                                    >
-                                    <i class="fi fi-rs-shopping-bag-add"></i>
-                                </button>
-                            </div>
-                        <!--</form>-->
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="">
-                <h1 class="new__price">Total: ${sum} VNĐ</h1>
-            </div>
-            <!--=============== PRODUCTS ===============-->
-            <!--            <section class="products container section">
-                            <div class="tab__btns">
-                                <span class="tab__btn active-tab" data-target="#featured"
-                                      >Featured</span
-                                >
-                                <span class="tab__btn" data-target="#popular">Popular</span>
-                                <span class="tab__btn" data-target="#new-added">New Added</span>
-                            </div>
-            
-                            <div class="tab__items">
-                                <div class="tab__item active-tab" content id="featured">
-                                    <div class="products__container grid">
-            
-                                        display product
-            <c:forEach items="${list}" var="product">
-                <div class="product__item">
-                    <div class="product__banner">
-                        <a href="products/${product.proID}" class="product__images">
-                            <img
-                                src="${product.image}"
-                                alt=""
-                                class="product__img default"
-                                />
-                            <img
-                                src="${product.image}"
-                                alt=""
-                                class="product__img hover"
-                                />
-                        </a>
-                        <div class="product__actions">
-                            <a href="#" class="action__btn" aria-label="Quick View">
-                                <i class="fi fi-rs-eye"></i>
-                            </a>
-                            <a
-                                href="#"
-                                class="action__btn"
-                                aria-label="Add to Wishlist"
-                                >
-                                <i class="fi fi-rs-heart"></i>
-                            </a>
-                            <a href="#" class="action__btn" aria-label="Compare">
-                                <i class="fi fi-rs-shuffle"></i>
-                            </a>
+                            </form>
                         </div>
-                        <div class="product__badge light-pink">Hot</div>
-                    </div>
-                    <form action="addToCarts" method="POST"> 
-                        <input name="proID" value="${product.proID}" hidden="true" />
-                        <input name="from" value="home" hidden="true" />
-                        <div class="product__content">
-                            <span class="product__category">Clothing</span>
-                            <a href="details.html">
-                                <h3 class="product__title">${product.proName}</h3>
-                            </a>
-                            <div class="product__rating">
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                            </div>
-                            <div class="product__price flex">
-                                <span class="new__price">$238.85</span>
-                                <span class="old__price">$245.8</span>
-                            </div>
-
-                            <button 
-                                class="action__btn cart__btn"
-                                aria-label="Add To Cart"
-                                type="submit"
-                                >
-                                <i class="fi fi-rs-shopping-bag-add"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="tab__item" content id="popular">
-        <div class="products__container grid">
-            <c:forEach items="${list2}" var="product">
-                <div class="product__item">
-                    <div class="product__banner">
-                        <a href="products/${product.proID}" class="product__images">
-                            <img
-                                src="${product.image}"
-                                alt=""
-                                class="product__img default"
-                                />
-                            <img
-                                src="${product.image}"
-                                alt=""
-                                class="product__img hover"
-                                />
-                        </a>
-                        <div class="product__actions">
-                            <a href="#" class="action__btn" aria-label="Quick View">
-                                <i class="fi fi-rs-eye"></i>
-                            </a>
-                            <a
-                                href="#"
-                                class="action__btn"
-                                aria-label="Add to Wishlist"
-                                >
-                                <i class="fi fi-rs-heart"></i>
-                            </a>
-                            <a href="#" class="action__btn" aria-label="Compare">
-                                <i class="fi fi-rs-shuffle"></i>
-                            </a>
-                        </div>
-                        <div class="product__badge light-pink">Hot</div>
-                    </div>
-                    <form action="addToCarts" method="POST"> 
-                        <input name="proID" value="${product.proID}" hidden="true" />
-                        <input name="from" value="home" hidden="true" />
-                        <div class="product__content">
-                            <span class="product__category">Clothing</span>
-                            <a href="details.html">
-                                <h3 class="product__title">${product.proName}</h3>
-                            </a>
-                            <div class="product__rating">
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                            </div>
-                            <div class="product__price flex">
-                                <span class="new__price">$238.85</span>
-                                <span class="old__price">$245.8</span>
-                            </div>
-                            <button
-                                class="action__btn cart__btn"
-                                aria-label="Add To Cart"
-                                >
-                                <i class="fi fi-rs-shopping-bag-add"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="tab__item" content id="new-added">
-        <div class="products__container grid">
-            <c:forEach items="${list2}" var="product">
-                <div class="product__item">
-                    <div class="product__banner">
-                        <a href="products/${product.proID}" class="product__images">
-                            <img
-                                src="${product.image}"
-                                alt=""
-                                class="product__img default"
-                                />
-                            <img
-                                src="${product.image}"
-                                alt=""
-                                class="product__img hover"
-                                />
-                        </a>
-                        <div class="product__actions">
-                            <a href="#" class="action__btn" aria-label="Quick View">
-                                <i class="fi fi-rs-eye"></i>
-                            </a>
-                            <a
-                                href="#"
-                                class="action__btn"
-                                aria-label="Add to Wishlist"
-                                >
-                                <i class="fi fi-rs-heart"></i>
-                            </a>
-                            <a href="#" class="action__btn" aria-label="Compare">
-                                <i class="fi fi-rs-shuffle"></i>
-                            </a>
-                        </div>
-                        <div class="product__badge light-pink">Hot</div>
-                    </div>
-                    <form action="addToCarts" method="POST"> 
-                        <input name="proID" value="${product.proID}" hidden="true" />
-                        <input name="from" value="home" hidden="true" />
-                        <div class="product__content">
-                            <span class="product__category">Clothing</span>
-                            <a href="details.html">
-                                <h3 class="product__title">${product.proName}</h3>
-                            </a>
-                            <div class="product__rating">
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                                <i class="fi fi-rs-star"></i>
-                            </div>
-                            <div class="product__price flex">
-                                <span class="new__price">$238.85</span>
-                                <span class="old__price">$245.8</span>
-                            </div>
-                            <button
-                                class="action__btn cart__btn"
-                                aria-label="Add To Cart"
-                                >
-                                <i class="fi fi-rs-shopping-bag-add"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-</div>
-</section>-->
-
-            <!--=============== DEALS ===============-->
-            <section class="deals section">
-                <div class="deals__container container grid">
-                    <div class="deals__item">
-                        <div class="deals__group">
-                            <h3 class="deals__brand">Deals of the Day</h3>
-                            <span class="deals__category">Limited quantities</span>
-                        </div>
-                        <h4 class="deals__title">Summer Collection New Modern Design</h4>
-                        <div class="deals__price flex">
-                            <span class="new__price">$139.00</span>
-                            <span class="old__price">$160.99</span>
-                        </div>
-                        <div class="deals__group">
-                            <p class="deals__countdown-text">Hurry Up! Offer Ends In:</p>
-                            <div class="countdown">
-                                <div class="countdown__amount">
-                                    <p class="countdown__period">02</p>
-                                    <span class="unit">Days</span>
-                                </div>
-                                <div class="countdown__amount">
-                                    <p class="countdown__period">22</p>
-                                    <span class="unit">Hours</span>
-                                </div>
-                                <div class="countdown__amount">
-                                    <p class="countdown__period">57</p>
-                                    <span class="unit">Mins</span>
-                                </div>
-                                <div class="countdown__amount">
-                                    <p class="countdown__period">28</p>
-                                    <span class="unit">Sec</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals__btn">
-                            <a href="details.html" class="btn btn--md">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="deals__item">
-                        <div class="deals__group">
-                            <h3 class="deals__brand">Women Clothing</h3>
-                            <span class="deals__category">Shirts & Bag</span>
-                        </div>
-                        <h4 class="deals__title">Try Something new on vacation</h4>
-                        <div class="deals__price flex">
-                            <span class="new__price">$178.00</span>
-                            <span class="old__price">$256.99</span>
-                        </div>
-                        <div class="deals__group">
-                            <p class="deals__countdown-text">Hurry Up! Offer Ends In:</p>
-                            <div class="countdown">
-                                <div class="countdown__amount">
-                                    <p class="countdown__period">02</p>
-                                    <span class="unit">Days</span>
-                                </div>
-                                <div class="countdown__amount">
-                                    <p class="countdown__period">22</p>
-                                    <span class="unit">Hours</span>
-                                </div>
-                                <div class="countdown__amount">
-                                    <p class="countdown__period">57</p>
-                                    <span class="unit">Mins</span>
-                                </div>
-                                <div class="countdown__amount">
-                                    <p class="countdown__period">28</p>
-                                    <span class="unit">Sec</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals__btn">
-                            <a href="details.html" class="btn btn--md">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--=============== NEW ARRIVALS ===============-->
-            <section class="new__arrivals container section">
-                <h3 class="section__title"><span>New</span> Arrivals</h3>
-                <div class="new__container swiper">
-                    <div class="swiper-wrapper">
-                        <c:forEach items="${list2}" var="product">
-                            <div class="product__item swiper-slide">
-                                <div class="product__banner">
-                                    <a href="products/${product.proID}" class="product__images">
-                                        <img
-                                            src="${product.image}"
-                                            alt=""
-                                            class="product__img default"
-                                            />
-                                        <img
-                                            src="${product.image}"
-                                            alt=""
-                                            class="product__img hover"
-                                            />
-                                    </a>
-                                    <div class="product__actions">
-                                        <a href="#" class="action__btn" aria-label="Quick View">
-                                            <i class="fi fi-rs-eye"></i>
-                                        </a>
-                                        <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                                            <i class="fi fi-rs-heart"></i>
-                                        </a>
-                                        <a href="#" class="action__btn" aria-label="Compare">
-                                            <i class="fi fi-rs-shuffle"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product__badge light-pink">Hot</div>
-                                </div>
-                                <form action="addToCarts" method="POST"> 
-                                    <input name="proID" value="${product.proID}" hidden="true" />
-                                    <input name="from" value="home" hidden="true" />
-                                    <div class="product__content">
-                                        <span class="product__category">Clothing</span>
-                                        <a href="details.html">
-                                            <h3 class="product__title">${product.proName}</h3>
-                                        </a>
-                                        <div class="product__rating">
-                                            <i class="fi fi-rs-star"></i>
-                                            <i class="fi fi-rs-star"></i>
-                                            <i class="fi fi-rs-star"></i>
-                                            <i class="fi fi-rs-star"></i>
-                                            <i class="fi fi-rs-star"></i>
-                                        </div>
-                                        <div class="product__price flex">
-                                            <span class="new__price">$238.85</span>
-                                            <span class="old__price">$245.8</span>
-                                        </div>
-                                        <button
-                                            class="action__btn cart__btn"
-                                            aria-label="Add To Cart"
-                                            >
-                                            <i class="fi fi-rs-shopping-bag-add"></i>
+                        <div class="cart__coupon">
+                            <h3 class="section__title">Apply Coupon</h3>
+                            <form action="" class="coupon__form form grid">
+                                <div class="form__group grid">
+                                    <input
+                                        type="text"
+                                        class="form__input"
+                                        placeholder="Enter Your Coupon"
+                                        />
+                                    <div class="form__btn">
+                                        <button class="btn flex btn--sm">
+                                            <i class="fi-rs-label"></i> Aplly
                                         </button>
                                     </div>
-                                </form>
-                            </div>
-                        </c:forEach>
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
-                    <div class="swiper-button-prev">
-                        <i class="fi fi-rs-angle-left"></i>
-                    </div>
-                    <div class="swiper-button-next">
-                        <i class="fi fi-rs-angle-right"></i>
-                    </div>
-                </div>
-            </section>
-
-            <!--=============== SHOWCASE ===============-->
-            <section class="showcase section">
-                <div class="showcase__container container grid">
-                    <div class="showcase__wrapper">
-                        <h3 class="section__title">Hot Releases</h3>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-1.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Floral Print Casual Cotton Dress
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-2.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Ruffled Solid Long Sleeve Blouse
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-3.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Multi-Color Print V-neck T-shirt
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="showcase__wrapper">
-                        <h3 class="section__title">Deals & Outlet</h3>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-4.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Fish Print Patched T-shirt</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-5.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Fintage Floral Print Dress</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-6.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Multi-Color Stripe Circle T-shirt
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="showcase__wrapper">
-                        <h3 class="section__title">Top Selling</h3>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-7.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Geometric Printed Long Sleeve Blouse
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-8.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Print Patchwork Maxi Dress</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-9.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">
-                                        Daisy Floral Print Straps Jumpsuit
-                                    </h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="showcase__wrapper">
-                        <h3 class="section__title">Trendy</h3>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-7.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Floral Print Casual Cotton</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-8.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Ruffled Solid Long Sleeve</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showcase__item">
-                            <a href="details.html" class="showcase__img-box">
-                                <img
-                                    src="./assets/img/showcase-img-9.jpg"
-                                    alt=""
-                                    class="showcase__img"
-                                    />
-                            </a>
-                            <div class="showcase__content">
-                                <a href="details.html">
-                                    <h4 class="showcase__title">Multi-Color Print V-neck</h4>
-                                </a>
-                                <div class="showcase__price flex">
-                                    <span class="new__price">$238.85</span>
-                                    <span class="old__price">$245.8</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="cart__total">
+                        <h3 class="section__title">Cart Totals</h3>
+                        <table class="cart__total-table">
+                            <tr>
+                                <td><span class="cart__total-title">Cart Subtotal</span></td>
+                                <td><span class="cart__total-price">$240.00</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="cart__total-title">Shipping</span></td>
+                                <td><span class="cart__total-price">$10.00</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="cart__total-title">Total</span></td>
+                                <td><span class="cart__total-price">$250.00</span></td>
+                            </tr>
+                        </table>
+                        <a href="checkout.html" class="btn flex btn--md">
+                            <i class="fi fi-rs-box-alt"></i> Proceed To Checkout
+                        </a>
                     </div>
                 </div>
             </section>
 
             <!--=============== NEWSLETTER ===============-->
-            <section class="newsletter section home__newsletter">
+            <section class="newsletter section">
                 <div class="newsletter__container container grid">
                     <h3 class="newsletter__title flex">
                         <img

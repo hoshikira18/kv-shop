@@ -5,6 +5,7 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -19,6 +20,8 @@ public class Product {
     int supID;
     int inventory;
     Date create_at;
+    String size;
+    String description;
 
     public Product() {
     }
@@ -31,7 +34,7 @@ public class Product {
         this.supID = supID;
         this.inventory = inventory;
     }
-    
+
     public Product(int id, String proName, String image, double price) {
         this.proID = id;
         this.proName = proName;
@@ -55,6 +58,18 @@ public class Product {
         this.supID = supID;
         this.inventory = inventory;
         this.create_at = create_At;
+    }
+
+    public Product(int proID, String proName, String image, double price, int supID, int inventory, Date create_at, String size, String description) {
+        this.proID = proID;
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+        this.supID = supID;
+        this.inventory = inventory;
+        this.create_at = create_at;
+        this.size = size;
+        this.description = description;
     }
 
     public int getProID() {
@@ -113,12 +128,29 @@ public class Product {
         this.create_at = create_at;
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String forUpdate() {
         String space = ", ";
         String string = "set ProName = '" + proName + "'" + space + "Image = '"
                 + image + "'" + space
                 + "Price = " + price + space + "SupID = "
-                + supID + space + "Inventory = " + inventory;
+                + supID + space + "Inventory = " + inventory + space
+                + "Size = '" + size + "'" + space + "Description = '" + description + "'";
         return string;
     }
 
@@ -126,17 +158,17 @@ public class Product {
         String newName = checkName();
         String insert = "";
         insert = "('" + newName + "', '" + image + "', " + price + ", "
-                + supID + ", " + inventory + ")";
+                + supID + ", " + inventory + ", '" + size + "', '" + description + "')";
         return insert;
     }
-    
-    private String checkName(){
+
+    private String checkName() {
         String newName = "";
-        if(!this.proName.contains("'")){
+        if (!this.proName.contains("'")) {
             return this.proName;
-        }else{
+        } else {
             String[] list = this.proName.split("[']");
-            for (int i = 0; i < list.length-1; i++) {
+            for (int i = 0; i < list.length - 1; i++) {
                 newName += list[i];
                 newName += "''";
             }
