@@ -27,7 +27,7 @@ public class UpdateCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        Log log = new Log(this.getClass().getName(), req);
+        Log log = new Log(this.getClass().getName(), req, 0, false);
         ///// get information
         out.println("Check Post");
         String pathInfo = req.getPathInfo();

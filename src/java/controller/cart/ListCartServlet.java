@@ -43,7 +43,7 @@ public class ListCartServlet extends HttpServlet {
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
 
-        out.println("TEST SHOW CART GET");
+        out.println("SHOW CART GET");
 
         out.println(u.getUserID() + "-" + u.getUserName() + "-" + u.getPhoneNumber());
         Cart_ItemDAO cid = new Cart_ItemDAO();
@@ -66,16 +66,6 @@ public class ListCartServlet extends HttpServlet {
 //            out.println(record[1] + "-" + record[4] + "-" + record[5]);
         }
         String result = String.format("%.0f", sum);
-//        sum = Integer.parseInt(String.format("%.3f", sum));
-//        out.println("\nPRODUCTS\n");
-//        out.printf("%.3f",sum);
-//        out.println(sum);
-//        out.println("\nAFTER SORT\n");
-
-//        for (Product product : listPro) {
-//            out.println(product.getProID() + "-" +product.getPrice());
-//        }
-//        
         req.setAttribute("userID", u.getUserID());
         req.setAttribute("cartID", cartID);
         req.setAttribute("listItem", listMain);
