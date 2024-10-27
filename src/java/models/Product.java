@@ -25,7 +25,7 @@ public class Product {
     int cateID;
     int inventory;
     Date create_at;
-    String size;
+    String size = "";
     String description;
 
     public Product() {
@@ -227,7 +227,7 @@ public class Product {
 
     public String forUpdate() {
         String space = ", ";
-        String string = "set ProName = '" + proName + "'" + space + "Image = '"
+        String string = "set Pro_Name = '" + proName + "'" + space + "Image = '"
                 + image + "'" + space
                 + "Price = " + price + space + "SupID = "
                 + supID + space + "Inventory = " + inventory + space

@@ -48,23 +48,24 @@ public class EditServlet extends HttpServlet {
         request.setAttribute("id", id);
         Product product = new ProductDAO().getOne(Integer.parseInt(id));
         List<Product> relatedProducts = new ProductDAO().getProductsByCategory(11);
-        
+
         // get list suppliers and categories
         SupplierDAO sd = new SupplierDAO();
         List<Supplier> ss = sd.getAllSuppliers();
-        
+
         CategoriesController cc = new CategoriesController();
         List<Category> cs = cc.getAllCategories();
 
         request.setAttribute("ss", ss);
         request.setAttribute("cs", cs);
         
+//        out.print(product.getImage());
+
         request.setAttribute("product", product);
         request.setAttribute("relatedProducts", relatedProducts);
         request.getRequestDispatcher("/admin/products/edit.jsp").forward(request, response);
     }
-    
-    
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Get the full path info (e.g., "/pid_1234")
@@ -77,19 +78,24 @@ public class EditServlet extends HttpServlet {
         Log log = new Log(this.getClass().getName(), request, Integer.parseInt(id));
         request.setAttribute("id", id);
         Product product = new ProductDAO().getOne(Integer.parseInt(id));
-        
+
         int proID = Integer.parseInt(id);
         String productName = (String) request.getParameter("product-name");
         int supplierID = Integer.parseInt(request.getParameter("product-supplier"));
         int categoryID = Integer.parseInt(request.getParameter("product-category"));
         int price = Integer.parseInt(request.getParameter("product-price"));
         int inventory = Integer.parseInt(request.getParameter("product-inventory"));
-//        String image = this.image((Part) request.getPart("product-image"));
+        String image = this.image((Part) request.getPart("product-image"));
+        if(image == null || image.length() == 0){
+            String oldImage = product.getImage();
+            image = oldImage.split("data:image/jpeg;base64,")[1];
+        }
 
         ProductsController pc = new ProductsController();
-        Product updatedProduct = new Product(proID, productName, "image", price, supplierID, 11, inventory, "X, XL", "asd", "asd", "asd");
+        Product updatedProduct = new Product(proID, productName, image, price, supplierID, 11, inventory, "X, XL", "asd", "asd", "asd");
         pc.updateProduct(updatedProduct);
         
+
         // get list suppliers and categories
         SupplierDAO sd = new SupplierDAO();
         List<Supplier> ss = sd.getAllSuppliers();
@@ -100,11 +106,11 @@ public class EditServlet extends HttpServlet {
         request.setAttribute("ss", ss);
         request.setAttribute("cs", cs);
         
-        request.setAttribute("product", product);
+        request.setAttribute("product", updatedProduct);
         out.print(productName);
         request.getRequestDispatcher("/admin/products/edit.jsp").forward(request, response);
     }
-    
+
     public String image(Part part) throws IOException {
 
         long length = part.getSize();
