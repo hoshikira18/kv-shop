@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/prj-ass/KVShop/src/java/models/Supplier.java</file>
             <file>file:/D:/prj-ass/KVShop/src/java/models/ProductDAO.java</file>
             <file>file:/D:/prj-ass/KVShop/web/admin/products.jsp</file>
@@ -15,19 +14,6 @@
             <file>file:/D:/prj-ass/KVShop/src/java/controller/admin/products/CreateServlet.java</file>
             <file>file:/D:/prj-ass/KVShop/src/java/models/Product.java</file>
             <file>file:/D:/prj-ass/KVShop/web/admin/products/edit.jsp</file>
-=======
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/cart/AddToCart.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/DBContext.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/cart/DeleteItemServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/web/product/product-detail.jsp</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/ProductDetail.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/Product.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/web/home.jsp</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/web/cart.jsp</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/cart/ListCartServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/controller/cart/UpdateCartServlet.java</file>
-            <file>file:/D:/02.LearningDocument/SE%20IV/PRJ/Assignment/kv-shop/src/java/models/ProductDAO.java</file>
->>>>>>> 38d96d95b08a4955a2c8eded10a9910bdc6f3b72
         </group>
     </open-files>
 </project-private>

@@ -43,6 +43,17 @@ public class Product {
         this.size = size;
         this.description = description;
     }
+    
+    public Product( String proName, String image, double price, String supName, String cateName, int inventory, String size, String description) {
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+        this.supName = supName;
+        this.cateName = cateName;
+        this.inventory = inventory;
+        this.size = size;
+        this.description = description;
+    }
 
     public Product(int id, String proName, String image, double price, int supID, int inventory) {
         this.proID = id;
@@ -68,6 +79,16 @@ public class Product {
         this.inventory = inventory;
     }
 
+    public Product(String proName, String image, double price, int supID, int inventory, String size, String description) {
+        this.proName = proName;
+        this.image = image;
+        this.price = price;
+        this.supID = supID;
+        this.inventory = inventory;
+        this.size = size;
+        this.description = description;
+    }
+ 
     public Product(int proID, String proName, String image, double price, int supID, int inventory, Date create_At) {
         this.proID = proID;
         this.proName = proName;
