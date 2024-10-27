@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -44,9 +45,13 @@ public class SignInServlet extends HttpServlet {
         //get user infor
         String phone = req.getParameter("phone");
         String pw = req.getParameter("password");
+        
+        PrintWriter out = resp.getWriter();
+
 
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
+        out.print(u.getPhoneNumber());
 
         if (u.getPassword().equals(pw)) {
             // Tao session

@@ -184,7 +184,11 @@
                                                    value="${Integer.parseInt(item[5])*Integer.parseInt(item[4])} (VNĐ)" />
                                         </span>
                                     </td>
-                                    <td><i class="fi fi-rs-trash table__trash" onclick="" ></i></td>
+                                    <td>
+                                        <a href="deleteItem?id=${item[1]}">
+                                            <i class="fi fi-rs-trash table__trash" onclick="" ></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             <!--up-->
@@ -241,8 +245,8 @@
                                         let values = item.split(" ")[0];
                                         total += parseInt(values);
                                     }
-                                    sum.value = total +" (VNĐ)";
-                                    sum2.value = (total +10000) + " (VNĐ)";
+                                    sum.value = total + " (VNĐ)";
+                                    sum2.value = (total + 10000) + " (VNĐ)";
 
                                 }
                                 ;
