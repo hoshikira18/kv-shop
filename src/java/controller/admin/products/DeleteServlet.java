@@ -4,7 +4,6 @@
  */
 package controller.admin.products;
 
-import controller.CategoriesController;
 import controller.ProductsController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -13,23 +12,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Base64;
 import java.util.List;
-import models.Category;
-import models.Log;
 import models.Product;
-import models.Supplier;
-import models.SupplierDAO;
-import jakarta.servlet.http.Part;
-import java.io.ByteArrayOutputStream;
 
 /**
  *
  * @author khuye
  */
-@WebServlet(urlPatterns = {"/admin/products/delete-product"})
+@WebServlet(urlPatterns = {"/admin/delete-product"})
 @MultipartConfig
 public class DeleteServlet extends HttpServlet {
 

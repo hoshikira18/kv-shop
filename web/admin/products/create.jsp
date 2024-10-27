@@ -39,6 +39,10 @@
                 </div>
             </div>
             <div>
+                <label class=" block pb-2">Description </label>
+                <textarea name="product-description" value="" required="true" class="w-full border-2 px-2 py-1 outline-none rounded-md border-black/60" placeholder="Product A"></textarea>
+            </div>
+            <div>
                 <label class="block pb-2">Category</label>
                 <select name="product-category" class="w-full border-2 border-black/60 px-2 py-1 rounded-md">
                     <c:forEach items="${cs}" var="category">
@@ -56,10 +60,18 @@
                     <input name="product-inventory" value="" required="true" class="w-full border-2 px-2 py-1 outline-none rounded-md border-black/60" placeholder="100" />
                 </div>
             </div>
-            <div>
-                <label class="block pb-2">Image</label>
-                <input type="file" name="product-image" class="w-full border-2 outline-none rounded-sm border-black/60"/>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block pb-2">Size</label>
+                    <input type="text" placeholder="X, XL, M" name="product-size" class="w-full border-2 px-2 py-1 outline-none rounded-md border-black/60"/>
+                </div>
+
+                <div>
+                    <label class="block pb-2">Image</label>
+                    <input type="file" name="product-image" class="w-full border-2 outline-none rounded-sm border-black/60"/>
+                </div>
             </div>
+
         </div>
 
         <input class="bg-black p-2 text-white rounded-md cursor-pointer" type="submit" value="Create" />

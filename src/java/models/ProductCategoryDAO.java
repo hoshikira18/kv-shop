@@ -128,4 +128,32 @@ public class ProductCategoryDAO extends MyDAO {
             System.out.println(e);
         }
     }
+    
+    public void deleteByCategoryID(int CategoryID) {
+        xSql = "delete from ProductCategories where CategoryID = " + CategoryID;
+        try {
+            PreparedStatement connect = connection.prepareStatement(xSql);
+            ResultSet result = connect.executeQuery();
+
+            connect.close();
+            result.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void deleteByProductID(int ProductID) {
+        xSql = "delete from ProductCategories where ProID = " + ProductID;
+        try {
+            PreparedStatement connect = connection.prepareStatement(xSql);
+            ResultSet result = connect.executeQuery();
+
+            connect.close();
+            result.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    
 }
