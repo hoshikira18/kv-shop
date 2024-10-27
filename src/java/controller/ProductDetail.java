@@ -37,8 +37,11 @@ public class ProductDetail extends HttpServlet {
         Log log = new Log(this.getClass().getName(), request, Integer.parseInt(id));
         request.setAttribute("id", id);
         Product product = new ProductDAO().getOne(Integer.parseInt(id));
+        String [] sizes = product.getSize().split(",");
         List<Product> relatedProducts = new ProductDAO().getProductsByCategory(11);
         request.setAttribute("product", product);
+                request.setAttribute("sizes", sizes);
+
         request.setAttribute("relatedProducts", relatedProducts);
         request.getRequestDispatcher("/product/product-detail.jsp").forward(request, response);
     }
