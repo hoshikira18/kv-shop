@@ -99,4 +99,5 @@ set Quantity = 1 where CartID = 11 and ProID = 2
 delete from Cart_Items where ItemID = 13
 
 ---
+update Products set Image = (select top 1 Image from Products where ProID = 1) where ProID = 26
 select Image from Products where ProID = 26

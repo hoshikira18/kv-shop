@@ -23,7 +23,8 @@
 
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="./assets/css/styles.css" />
-
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <title>Ecommerce Website</title>
     </head>
     <body>
@@ -115,7 +116,7 @@
             <!--=============== BREADCRUMB ===============-->
             <section class="breadcrumb">
                 <ul class="breadcrumb__list flex container">
-                    <li><a href="index.html" class="breadcrumb__link">Home</a></li>
+                    <li><a href="home" class="breadcrumb__link">Home</a></li>
                     <li><span class="breadcrumb__link"></span>></li>
                     <li><span class="breadcrumb__link">Shop</span></li>
                 </ul>
@@ -123,9 +124,9 @@
 
             <!--=============== PRODUCTS ===============-->
             <section class="products container section--lg">
-                <p class="total__products">We found <span>${allProducts.size()}</span> items for you!</p>
+                <p class="total__products">We found <span>${list2.size()}</span> items for you!</p>
                 <div class="products__container grid">
-                    <c:forEach items="${allProducts}" var="product">
+                    <c:forEach items="${list2}" var="product">
                         <div class="product__item">
                             <div class="product__banner">
                                 <a href="products/${product.proID}" class="product__images">
@@ -187,17 +188,25 @@
                         </div>
                     </c:forEach>
                 </div>
+                <div>
+                    <form action="loadMore" method="POST">
+                        <input type="text" name="loadCount" value="${loadCount}" hidden="true"/>
+                        <button type="submit" class="btn flex btn--sm" style="margin: 30px auto;">
+                            Load More
+                        </button>
+                    </form>
+                </div>
 
-                <ul class="pagination">
-                    <li><a href="#" class="pagination__link active">01</a></li>
-                    <li><a href="#" class="pagination__link">02</a></li>
-                    <li><a href="#" class="pagination__link">03</a></li>
-                    <li><a href="#" class="pagination__link">...</a></li>
-                    <li><a href="#" class="pagination__link">16</a></li>
-                    <li><a href="#" class="pagination__link icon">
-                            <i class="fi-rs-angle-double-small-right"></i>
-                        </a></li>
-                </ul>
+                <!--                <ul class="pagination">
+                                    <li><a href="#" class="pagination__link active">01</a></li>
+                                    <li><a href="#" class="pagination__link">02</a></li>
+                                    <li><a href="#" class="pagination__link">03</a></li>
+                                    <li><a href="#" class="pagination__link">...</a></li>
+                                    <li><a href="#" class="pagination__link">16</a></li>
+                                    <li><a href="#" class="pagination__link icon">
+                                            <i class="fi-rs-angle-double-small-right"></i>
+                                        </a></li>
+                                </ul>-->
             </section>
 
             <!--=============== NEWSLETTER ===============-->
