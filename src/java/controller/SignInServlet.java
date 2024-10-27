@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -47,6 +48,9 @@ public class SignInServlet extends HttpServlet {
 
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
+        
+        PrintWriter out = resp.getWriter();
+        out.print(u.getRoleID());
 
         if (u.getPassword().equals(pw)) {
             // Tao session
@@ -56,7 +60,7 @@ public class SignInServlet extends HttpServlet {
 
             // gọi log
             Log log = new Log(this.getClass().getName(), phone, pw, date, true);
-            if (u.getRoleID() == 1) {
+            if (u.getRoleID() == 1 || u.getRoleID() == 3) {
                 resp.sendRedirect("/shop/admin/products");
             } else {
                 ProductDAO pd = new ProductDAO();
