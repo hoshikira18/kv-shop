@@ -13,6 +13,7 @@ import models.*;
  */
 public class CategoriesController {
     CategoryDAO cd = new CategoryDAO();
+    ProductCategoryDAO pcd = new ProductCategoryDAO();
 
     public CategoriesController() {
     }
@@ -26,6 +27,7 @@ public class CategoriesController {
     }
     
     public void deleteCategory (int id) {
+        pcd.deleteByCategoryID(id);
         cd.delete(id);
     }
     
