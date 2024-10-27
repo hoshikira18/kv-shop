@@ -1,6 +1,6 @@
 <%-- 
-    Document   : products
-    Created on : Oct 11, 2024, 11:45:06 AM
+    Document   : categories
+    Created on : Oct 13, 2024, 1:36:38 PM
     Author     : khuye
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,10 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin | Products</title>
+        <title>Admin | Accounts</title>
         <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+
     </head>
-    <body class="py-10">
+    <body class="py-10 min-h-screen  px-5">
         <div class="space-x-5 text-center pb-10">
             <a href="/shop/admin/products">Products</a>
             <a href="/shop/admin/categories">Categories</a>
@@ -26,34 +27,30 @@
                 <p>Back
             </button>
             <div class="flex items-center justify-between py-2">
-                <h2 class="text-xl font-semibold mb-4">Products List</h2>
-                <a href="/shop/admin/products/create" class="block p-2 bg-black text-white rounded-md">Create new Product</a>
+                <h2 class="text-xl font-semibold mb-4">Accounts List</h2>
+                <a href="/shop/admin/accounts/create.jsp" class="block p-2 bg-black text-white rounded-md">Create new Accounts</a>
             </div>
             <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200 h-2/3 overflow-y-scroll">
+                <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <c:forEach items="${ps}" var="product">
+                        <c:forEach items="${adminUsers}" var="user">
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">${ps.indexOf(product) + 1}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <img class="w-20 h-20 rounded-md" src="${product.image}" alt="alt"/>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-nowrap">${product.proName}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">${adminUsers.indexOf(user)+1}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">${user.userName}</td>
                                 <td>
-                                    <a href="/shop/admin/edit-product/${product.proID}">Edit</button>
+                                    <a href="/shop/admin/edit-account/${user.userID}">Edit</button>
                                 </td>
                                 <td>
-                                    <form action="/shop/admin/delete-product" method="POST">
-                                        <input name="product-id" value="${product.proID}" hidden="true" />
+                                    <form action="/shop/admin/delete-account" method="POST">
+                                        <input name="user-id" value="${user.userID}" hidden="true" />
                                         <button type="submit">Delete</button>
                                     </form>
                                 </td>
@@ -63,5 +60,6 @@
                 </table>
             </div>
         </div>
+
     </body>
 </html>
