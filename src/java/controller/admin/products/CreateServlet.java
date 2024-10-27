@@ -12,8 +12,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -26,7 +24,7 @@ import models.Supplier;
 import models.SupplierDAO;
 import jakarta.servlet.http.Part;
 import java.io.ByteArrayOutputStream;
-import java.nio.file.Paths;
+
 
 /**
  *
