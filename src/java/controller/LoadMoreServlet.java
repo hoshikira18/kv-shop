@@ -23,27 +23,31 @@ import models.ProductDAO;
  *
  * @author VIET
  */
-@WebServlet(urlPatterns = {"/products"})
-public class ListProductsServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/loadMore"})
+public class LoadMoreServlet extends HttpServlet{
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        int loadCount = 1;
+        
+        String count = (String) req.getParameter("loadCount");
+        int loadCount = Integer.parseInt(count) + 1;
+        
         ProductDAO pd = new ProductDAO();
-        List<Product> allProducts = new ArrayList<>();
         CategoryDAO cc = new CategoryDAO();
         List<Category> listCate = cc.getAllCategories();
-
-        allProducts = new ProductDAO().getAllProducts();
-        List<Product> list2 = pd.getTop(8, "desc");
-
+        
+        List<Product> allProducts = pd.getAllProducts();
+        int getQuantity = loadCount * 8;
+        List<Product> list2 = pd.getTop(getQuantity, "desc");
+        
         req.setAttribute("list2", list2);
         req.setAttribute("loadCount", loadCount);
         Log log = new Log(this.getClass().getName(), req);
         req.setAttribute("allProducts", allProducts);
         req.getRequestDispatcher("products.jsp").forward(req, resp);
+        
     }
-
+    
+    
 }

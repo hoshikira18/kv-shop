@@ -138,6 +138,39 @@ public class Log {
         destroy();
 
     }
+    
+    public Log(String className, HttpServletRequest req, int proID, boolean isDelete) {
+        //get data from req
+        String phone = (String) req.getSession().getAttribute("phone");
+        String[] list = className.split("[.]");
+        // page name to write log by visit
+        String fileName = list[list.length - 1].split("Servlet")[0];
+        // page name to write log by sesstion
+        String systemFile = (String) req.getSession().getAttribute("runningSession");
+        //get user data
+        UserDAO ud = new UserDAO();
+        User u = ud.getUserByPhoneNumber(phone);
+        // create logger
+        logger = Logger.getLogger(className);
+        try {
+            init(fileName, systemFile);
+        } catch (ServletException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
+        }
+        String delete = "";
+        if(isDelete){
+            delete = " đã xóa CartItem có proID = " +proID + "khỏi Cart";
+        }else{
+            delete = " đã cập nhật Cart";
+        }
+        String infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
+                + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
+                +"\n"+u.getUserName()+delete;
+        
+        logger.info(infor);
+        destroy();
+
+    }
 
     public Log(String className, HttpServletRequest req, Product product, int categoryID) {
         //get data from req

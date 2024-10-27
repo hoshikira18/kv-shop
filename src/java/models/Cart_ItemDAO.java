@@ -203,4 +203,19 @@ public class Cart_ItemDAO extends MyDAO {
             System.out.println(e);
         }
     }
+    
+    public void delete(int userID, int proID){
+        xSql = "delete from Cart_Items where ProID = " + proID
+                + " and CartID = (select CartID from "
+                + "Carts where UserID = " + userID + ")";
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }

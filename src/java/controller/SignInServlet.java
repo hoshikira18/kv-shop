@@ -45,12 +45,13 @@ public class SignInServlet extends HttpServlet {
         //get user infor
         String phone = req.getParameter("phone");
         String pw = req.getParameter("password");
+        
+        PrintWriter out = resp.getWriter();
+
 
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
-        
-        PrintWriter out = resp.getWriter();
-        out.print(u.getRoleID());
+
 
         if (u.getPassword().equals(pw)) {
             // Tao session
