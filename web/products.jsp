@@ -73,7 +73,7 @@
                             <a href="products" class="nav__link active-link">Shop</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">My Account</a>
+                            <a href="editAccount" class="nav__link">My Account</a>
                         </li>
                         <li class="nav__item">
                             <a href="#" class="nav__link">Compare</a>
