@@ -51,7 +51,7 @@ public class SignInServlet extends HttpServlet {
 
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
-        out.print(u.getPhoneNumber());
+
 
         if (u.getPassword().equals(pw)) {
             // Tao session
@@ -61,7 +61,7 @@ public class SignInServlet extends HttpServlet {
 
             // gọi log
             Log log = new Log(this.getClass().getName(), phone, pw, date, true);
-            if (u.getRoleID() == 1) {
+            if (u.getRoleID() == 1 || u.getRoleID() == 3) {
                 resp.sendRedirect("/shop/admin/products");
             } else {
                 ProductDAO pd = new ProductDAO();

@@ -29,6 +29,7 @@
 
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="../assets/css/styles.css" />
+        <!--<link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>-->
 
         <title>Ecommerce Website</title>
     </head>
@@ -168,11 +169,7 @@
                                 <span class="save__price">25% Off</span>
                             </div>
                             <p class="short__description">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Voluptate, fuga. Quo blanditiis recusandae facere nobis cum optio,
-                                inventore aperiam placeat, quis maxime nam officiis illum? Optio
-                                et nisi eius, inventore impedit ratione sunt, cumque, eligendi
-                                asperiores iste porro non error?
+                                ${product.description} 
                             </p>
                             <ul class="products__list">
                                 <li class="list__item flex">
@@ -227,20 +224,14 @@
                             </div>
                             <div class="details__size flex">
                                 <span class="details__size-title">Size</span>
-                                <ul class="size__list">
-                                    <li>
-                                        <a href="#" class="size__link size-active">M</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="size__link">L</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="size__link">XL</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="size__link">XXL</a>
-                                    </li>
-                                </ul>
+                                <select name="size" class="p-2">
+                                    <c:forEach items="${sizes}" var="size">
+                                        <option>
+                                            <a href="#" class="size__link size-active">${size}</a>
+                                        </option>
+                                    </c:forEach>
+                                </select>
+
                             </div>
                             <div class="details__action">
                                 <input type="number" name="quantity" class="quantity" value="1" min="0"/>

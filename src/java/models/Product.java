@@ -27,11 +27,12 @@ public class Product {
     Date create_at;
     String size = "";
     String description;
-
+    
+    
     public Product() {
     }
-    
-    
+
+
     public Product(int proID, String proName, String image, double price, String supName, String cateName, int inventory, String size, String description) {
         this.proID = proID;
         this.proName = proName;

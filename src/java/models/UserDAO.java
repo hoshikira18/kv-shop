@@ -48,6 +48,35 @@ public class UserDAO extends MyDAO {
         return allUsers;
     }
 
+    public List<User> getAllAdmins() {
+        List<User> allUsers = new ArrayList<>();
+        xSql = "select * from Users where RoleID = " + 1;
+        try {
+            ps = connection.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = Integer.parseInt(rs.getString("userID"));
+                String userName = rs.getString("userName");
+                int age = Integer.parseInt(rs.getString("age"));
+                String phoneNumber = rs.getString("phoneNumber");
+                String address = rs.getString("address");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                int roleID = Integer.parseInt(rs.getString("roleID"));
+
+                User user = new User(ID, userName, age, phoneNumber, address,
+                        email, password, roleID);
+                allUsers.add(user);
+            }
+            ps.close();
+            rs.close();
+            return allUsers;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return allUsers;
+    }
+
     public User getOne(int id) {
         xSql = "select * from Users where UserID = " + id;
         User user = new User();
@@ -63,7 +92,7 @@ public class UserDAO extends MyDAO {
                 String email = result.getString("email");
                 String password = result.getString("password");
                 int roleID = Integer.parseInt(result.getString("roleID"));
-                Date create_At = Date.valueOf(result.getString("create_At"));
+                Date create_At =  result.getDate("Create_At");
 
                 user = new User(ID, userName, age, phoneNumber, address,
                         email, password, roleID, create_At);

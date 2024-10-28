@@ -44,7 +44,7 @@ public class RoleFilter implements Filter {
         role = (Integer) roleObj;
         
         // check role la admin hay customer
-        if (roleObj != null && role != 1) {
+        if (roleObj != null && role == 2) {
             httpResponse.sendRedirect("/shop/");
         } else {
             fc.doFilter(sr, sr1);
