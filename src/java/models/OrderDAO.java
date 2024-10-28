@@ -26,7 +26,7 @@ public class OrderDAO extends MyDAO {
             while (rs.next()) {
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
                 String status = rs.getString("Status");
 
@@ -51,7 +51,7 @@ public class OrderDAO extends MyDAO {
             if (rs.next()) {
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
                 String status = rs.getString("Status");
 
@@ -67,14 +67,14 @@ public class OrderDAO extends MyDAO {
 
     public List<Order> getOrdersByUser(int id) {
         List<Order> listOrders = new ArrayList<>();
-        xSql = "select * from Orders where UserID = " + id;
+        xSql = "select * from Orders where UserID = " + id + " order by Create_At desc";
         try {
             ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
                 String status = rs.getString("Status");
 
@@ -99,7 +99,7 @@ public class OrderDAO extends MyDAO {
             while (rs.next()) {
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
                 String status = rs.getString("Status");
 
@@ -182,14 +182,14 @@ public class OrderDAO extends MyDAO {
     
     public List<Order> getAllOrdersOfCustomer(int id){
         List<Order> list = new ArrayList<>();
-        xSql = "select * from Order_Items where UserID = " + id;
+        xSql = "select * from Orders where UserID = " + id;
         try {
             ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
             if (rs.next()) {
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int userID = Integer.parseInt(rs.getString("UserID"));
-                int total = Integer.parseInt(rs.getString("Total"));
+                double total = Double.parseDouble(rs.getString("Total"));
                 Date create_At = rs.getDate("Create_At");
                 String status = rs.getString("Status");
 

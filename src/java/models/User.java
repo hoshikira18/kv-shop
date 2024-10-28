@@ -160,10 +160,10 @@ public class User {
 
     public String forUpdate() {
         String space = ", ";
-        String string = "set userName = '" + userName + "'" + space + "age = " + age
-                + space + "phoneNumber = '" + phoneNumber + "'" + space
-                + "address = '" + address + "'" + space + "email = '"
-                + email + "'" + space + "password = '" + password + "'"
+        String string = "set userName = N'" + userName + "'" + space + "age = " + age
+                + space + "phoneNumber = N'" + phoneNumber + "'" + space
+                + "address = N'" + address + "'" + space + "email = N'"
+                + email + "'" + space + "password = N'" + password + "'"
                 + space + "roleID = " + roleID;
         return string;
     }
