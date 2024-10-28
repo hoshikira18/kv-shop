@@ -1,0 +1,2 @@
+Oct 28, 2024 12:02:04 PM models.Log <init>
+INFO: Người dùng Admin có UserName = VietNT và UserID = 12 đã tạo tài khoản thành công. Tài khoản mới có UserPhone: 1987654320, Email: a@gmail.com, UserName: Nguyen Van A, Password: 12345

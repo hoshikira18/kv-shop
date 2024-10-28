@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import models.Log;
 import models.User;
 import models.UserDAO;
 
@@ -29,11 +30,12 @@ public class ListServlet extends HttpServlet {
         UserDAO ud = new UserDAO();
 
         List<User> adminUsers = ud.getAllAdmins();
+        Log log = new Log(this.getClass().getName(), req);
 
         req.setAttribute("adminUsers", adminUsers);
-        
+
         req.getRequestDispatcher("/admin/accounts.jsp").forward(req, resp);
-        
+
     }
 
 }
