@@ -1,0 +1,40 @@
+Oct 29, 2024 3:59:23 PM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 3:59:23 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 3:59:28 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 2 và proName: Product 2
+Oct 29, 2024 3:59:33 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 31 và proID = 2 với số lượng = 9
+Oct 29, 2024 3:59:34 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 2 và proName: Product 2
+Oct 29, 2024 3:59:43 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 2khỏi Cart
+Oct 29, 2024 3:59:46 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 6khỏi Cart
+Oct 29, 2024 3:59:48 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 1khỏi Cart
+Oct 29, 2024 3:59:50 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 3khỏi Cart
+Oct 29, 2024 4:02:20 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 3khỏi Cart
+Oct 29, 2024 4:02:24 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 3khỏi Cart
+Oct 29, 2024 4:02:27 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 4:03:38 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 3khỏi Cart
+Oct 29, 2024 4:03:49 PM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 4:03:53 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

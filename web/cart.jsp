@@ -69,10 +69,10 @@
                             <a href="products" class="nav__link">Shop</a>
                         </li>
                         <li class="nav__item">
-                            <a href="" class="nav__link">My Account</a>
+                            <a href="editAccount" class="nav__link">My Account</a>
                         </li>
                         <li class="nav__item">
-                            <a href="" class="nav__link">Compare</a>
+                            <a href="#" class="nav__link">Compare</a>
                         </li>
                         <li class="nav__item">
                             <a href="logout" class="nav__link">Login</a>
@@ -117,7 +117,7 @@
 
             <!--=============== CART ===============-->
             <section class="cart section--lg container">
-                <form action="updateCarts" method="POST">
+                <form action="updateCarts" method="POST" id="cartItems">
                     <input type="text" name="userID" value="${userID}" hidden="true" />
                     <input type="text" name="cartID" value="${cartID}" hidden="true" />
                     <div class="table__container">
@@ -185,7 +185,7 @@
                                         </span>
                                     </td>
                                     <td>
-                                        <a href="deleteItem?id=${item[1]}">
+                                        <a href="deleteItem?cartID=${cartID}&id=${item[1]}">
                                             <i class="fi fi-rs-trash table__trash" onclick="" ></i>
                                         </a>
                                     </td>
@@ -257,9 +257,21 @@
                     </div>
 
                     <div class="cart__actions">
-                        <button href="updateCarts" class="btn flex btn__md">
+                        <button href="updateCarts" id="updateCartButton" onclick="updateButton()" class="btn flex btn__md">
                             <i class="fi-rs-shuffle"></i> Update Cart 
                         </button>
+                        <script>
+                            function updateButton() {
+                                var button = document.getElementById('updateCartButton');
+                                var length = ${length};
+                                if (length === 0) {
+                                    button.disabled = true;
+                                }else{
+                                    var form = document.getElementById("cartItems");
+                                    form.submit(); // Submit form
+                                }
+                            }
+                        </script>
                         <a href="products" class="btn flex btn__md">
                             <i class="fi-rs-shopping-bag"></i> Continue Shopping
                         </a>
@@ -320,7 +332,8 @@
                             <tr>
                                 <td><span class="cart__total-title">Cart Subtotal</span></td>
                                 <td><span class="cart__total-price">
-                                        <input type="text" id="sum" class="cart__total-price" value="${sum} (VNĐ)" />
+                                        <input type="text" id="sum" disabled="true"
+                                               class="cart__total-price" value="${sum} (VNĐ)" />
                                     </span></td>
                             </tr>
                             <tr>
@@ -330,13 +343,27 @@
                             <tr>
                                 <td><span class="cart__total-title">Total</span></td>
                                 <td><span class="cart__total-price">
-                                        <input type="text" id="sum2" class="cart__total-price" value="${sum + 10000} (VNĐ)" />
+                                        <input type="text" id="sum2" disabled="true"
+                                               class="cart__total-price" value="${sum + 10000} (VNĐ)" />
                                     </span></td>
                             </tr>
                         </table>
-                        <a href="checkout.html" class="btn flex btn--md">
+                        <button id="checkOutButton" onclick="changeActionAndSubmit()" class="btn flex btn--md">
                             <i class="fi fi-rs-box-alt"></i> Proceed To Checkout
-                        </a>
+                        </button>
+                        <script>
+                            function changeActionAndSubmit() {
+                                var button = document.getElementById('checkOutButton');
+                                var length = ${length};
+                                if (length === 0) {
+                                    button.disabled = true;
+                                } else {
+                                    var form = document.getElementById("cartItems");
+                                    form.action = 'checkOut'; // Thay đổi action của form
+                                    form.submit(); // Submit form
+                                }
+                            }
+                        </script>
                     </div>
                 </div>
             </section>

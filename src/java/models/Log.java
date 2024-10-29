@@ -268,6 +268,62 @@ public class Log {
 
     }
 
+    public Log(String className, HttpServletRequest req, Order order) {
+        //get data from req
+        String phone = (String) req.getSession().getAttribute("phone");
+        String[] list = className.split("[.]");
+        // page name to write log by visit
+        String fileName = list[list.length - 1].split("Servlet")[0];
+        // page name to write log by sesstion
+        String systemFile = (String) req.getSession().getAttribute("runningSession");
+        //get newUser data
+        UserDAO ud = new UserDAO();
+        User u = ud.getUserByPhoneNumber(phone);
+        // create logger
+        logger = Logger.getLogger(className);
+
+        try {
+            init(fileName, systemFile);
+        } catch (ServletException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
+        }
+        String infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
+                + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
+                + "\n" + u.getUserName() + " đã đặt hàng có OrderID: " + order.getOrderID()
+                + " và trạng thái thanh toán là: " + order.getStatus();
+        logger.info(infor);
+        destroy();
+
+    }
+
+    public Log(String className, HttpServletRequest req, String from, String newInfor) {
+        //get data from req
+        String phone = (String) req.getSession().getAttribute("phone");
+        String[] list = className.split("[.]");
+        // page name to write log by visit
+        String fileName = list[list.length - 1].split("Servlet")[0];
+        // page name to write log by sesstion
+        String systemFile = (String) req.getSession().getAttribute("runningSession");
+        //get newUser data
+        UserDAO ud = new UserDAO();
+        User u = ud.getUserByPhoneNumber(phone);
+        // create logger
+        logger = Logger.getLogger(className);
+
+        try {
+            init(fileName, systemFile);
+        } catch (ServletException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
+        }
+        String change = " đã cập nhật " + from + " mới là: '" + newInfor + "'";
+        String infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
+                + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
+                + "\n" + u.getUserName() + change;
+        logger.info(infor);
+        destroy();
+
+    }
+
     public Log(String className, String phone, String password, String systemFile, boolean enter) {
         String[] list = className.split("[.]");
         // page name to write log by visit
@@ -351,11 +407,11 @@ public class Log {
         }
         String infor;
         if (isSuccess) {
-            infor = "Người dùng Admin có UserName = " + u.getUserName() + " và UserID = " 
+            infor = "Người dùng Admin có UserName = " + u.getUserName() + " và UserID = "
                     + u.getUserID() + doing + "tài khoản thành công. Tài khoản mới có UserPhone: " + newUser.getPhoneNumber()
                     + ", Email: " + newUser.getEmail() + ", UserName: " + newUser.getUserName() + ", Password: " + newUser.getPassword();
         } else {
-            infor = "Người dùng Admin có UserName = " + u.getUserName() + " và UserID = " 
+            infor = "Người dùng Admin có UserName = " + u.getUserName() + " và UserID = "
                     + u.getUserID() + doing + "tài khoản không thành công. Tài khoản có UserPhone: " + newUser.getPhoneNumber()
                     + ", Email: " + newUser.getEmail() + ", UserName: " + newUser.getUserName();
         }

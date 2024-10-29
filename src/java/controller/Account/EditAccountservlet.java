@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import models.Log;
 import models.Order;
 import models.OrderDAO;
 import models.User;
@@ -22,7 +23,7 @@ import models.UserDAO;
  * @author VIET
  */
 @WebServlet(urlPatterns = {"/editAccount"})
-public class EditAccountservlet extends HttpServlet {
+public class EditAccountServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,20 +36,24 @@ public class EditAccountservlet extends HttpServlet {
         User u = ud.getUserByPhoneNumber(phone);
         out.println("doPost");
         ////update here
-//        String from = req.getParameter("from");
-//        if (from.equals("profile")) {
+        String from = req.getParameter("from");
+        if (from.equals("profile")) {
             String userName = req.getParameter("userName");
             u.setUserName(userName);
-//            ud.update(u);
-//        }else if(from.equals("password")){
+            Log log = new Log(this.getClass().getName(), req, from, userName);
+            ud.update(u);
+        }else if(from.equals("password")){
             String password = req.getParameter("newPassword");
             u.setPassword(password);
-//            ud.update(u);
-//        }else if(from.equals("address")){
+            Log log = new Log(this.getClass().getName(), req, from, password);
+            ud.update(u);
+        }else if(from.equals("address")){
             String address = req.getParameter("address");
             u.setAddress(address);
-//            ud.update(u);
-//        }
+            Log log = new Log(this.getClass().getName(), req, from, address);
+            ud.update(u);
+        }
+        
         out.println("Update Done!");
         String xSql = "update Users " + u.forUpdate() + " where userID = " + u.getUserID();
         out.println(xSql);
@@ -61,10 +66,10 @@ public class EditAccountservlet extends HttpServlet {
 //        Order o = new Order();
 //        o.getOrderID();
 //        o.getCreate_at();
-//        //// setAttribute from here
-//        req.setAttribute("orders", listOrders);
-//        req.setAttribute("user", u);
-//        req.getRequestDispatcher("myAccount.jsp").forward(req, resp);
+        //// setAttribute from here
+        req.setAttribute("orders", listOrders);
+        req.setAttribute("user", u);
+        req.getRequestDispatcher("myAccount.jsp").forward(req, resp);
 
     }
 

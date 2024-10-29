@@ -32,7 +32,7 @@ import models.UserDAO;
  */
 @WebServlet(urlPatterns = {"/addToCarts"})
 public class AddToCart extends HttpServlet {
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
@@ -57,7 +57,11 @@ public class AddToCart extends HttpServlet {
         }
         cart = cd.getCartByUser(user.getUserID());
 
-        Cart_Item cart_Item = new Cart_Item(cart.getCartID(), p.getProID(), 1);
+        int quantitty = 1;
+        if (from.equals("detail")) {
+            quantitty = Integer.parseInt(req.getParameter("quantity"));
+        }
+        Cart_Item cart_Item = new Cart_Item(cart.getCartID(), p.getProID(), quantitty);
         Cart_ItemDAO cid = new Cart_ItemDAO();
         cid.insert(cart_Item);
         cart_Item = cid.getNewest();
@@ -80,26 +84,25 @@ public class AddToCart extends HttpServlet {
             CategoryDAO cc = new CategoryDAO();
             List<Category> listCate = cc.getAllCategories();
 
+            int loadCount = 1;
             allProducts = new ProductDAO().getAllProducts();
             List<Product> allProductsDown = new ProductDAO().getAllProductsDown();
             List<Product> list2 = pd.getTop(8, "desc");
 
             req.setAttribute("list2", list2);
 
-            req.setAttribute("list2", list2);
+            req.setAttribute("loadCount", loadCount);
             req.setAttribute("allProducts", allProducts);
-            req.setAttribute("allProductsDown", allProductsDown);
-            req.setAttribute("listCate", listCate);
-            req.getRequestDispatcher("all-products.jsp").forward(req, resp);
-        } else if(from.equals("detail")){
+            req.getRequestDispatcher("products.jsp").forward(req, resp);
+        } else if (from.equals("detail")) {
 //            req.setAttribute("product", p);
 //            req.getRequestDispatcher("./product/product-detail.jsp").forward(req, resp);
 
-        
-        List<Product> relatedProducts = new ProductDAO().getProductsByCategory(1);
-        req.setAttribute("product", p);
-        req.setAttribute("relatedProducts", relatedProducts);
-        req.getRequestDispatcher("./product/product-detail.jsp").forward(req, resp);
+            List<Product> relatedProducts = new ProductDAO().getProductsByCategory(cart.getCartID());
+            req.setAttribute("product", p);
+            req.setAttribute("relatedProducts", relatedProducts);
+            resp.sendRedirect("./products/" + proID);
+//        req.getRequestDispatcher("./product/product-detail.jsp").forward(req, resp);
 
         }
 //        req.setAttribute("product", p);

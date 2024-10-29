@@ -163,8 +163,8 @@
                                 <input name="from" value="shop" hidden="true" />
                                 <div class="product__content">
                                     <span class="product__category">Clothing</span>
-                                    <a href="details.html">
-                                        <h3 class="product__title">Colorful Pattern Shirts</h3>
+                                    <a href="products/${product.proID}">
+                                        <h3 class="product__title">${product.getProName()}</h3>
                                     </a>
                                     <div class="product__rating">
                                         <i class="fi fi-rs-star"></i>
