@@ -1,0 +1,2 @@
+Oct 29, 2024 8:20:48 PM models.Log <init>
+INFO: Trang Logout đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin

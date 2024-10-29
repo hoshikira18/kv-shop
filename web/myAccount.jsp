@@ -283,10 +283,14 @@
                                 document.getElementById('inputOldPassword').addEventListener('blur', function () {
                                     var inputOldPassword = this.value;
                                     var msgOldPass = document.getElementById('msgOldPass');
+                                    var newPass = document.getElementById('inputNewPassword');
+                                    var reNewPass = document.getElementById('reInputNewPassword');
                                     var saveButton = document.getElementById('savePasswordButton');
 
                                     if (inputOldPassword === oldPassword) {
                                         msgOldPass.style.display = 'none'; // Mật khẩu đúng, ẩn thông báo
+                                        newPass.disabled = false;
+                                        reNewPass.disabled = false;
                                         var newPassword = document.getElementById('inputNewPassword').value;
                                         if (newPassword.length > 0) {
                                             saveButton.disabled = false;
@@ -296,6 +300,8 @@
                                     } else {
                                         msgOldPass.style.display = 'block'; // Mật khẩu sai, hiển thị thông báo
                                         saveButton.disabled = true;
+                                        newPass.disabled = true;
+                                        reNewPass.disabled = true;
                                     }
                                 });
 

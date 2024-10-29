@@ -120,7 +120,7 @@
             <!--=============== BREADCRUMB ===============-->
             <section class="breadcrumb">
                 <ul class="breadcrumb__list flex container">
-                    <li><a href="index.html" class="breadcrumb__link">Home</a></li>
+                    <li><a href="/shop/home" class="breadcrumb__link">Home</a></li>
                     <li><span class="breadcrumb__link"></span>></li>
                     <li><span class="breadcrumb__link">Fashion</span></li>
                     <li><span class="breadcrumb__link"></span>></li>

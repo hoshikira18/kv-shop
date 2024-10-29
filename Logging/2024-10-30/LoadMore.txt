@@ -1,0 +1,2 @@
+Oct 30, 2024 12:20:54 AM models.Log <init>
+INFO: Trang LoadMoreServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

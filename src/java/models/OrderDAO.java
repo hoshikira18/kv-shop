@@ -64,6 +64,29 @@ public class OrderDAO extends MyDAO {
         }
         return order;
     }
+    
+    public Order getNewestOfUser(int userIDMain) {
+        xSql = "select top 1 * from Orders where UserID = " + userIDMain + " order by Create_At desc";
+        Order order = new Order();
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int orderID = Integer.parseInt(rs.getString("OrderID"));
+                int userID = Integer.parseInt(rs.getString("UserID"));
+                double total = Double.parseDouble(rs.getString("Total"));
+                Date create_At = rs.getDate("Create_At");
+                String status = rs.getString("Status");
+
+                order = new Order(orderID, userID, total, create_At, status);
+                ps.close();
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return order;
+    }
 
     public List<Order> getOrdersByUser(int id) {
         List<Order> listOrders = new ArrayList<>();
@@ -130,7 +153,7 @@ public class OrderDAO extends MyDAO {
     }
 
     public void insert(Order order) {
-        xSql = "insert into Orders (UserID, Total)"
+        xSql = "insert into Orders (UserID, Total, Status)"
                 + " values " + order.forInsert();
         try {
             ps = con.prepareStatement(xSql);
