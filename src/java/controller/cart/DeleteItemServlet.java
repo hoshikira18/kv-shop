@@ -74,6 +74,7 @@ public class DeleteItemServlet extends HttpServlet{
         
         out.println("DO GET" + req.getRequestURI());
         String proID = req.getParameter("id");
+        String cartID = req.getParameter("cartID");
         String phone = (String) req.getSession().getAttribute("phone");
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
@@ -90,7 +91,7 @@ public class DeleteItemServlet extends HttpServlet{
 
 // (Đừng xóa, đây là NOTE)String[6] bao gom:
 // (int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price)
-        String cartID = listMain.get(0)[0];
+        
         double sum = 0;
         for (String[] record : listMain) {
             Product p = new Product(Integer.parseInt(record[1]), record[2],

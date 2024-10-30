@@ -73,7 +73,7 @@
                             <a href="products" class="nav__link active-link">Shop</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#" class="nav__link">My Account</a>
+                            <a href="editAccount" class="nav__link">My Account</a>
                         </li>
                         <li class="nav__item">
                             <a href="#" class="nav__link">Compare</a>
@@ -121,10 +121,84 @@
                     <li><span class="breadcrumb__link">Shop</span></li>
                 </ul>
             </section>
+            <section class="max-w-4xl mx-auto p-6">
+                <form action="filter" method="GET" class="bg-white shadow-lg rounded-lg p-8 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Keyword Input -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-gray-700 uppercase tracking-wide" for="keyword">
+                                Keyword
+                            </label>
+                            <input 
+                                type="text" 
+                                id="keyword" 
+                                name="keyword" 
+                                placeholder="Search products" 
+                                class="w-full px-4 py-2 rounded-md border border-gray-300 bg-gray-50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                                >
+                        </div>
 
-            <!--=============== PRODUCTS ===============-->
-            <section class="products container section--lg">
-                <p class="total__products">We found <span>${list2.size()}</span> items for you!</p>
+                        <!-- Category Select -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-gray-700 uppercase tracking-wide" for="category">
+                                Category
+                            </label>
+                            <div class="relative">
+                                
+                                <select name="categoryId" class="w-full px-4 py-2 rounded-md border border-gray-300 bg-gray-50 appearance-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" id="category"> <option value="${0}"></option> <c:forEach items="${categories}" var="category"> <option value="${category.categoryID}">${category.categoryName}</option> </c:forEach> </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Price Range -->
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-gray-700 uppercase tracking-wide" for="minPrice">
+                                    Min Price
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="minPrice" 
+                                    name="minPrice" 
+                                    placeholder="0" 
+                                    value="0"
+                                    class="w-full px-4 py-2 rounded-md border border-gray-300 bg-gray-50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                                    >
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-gray-700 uppercase tracking-wide" for="maxPrice">
+                                    Max Price
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="maxPrice" 
+                                    name="maxPrice" 
+                                    placeholder="1000" 
+                                    value="0"
+                                    class="w-full px-4 py-2 rounded-md border border-gray-300 bg-gray-50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                                    >
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="flex justify-end pt-4">
+                            <button 
+                                type="submit"
+                                class="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
+                                >
+                                Apply Filters
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!--=============== PRODUCTS ===============-->
+                <section class="products container section--lg">
+                    <p class="total__products">We found <span>${list2.size()}</span> items for you!</p>
                 <div class="products__container grid">
                     <c:forEach items="${list2}" var="product">
                         <div class="product__item">
@@ -163,8 +237,8 @@
                                 <input name="from" value="shop" hidden="true" />
                                 <div class="product__content">
                                     <span class="product__category">Clothing</span>
-                                    <a href="details.html">
-                                        <h3 class="product__title">Colorful Pattern Shirts</h3>
+                                    <a href="products/${product.proID}">
+                                        <h3 class="product__title">${product.getProName()}</h3>
                                     </a>
                                     <div class="product__rating">
                                         <i class="fi fi-rs-star"></i>
@@ -174,8 +248,7 @@
                                         <i class="fi fi-rs-star"></i>
                                     </div>
                                     <div class="product__price flex">
-                                        <span class="new__price">$238.85</span>
-                                        <span class="old__price">$245.8</span>
+                                        <span class="new__price">$ ${product.getPrice()}</span>
                                     </div>
                                     <button
                                         class="action__btn cart__btn"

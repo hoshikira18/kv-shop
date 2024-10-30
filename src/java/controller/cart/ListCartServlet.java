@@ -13,8 +13,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import models.Cart;
+import models.CartDAO;
 import models.Cart_Item;
 import models.Cart_ItemDAO;
+import models.Log;
 import models.Product;
 import models.User;
 import models.UserDAO;
@@ -43,7 +46,8 @@ public class ListCartServlet extends HttpServlet {
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
 
-        out.println("SHOW CART GET");
+        CartDAO cd = new CartDAO();
+        Cart cart = cd.getCartByUser(u.getUserID());
 
         out.println(u.getUserID() + "-" + u.getUserName() + "-" + u.getPhoneNumber());
         Cart_ItemDAO cid = new Cart_ItemDAO();
@@ -52,7 +56,8 @@ public class ListCartServlet extends HttpServlet {
 
 // (Đừng xóa, đây là NOTE)String[6] bao gom:
 // (int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price)
-        String cartID = listMain.get(0)[0];
+        int cartID = cart.getCartID();
+        out.print(cartID);
         double sum = 0;
         for (String[] record : listMain) {
             Product p = new Product(Integer.parseInt(record[1]), record[2],
@@ -65,11 +70,12 @@ public class ListCartServlet extends HttpServlet {
             sum += (Integer.parseInt(record[4])) * (Double.parseDouble(record[5]));
 //            out.println(record[1] + "-" + record[4] + "-" + record[5]);
         }
+        Log log = new Log(this.getClass().getName(), req);
         String result = String.format("%.0f", sum);
         req.setAttribute("userID", u.getUserID());
         req.setAttribute("cartID", cartID);
         req.setAttribute("listItem", listMain);
-        req.setAttribute("listPro", listPro);
+//        req.setAttribute("listPro", listPro);
         req.setAttribute("sum", result);
         req.setAttribute("length", listMain.size());
         req.getRequestDispatcher("/cart.jsp").forward(req, resp);

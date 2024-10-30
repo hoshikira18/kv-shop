@@ -42,7 +42,7 @@ public class ProductCategoryDAO extends MyDAO {
     }
 
     public ProductCategory getOne(int id) {
-        xSql = "select * from ProductCategories where ProCateID = " + id;
+        xSql = "select * from ProductCategories where ProID = " + id;
         ProductCategory proCate = new ProductCategory();
         try {
             PreparedStatement connect = connection.prepareStatement(xSql);

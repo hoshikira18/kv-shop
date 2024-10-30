@@ -1,0 +1,3 @@
+Oct 30, 2024 12:15:37 AM models.Log <init>
+INFO: Trang UpdateCartServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã cập nhật Cart

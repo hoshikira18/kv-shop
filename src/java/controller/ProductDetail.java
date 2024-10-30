@@ -10,6 +10,8 @@ import java.io.PrintWriter;
 import java.util.List;
 import models.Log;
 import models.Product;
+import models.ProductCategory;
+import models.ProductCategoryDAO;
 import models.ProductDAO;
 
 /*
@@ -31,21 +33,28 @@ public class ProductDetail extends HttpServlet {
 
         String pathInfo = request.getPathInfo();
 
-        out.print(pathInfo);
+//        out.print(pathInfo);
 
         String id = pathInfo.split("/")[1];
         Log log = new Log(this.getClass().getName(), request, Integer.parseInt(id));
         request.setAttribute("id", id);
         Product product = new ProductDAO().getOne(Integer.parseInt(id));
-        String [] sizes = product.getSize().split(",");
-        List<Product> relatedProducts = new ProductDAO().getProductsByCategory(11);
+        String[] sizes = product.getSize().split(",");
+        
+        ProductCategory pc = new ProductCategoryDAO().getOne(Integer.parseInt(id));
+        
+        
+        List<Product> relatedProducts = new ProductDAO().getProductsByCategory(pc.getCategoryID());
+        
+        out.print(pc.getCategoryID());
+        
         request.setAttribute("product", product);
-                request.setAttribute("sizes", sizes);
-
+        request.setAttribute("sizes", sizes);
         request.setAttribute("relatedProducts", relatedProducts);
+        
         request.getRequestDispatcher("/product/product-detail.jsp").forward(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -40,6 +40,7 @@ public class ListProductsServlet extends HttpServlet {
         List<Product> list2 = pd.getTop(8, "desc");
 
         req.setAttribute("list2", list2);
+        req.setAttribute("categories", listCate);
         req.setAttribute("loadCount", loadCount);
         Log log = new Log(this.getClass().getName(), req);
         req.setAttribute("allProducts", allProducts);

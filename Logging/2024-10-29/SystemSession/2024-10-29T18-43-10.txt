@@ -1,0 +1,22 @@
+Oct 29, 2024 6:43:10 PM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 6:43:10 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 6:43:18 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã cập nhật Cart
+Oct 29, 2024 6:43:21 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 6:43:34 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 6:47:04 PM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 29, 2024 6:47:06 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 29 và proID = 26 với số lượng = 1
+Oct 29, 2024 6:47:10 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 32 và proID = 1 với số lượng = 1
+Oct 29, 2024 6:47:19 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 32 và proID = 1 với số lượng = 1

@@ -25,7 +25,7 @@ public class Log {
         String path = "D:\\02.LearningDocument\\SE IV\\PRJ\\Assignment\\kv-shop\\Logging\\";
         path += date;//folder day by day
 
-        File directory = new File(path);// folder to save log that user vist page
+        File directory = new File(path);// folder to save log that newUser vist page
         if (!directory.exists()) {
             directory.mkdirs();
         }
@@ -36,7 +36,7 @@ public class Log {
 
         try {
             // Create a file handler to write log into the file
-            FileHandler fileHandler = new FileHandler("ádasd" + "/" + fileName + ".txt", true); // Append to file
+            FileHandler fileHandler = new FileHandler(path + "/" + fileName + ".txt", true); // Append to file
             fileHandler.setFormatter(new SimpleFormatter()); // Set log format
             logger.addHandler(fileHandler);
 
@@ -50,12 +50,13 @@ public class Log {
             e.printStackTrace();
         }
     }
+
     private void init(String fileName) throws ServletException {
         String date = LocalDate.now().toString();
         String path = "D:\\02.LearningDocument\\SE IV\\PRJ\\Assignment\\kv-shop\\Logging\\";
         path += date;//folder day by day
 
-        File directory = new File(path);// folder to save log that user vist page
+        File directory = new File(path);// folder to save log that newUser vist page
         if (!directory.exists()) {
             directory.mkdirs();
         }
@@ -88,7 +89,7 @@ public class Log {
         String fileName = list[list.length - 1].split("Servlet")[0];
         // page name to write log by sesstion
         String systemFile = (String) req.getSession().getAttribute("runningSession");
-        //get user data
+        //get newUser data
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         // create logger
@@ -104,7 +105,7 @@ public class Log {
         destroy();
 
     }
-    
+
     public Log(String className, HttpServletRequest req, boolean isCreate, Cart cart, Cart_Item cart_Item) {
         //get data from req
         String phone = (String) req.getSession().getAttribute("phone");
@@ -113,7 +114,7 @@ public class Log {
         String fileName = list[list.length - 1].split("Servlet")[0];
         // page name to write log by sesstion
         String systemFile = (String) req.getSession().getAttribute("runningSession");
-        //get user data
+        //get newUser data
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         // create logger
@@ -124,21 +125,21 @@ public class Log {
             Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
         }
         String create = "";
-        if(isCreate){
-            create = " đã tạo new Cart có CartID = "+cart.cartID+" và thêm item có ";
-        }else{
-            create = " đã thêm item vào Cart có CartID = "+ cart.cartID+" và item có ";
+        if (isCreate) {
+            create = " đã tạo new Cart có CartID = " + cart.cartID + " và thêm item có ";
+        } else {
+            create = " đã thêm item vào Cart có CartID = " + cart.cartID + " và item có ";
         }
         String infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
                 + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
-                +"\n"+u.getUserName()+create+cart_Item.itemID+ " và proID = "+cart_Item.proID
-                +" với số lượng = "+cart_Item.quantity;
-        
+                + "\n" + u.getUserName() + create + cart_Item.itemID + " và proID = " + cart_Item.proID
+                + " với số lượng = " + cart_Item.quantity;
+
         logger.info(infor);
         destroy();
 
     }
-    
+
     public Log(String className, HttpServletRequest req, int proID, boolean isDelete) {
         //get data from req
         String phone = (String) req.getSession().getAttribute("phone");
@@ -147,7 +148,7 @@ public class Log {
         String fileName = list[list.length - 1].split("Servlet")[0];
         // page name to write log by sesstion
         String systemFile = (String) req.getSession().getAttribute("runningSession");
-        //get user data
+        //get newUser data
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         // create logger
@@ -158,15 +159,15 @@ public class Log {
             Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
         }
         String delete = "";
-        if(isDelete){
-            delete = " đã xóa CartItem có proID = " +proID + "khỏi Cart";
-        }else{
+        if (isDelete) {
+            delete = " đã xóa CartItem có proID = " + proID + "khỏi Cart";
+        } else {
             delete = " đã cập nhật Cart";
         }
         String infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
                 + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
-                +"\n"+u.getUserName()+delete;
-        
+                + "\n" + u.getUserName() + delete;
+
         logger.info(infor);
         destroy();
 
@@ -180,7 +181,7 @@ public class Log {
         String fileName = list[list.length - 1].split("Servlet")[0];
         // page name to write log by sesstion
         String systemFile = (String) req.getSession().getAttribute("runningSession");
-        //get user data
+        //get newUser data
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
 
@@ -211,7 +212,7 @@ public class Log {
         String fileName = list[list.length - 1].split("Servlet")[0];
         // page name to write log by sesstion
         String systemFile = (String) req.getSession().getAttribute("runningSession");
-        //get user data
+        //get newUser data
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         // create logger
@@ -222,16 +223,16 @@ public class Log {
             Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
         }
         String infor;
-        if(create){
-        infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
-                + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
-                + "\n" + u.getUserName() + " đã khởi tạo new Category có CategoryID là: " + category.getCategoryID()
-                + " và CategoryName là: " + category.getCategoryName();
-        }else{
+        if (create) {
             infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
-                + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
-                + "\n" + u.getUserName() + " đã xóa Category có CategoryID là: " + category.getCategoryID()
-                + " và CategoryName là: " + category.getCategoryName();
+                    + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
+                    + "\n" + u.getUserName() + " đã khởi tạo new Category có CategoryID là: " + category.getCategoryID()
+                    + " và CategoryName là: " + category.getCategoryName();
+        } else {
+            infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
+                    + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
+                    + "\n" + u.getUserName() + " đã xóa Category có CategoryID là: " + category.getCategoryID()
+                    + " và CategoryName là: " + category.getCategoryName();
         }
         logger.info(infor);
         destroy();
@@ -246,7 +247,7 @@ public class Log {
         String fileName = list[list.length - 1].split("Servlet")[0];
         // page name to write log by sesstion
         String systemFile = (String) req.getSession().getAttribute("runningSession");
-        //get user data
+        //get newUser data
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         // create logger
@@ -267,11 +268,67 @@ public class Log {
 
     }
 
+    public Log(String className, HttpServletRequest req, Order order) {
+        //get data from req
+        String phone = (String) req.getSession().getAttribute("phone");
+        String[] list = className.split("[.]");
+        // page name to write log by visit
+        String fileName = list[list.length - 1].split("Servlet")[0];
+        // page name to write log by sesstion
+        String systemFile = (String) req.getSession().getAttribute("runningSession");
+        //get newUser data
+        UserDAO ud = new UserDAO();
+        User u = ud.getUserByPhoneNumber(phone);
+        // create logger
+        logger = Logger.getLogger(className);
+
+        try {
+            init(fileName, systemFile);
+        } catch (ServletException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
+        }
+        String infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
+                + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
+                + "\n" + u.getUserName() + " đã đặt hàng có OrderID: " + order.getOrderID()
+                + " và trạng thái thanh toán là: " + order.getStatus();
+        logger.info(infor);
+        destroy();
+
+    }
+
+    public Log(String className, HttpServletRequest req, String from, String newInfor) {
+        //get data from req
+        String phone = (String) req.getSession().getAttribute("phone");
+        String[] list = className.split("[.]");
+        // page name to write log by visit
+        String fileName = list[list.length - 1].split("Servlet")[0];
+        // page name to write log by sesstion
+        String systemFile = (String) req.getSession().getAttribute("runningSession");
+        //get newUser data
+        UserDAO ud = new UserDAO();
+        User u = ud.getUserByPhoneNumber(phone);
+        // create logger
+        logger = Logger.getLogger(className);
+
+        try {
+            init(fileName, systemFile);
+        } catch (ServletException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
+        }
+        String change = " đã cập nhật " + from + " mới là: '" + newInfor + "'";
+        String infor = "Trang " + list[list.length - 1] + " đã được truy cập bởi: " + u.getUserName()
+                + ", có ID: " + u.getUserID() + ", SĐT: " + u.getPhoneNumber() + ", Role: " + u.roleName
+                + "\n" + u.getUserName() + change;
+        logger.info(infor);
+        destroy();
+
+    }
+
     public Log(String className, String phone, String password, String systemFile, boolean enter) {
         String[] list = className.split("[.]");
         // page name to write log by visit
         String fileName = list[list.length - 1].split("Servlet")[0];
-        //get user data
+        //get newUser data
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         // create logger
@@ -292,8 +349,8 @@ public class Log {
         destroy();
 
     }
-    
-    public Log(String className, HttpServletRequest req, User user, boolean create) {
+
+    public Log(String className, HttpServletRequest req, User newUser, boolean create) {
         String[] list = className.split("[.]");
         // page name to write log by visit
         String fileName = list[list.length - 1].split("Servlet")[0];
@@ -308,12 +365,55 @@ public class Log {
         }
 
         String infor;
-        if(create){
-        infor = "Người dùng tạo tài khoản thành công. UserPhone: "+user.getPhoneNumber()
-                +", Email: "+ user.getEmail() +", UserName: "+user.getUserName()+", Password: "+user.getPassword();
-        }else{
-            infor = "Người dùng tạo tài khoản không thành công. UserPhone: "+user.getPhoneNumber()
-                +", Email: "+ user.getEmail() +", UserName: "+user.getUserName();
+        if (create) {
+            infor = "Người dùng tạo tài khoản thành công. UserPhone: " + newUser.getPhoneNumber()
+                    + ", Email: " + newUser.getEmail() + ", UserName: " + newUser.getUserName() + ", Password: " + newUser.getPassword();
+        } else {
+            infor = "Người dùng tạo tài khoản không thành công. UserPhone: " + newUser.getPhoneNumber()
+                    + ", Email: " + newUser.getEmail() + ", UserName: " + newUser.getUserName();
+        }
+        logger.info(infor);
+        destroy();
+
+    }
+
+    public Log(String className, HttpServletRequest req, boolean isSuccess, User newUser) {
+        //get data from req
+        String phone = (String) req.getSession().getAttribute("phone");
+        String[] list = className.split("[.]");
+        // page name to write log by visit
+        String fileName = list[list.length - 1].split("Servlet")[0];
+        // page name to write log by sesstion
+        String systemFile = (String) req.getSession().getAttribute("runningSession");
+        //get newUser data
+        UserDAO ud = new UserDAO();
+        User u = ud.getUserByPhoneNumber(phone);
+        // create logger
+        logger = Logger.getLogger(className);
+
+        try {
+            init(fileName, systemFile);
+        } catch (ServletException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.ALL, null, ex);
+        }
+
+        String doing = "";
+        if (fileName.toLowerCase().contains("create")) {
+            doing = " đã tạo ";
+        } else if (fileName.toLowerCase().contains("delete")) {
+            doing = " đã xóa ";
+        } else {
+            doing = " đã chỉnh sửa ";
+        }
+        String infor;
+        if (isSuccess) {
+            infor = "Người dùng Admin có UserName = " + u.getUserName() + " và UserID = "
+                    + u.getUserID() + doing + "tài khoản thành công. Tài khoản mới có UserPhone: " + newUser.getPhoneNumber()
+                    + ", Email: " + newUser.getEmail() + ", UserName: " + newUser.getUserName() + ", Password: " + newUser.getPassword();
+        } else {
+            infor = "Người dùng Admin có UserName = " + u.getUserName() + " và UserID = "
+                    + u.getUserID() + doing + "tài khoản không thành công. Tài khoản có UserPhone: " + newUser.getPhoneNumber()
+                    + ", Email: " + newUser.getEmail() + ", UserName: " + newUser.getUserName();
         }
         logger.info(infor);
         destroy();

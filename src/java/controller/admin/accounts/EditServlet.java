@@ -40,12 +40,12 @@ public class EditServlet extends HttpServlet {
         // lay ra san pham bang id
         int id = Integer.parseInt(pathInfo.split("/")[1]);
 
-        Log log = new Log(this.getClass().getName(), request, id);
         request.setAttribute("id", id);
 
         out.print(id);
 
         User u = new UserDAO().getOne(id);
+        Log log = new Log(this.getClass().getName(), request, true, u);
 
         request.setAttribute("user", u);
 
@@ -63,7 +63,6 @@ public class EditServlet extends HttpServlet {
         // lay ra san pham bang id
         int id = Integer.parseInt(pathInfo.split("/")[1]);
 
-        Log log = new Log(this.getClass().getName(), request, id);
         request.setAttribute("id", id);
 
 //        out.print(id);
@@ -87,7 +86,7 @@ public class EditServlet extends HttpServlet {
         out.print(u.getPhoneNumber());
         out.print(u.getRoleID());
         out.print(u.getUserID());
-
+        Log log = new Log(this.getClass().getName(), request, true, u);
 
         List<User> adminUsers = ud.getAllAdmins();
 

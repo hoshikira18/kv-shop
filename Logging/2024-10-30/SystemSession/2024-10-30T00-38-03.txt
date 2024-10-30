@@ -1,0 +1,13 @@
+Oct 30, 2024 12:38:03 AM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 12:38:03 AM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 12:38:15 AM models.Log <init>
+INFO: Trang EditAccountservlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã cập nhật address mới là: 'Đại học FPT, Thạch Hòa, Thạch Thất, Hà Nội, Việt Nam'
+Oct 30, 2024 12:38:29 AM models.Log <init>
+INFO: Trang EditAccountservlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã cập nhật password mới là: '12'
+Oct 30, 2024 12:38:41 AM models.Log <init>
+INFO: Trang EditAccountservlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã cập nhật password mới là: '123'

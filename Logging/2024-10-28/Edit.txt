@@ -1,0 +1,4 @@
+Oct 28, 2024 12:01:36 PM models.Log <init>
+INFO: Người dùng Admin có UserName = VietNT và UserID = 12 đã chỉnh sửa tài khoản thành công. Tài khoản mới có UserPhone: 3334455667, Email: tombrown@example.com, UserName: Tom Brown, Password: password5
+Oct 28, 2024 12:01:41 PM models.Log <init>
+INFO: Người dùng Admin có UserName = VietNT và UserID = 12 đã chỉnh sửa tài khoản thành công. Tài khoản mới có UserPhone: 3334455667, Email: tom@example.com, UserName: Tom Brown, Password: password5
