@@ -1,0 +1,54 @@
+Oct 30, 2024 1:13:22 PM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:13:22 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:13:25 PM models.Log <init>
+INFO: Trang ListCartServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:13:27 PM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:13:30 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 55 và proID = 26 với số lượng = 1
+Oct 30, 2024 1:13:33 PM models.Log <init>
+INFO: Trang ListCartServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:13:35 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 26 và proName: Test Edit lan 1
+Oct 30, 2024 1:13:45 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 56 và proID = 26 với số lượng = 3
+Oct 30, 2024 1:13:45 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 26 và proName: Test Edit lan 1
+Oct 30, 2024 1:13:48 PM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:13:52 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 5 và proName: Product 5
+Oct 30, 2024 1:13:58 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 57 và proID = 5 với số lượng = 4
+Oct 30, 2024 1:13:58 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 5 và proName: Product 5
+Oct 30, 2024 1:14:06 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 58 và proID = 5 với số lượng = 2
+Oct 30, 2024 1:14:06 PM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 5 và proName: Product 5
+Oct 30, 2024 1:14:08 PM models.Log <init>
+INFO: Trang ListCartServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:14:12 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 5khỏi Cart
+Oct 30, 2024 1:14:18 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 26khỏi Cart
+Oct 30, 2024 1:14:23 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:14:26 PM models.Log <init>
+INFO: Trang CreateOrderServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã đặt hàng có OrderID: 120 và trạng thái thanh toán là: Direct Bank Transfer
+Oct 30, 2024 1:14:27 PM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

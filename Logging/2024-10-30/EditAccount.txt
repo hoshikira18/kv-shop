@@ -1,0 +1,6 @@
+Oct 30, 2024 1:21:06 PM models.Log <init>
+INFO: Trang EditAccountServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã cập nhật password mới là: '1234'
+Oct 30, 2024 1:21:30 PM models.Log <init>
+INFO: Trang EditAccountServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã cập nhật password mới là: '123'

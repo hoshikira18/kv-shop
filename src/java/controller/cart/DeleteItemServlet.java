@@ -75,13 +75,14 @@ public class DeleteItemServlet extends HttpServlet{
         out.println("DO GET" + req.getRequestURI());
         String proID = req.getParameter("id");
         String cartID = req.getParameter("cartID");
+        String proSize = req.getParameter("size");
         String phone = (String) req.getSession().getAttribute("phone");
         UserDAO ud = new UserDAO();
         User u = ud.getUserByPhoneNumber(phone);
         
         Cart_ItemDAO cid = new Cart_ItemDAO();
         // delete (int cartID, int proID)
-        cid.delete(u.getUserID(), Integer.parseInt(proID));
+        cid.delete(u.getUserID(), Integer.parseInt(proID), proSize);
         Log log = new Log(this.getClass().getName(), req, Integer.parseInt(proID), true);
         
 //        out.println(u.getUserID() + "-" + u.getUserName() + "-" + u.getPhoneNumber());

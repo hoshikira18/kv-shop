@@ -159,7 +159,7 @@
                                             </td>
                                             <td>
                                                 <h3 class="table__title">${item[2]}</h3>
-                                                <p class="table__quantity">x ${item[4]}</p>
+                                                <p class="table__quantity">Size ${item[6]} -- SL: ${item[4]}</p>
                                             </td>
                                             <td><span class="table__price">
                                                     ${Integer.parseInt(item[4])*Integer.parseInt(item[5])} VNĐ

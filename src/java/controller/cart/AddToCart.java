@@ -58,13 +58,20 @@ public class AddToCart extends HttpServlet {
         cart = cd.getCartByUser(user.getUserID());
 
         int quantitty = 1;
+        String proSize = "M";
         if (from.equals("detail")) {
             quantitty = Integer.parseInt(req.getParameter("quantity"));
+            proSize = req.getParameter("size");
         }
-        Cart_Item cart_Item = new Cart_Item(cart.getCartID(), p.getProID(), quantitty);
+        out.print("quantity: "+quantitty);
+        out.println("\nSize: "+proSize);
+        Cart_Item cart_Item = new Cart_Item(cart.getCartID(), p.getProID(), quantitty, proSize);
+        out.println(cart_Item.forInsert());
         Cart_ItemDAO cid = new Cart_ItemDAO();
         cid.insert(cart_Item);
         cart_Item = cid.getNewest();
+        out.println("lan 2: size:"+cart_Item.getProSize());
+        out.println(cart_Item.forInsert());
 
         Log log = new Log(this.getClass().getName(), req, isCreate, cart, cart_Item);
 
@@ -132,8 +139,14 @@ public class AddToCart extends HttpServlet {
             isCreate = true;
         }
         cart = cd.getCartByUser(user.getUserID());
+        int quantity = 1;
+        String proSize = "M";
+        if (from.equals("detail")) {
+            quantity = Integer.parseInt(req.getParameter("quantity"));
+            proSize = req.getParameter("size");
+        }
 
-        Cart_Item cart_Item = new Cart_Item(cart.getCartID(), p.getProID(), 1);
+        Cart_Item cart_Item = new Cart_Item(cart.getCartID(), p.getProID(), quantity, proSize);
         Cart_ItemDAO cid = new Cart_ItemDAO();
         cid.insert(cart_Item);
         cart_Item = cid.getNewest();

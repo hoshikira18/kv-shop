@@ -36,12 +36,13 @@ public class CheckOutServlet extends HttpServlet{
 
         String[] quantities = req.getParameterValues("quantity-input");
         String[] proIDs = req.getParameterValues("proID");
+        String[] proSizes = req.getParameterValues("proSize");
         //// work with infor
         int length = quantities.length;
         String xSQL = "";
         for (int i = 0; i < length; i++) {
             xSQL += ("update Cart_Items set Quantity = "+quantities[i]
-                    +" where CartID = "+cartID+ " and ProID = "+proIDs[i]+" \n");
+                    + " where CartID = " + cartID + " and ProID = " + proIDs[i] + " and ProSize = '" + proSizes[i] + "' \n");
         }
         Cart_ItemDAO cid = new Cart_ItemDAO();
         cid.update(xSQL);

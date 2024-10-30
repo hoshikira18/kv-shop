@@ -7,3 +7,18 @@ VietNT đã xem hàng có ID: 4 và proName: Product 4
 Oct 30, 2024 10:30:34 AM models.Log <init>
 INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 VietNT đã xem hàng có ID: 2 và proName: Product 2
+Oct 30, 2024 11:10:47 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 7 và proName: Product 7
+Oct 30, 2024 11:10:54 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 7 và proName: Product 7
+Oct 30, 2024 11:17:01 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 7 và proName: Product 7
+Oct 30, 2024 11:17:09 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 7 và proName: Product 7
+Oct 30, 2024 11:21:59 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 2 và proName: Product 2

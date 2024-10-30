@@ -67,6 +67,7 @@ public class EditAccountservlet extends HttpServlet {
 //        o.getOrderID();
 //        o.getCreate_at();
         //// setAttribute from here
+        req.setAttribute("oldPassword", u.getPassword());
         req.setAttribute("orders", listOrders);
         req.setAttribute("user", u);
         req.getRequestDispatcher("myAccount.jsp").forward(req, resp);

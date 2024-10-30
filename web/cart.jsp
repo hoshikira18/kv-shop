@@ -126,6 +126,7 @@
                                 <tr>
                                     <th>Image</th>
                                     <th>Name</th>
+                                    <th>Size</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Subtotal</th>
@@ -156,7 +157,13 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <span class="table__price font-bold">${item[5]} (VNĐ)</span>
+                                        <input type="text" class="font-bold" 
+                                               style="width: 30px" disabled value="${item[6]}"/>
+                                        <input type="text" name="proSize" class="font-bold" 
+                                               style="width: 30px" hidden value="${item[6]}"/>
+                                    </td>
+                                    <td>
+                                        <span class="table__price font-bold" style="width: 100px">${item[5]} (VNĐ)</span>
                                     </td>
                                     <td>
                                         <!--<input type="number" value="${item[4]}" class="quantity" />-->
@@ -185,7 +192,7 @@
                                         </span>
                                     </td>
                                     <td>
-                                        <a href="deleteItem?cartID=${cartID}&id=${item[1]}">
+                                        <a href="deleteItem?cartID=${cartID}&id=${item[1]}&size=${item[6]}">
                                             <i class="fi fi-rs-trash table__trash" onclick="" ></i>
                                         </a>
                                     </td>

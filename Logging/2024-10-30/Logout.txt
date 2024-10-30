@@ -1,0 +1,2 @@
+Oct 30, 2024 1:03:58 PM models.Log <init>
+INFO: Trang Logout đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

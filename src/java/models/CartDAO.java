@@ -167,9 +167,10 @@ public class CartDAO extends MyDAO {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
+                String proSize = rs.getString("ProSize");
                 Date create_At = rs.getDate("Create_At");
 
-                Cart_Item cart_Item = new Cart_Item(itemID, cartID, proID, quantity, create_At);
+                Cart_Item cart_Item = new Cart_Item(itemID, cartID, proID, quantity, proSize, create_At);
                 list.add(cart_Item);
                 
                 ps.close();
