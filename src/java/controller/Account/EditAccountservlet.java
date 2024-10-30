@@ -23,7 +23,7 @@ import models.UserDAO;
  * @author VIET
  */
 @WebServlet(urlPatterns = {"/editAccount"})
-public class EditAccountServlet extends HttpServlet {
+public class EditAccountservlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -11,40 +11,39 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import models.Category;
 import models.CategoryDAO;
-import models.Log;
 import models.Product;
 import models.ProductDAO;
 
 /**
  *
- * @author VIET
+ * @author khuye
  */
-@WebServlet(urlPatterns = {"/products"})
-public class ListProductsServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/filter"})
+public class FilterServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        int loadCount = 1;
-        ProductDAO pd = new ProductDAO();
-        List<Product> allProducts = new ArrayList<>();
+
+        String keyword = (String) req.getParameter("keyword");
+        int categoryId = Integer.parseInt(req.getParameter("categoryId"));
+        double minPrice = Double.parseDouble(req.getParameter("minPrice"));
+        double maxPrice = Double.parseDouble(req.getParameter("maxPrice"));
+        
         CategoryDAO cc = new CategoryDAO();
         List<Category> listCate = cc.getAllCategories();
-
-        allProducts = new ProductDAO().getAllProducts();
-        List<Product> list2 = pd.getTop(8, "desc");
-
-        req.setAttribute("list2", list2);
+        
         req.setAttribute("categories", listCate);
-        req.setAttribute("loadCount", loadCount);
-        Log log = new Log(this.getClass().getName(), req);
-        req.setAttribute("allProducts", allProducts);
+        
+        List<Product> products = new ProductDAO().filterProduct(keyword, categoryId, minPrice, maxPrice);
+        out.print((products.size()));
+        
+        req.setAttribute("list2", products);
         req.getRequestDispatcher("products.jsp").forward(req, resp);
+
     }
 
 }
