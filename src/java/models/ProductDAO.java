@@ -58,6 +58,78 @@ public class ProductDAO extends MyDAO {
         return allProducts;
     }
 
+    public List<Product> filterProduct(String keyword, int categoryId, double minPrice, double maxPrice) {
+        List<Product> filteredProducts = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("""
+        select 
+            p.*,
+            s.SupplierName as supName, 
+            c.CategoryName as cateName,
+            c.CategoryID as cateID
+        from Products p
+        join Suppliers s on p.SupID = s.SupplierID
+        join ProductCategories pc on p.ProID = pc.ProID
+        join Categories c on pc.CategoryID = c.CategoryID
+        where 1=1
+    """);
+
+        if (keyword != null && !keyword.isEmpty()) {
+            sql.append(" and p.Pro_Name like ?");
+        }
+        if (categoryId > 0) {
+            sql.append(" and c.CategoryID = ?");
+        }
+        if (minPrice > 0) {
+            sql.append(" and p.Price >= ?");
+        }
+        if (maxPrice > 0) {
+            sql.append(" and p.Price <= ?");
+        }
+
+        try {
+            ps = con.prepareStatement(sql.toString());
+            int paramIndex = 1;
+
+            if (keyword != null && !keyword.isEmpty()) {
+                ps.setString(paramIndex++, "%" + keyword + "%");
+            }
+            if (categoryId > 0) {
+                ps.setInt(paramIndex++, categoryId);
+            }
+            if (minPrice > 0) {
+                ps.setDouble(paramIndex++, minPrice);
+            }
+            if (maxPrice > 0) {
+                ps.setDouble(paramIndex++, maxPrice);
+            }
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int ID = rs.getInt("ProID");
+                String productName = rs.getString("Pro_Name");
+                String supName = rs.getString("supName");
+                String cateName = rs.getString("cateName");
+                int cateID = rs.getInt("cateID");
+                String size = rs.getString("Size");
+                String description = rs.getString("Description");
+
+                String image = "data:image/jpeg;base64," + rs.getString("Image");
+                double price = rs.getDouble("Price");
+                int supID = rs.getInt("SupID");
+                int inventory = rs.getInt("Inventory");
+
+                Product product = new Product(ID, productName, image, price, supID, cateID, inventory, size, description, supName, cateName);
+                filteredProducts.add(product);
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return filteredProducts;
+    }
+
     public List<Product> getProductsByCategory(int categoryID) {
         List<Product> products = new ArrayList<>();
         xSql = "select * from Products where ProID in (select ProID from ProductCategories where CategoryID = " + categoryID + ")";
@@ -141,7 +213,7 @@ public class ProductDAO extends MyDAO {
                 int supID = rs.getInt("SupID");
                 int inventory = rs.getInt("Inventory");
 
-                product = new Product(ID, productName, image, price, supID, cateID,inventory, size, description, supName, cateName);
+                product = new Product(ID, productName, image, price, supID, cateID, inventory, size, description, supName, cateName);
             }
             ps.close();
             rs.close();
@@ -299,11 +371,11 @@ public class ProductDAO extends MyDAO {
                join ProductCategories pc on p.ProID = pc.ProID
                join Categories c on pc.CategoryID = c.CategoryID
                where pc.CategoryID =  cateID.CategoryID""";
-        
+
         Product p = null;
         Supplier s = null;
         Category c = null;
-        
+
         try {
             PreparedStatement ps = con.prepareStatement(xSql);
             ps.setString(1, String.valueOf(proID));
@@ -314,16 +386,15 @@ public class ProductDAO extends MyDAO {
                 String image = "data:image/jpeg;base64," + rs.getString("ProImage");
                 double price = Double.parseDouble(rs.getString("Price"));
                 String size = rs.getString("Size");
-                String description =  rs.getString("Description");
-                
-                
+                String description = rs.getString("Description");
+
                 int supID = Integer.parseInt(rs.getString("SupID"));
                 String supplierName = rs.getString("SupplierName");
-                
+
                 int categoryID = Integer.parseInt(rs.getString("categoryID"));
                 String categoryName = rs.getString("CategoryName");
                 String cateImage = "data:image/jpeg;base64," + rs.getString("CateImage");
-                
+
                 //product
                 p = new Product(proID, productName, image, price, supID, size, description);
                 list[0].add(p);
@@ -340,7 +411,7 @@ public class ProductDAO extends MyDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        
+
         return list;
     }
 }
