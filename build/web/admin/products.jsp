@@ -15,6 +15,7 @@
     <body class="py-10">
         <div class="space-x-5 text-center pb-10">
             <a href="/shop/admin/products">Products</a>
+            <a href="/shop/admin/orders">Order</a>
             <a href="/shop/admin/categories">Categories</a>
             <a href="/shop/admin/accounts">Accounts</a>
             <a href="/shop/logout">Logout</a>

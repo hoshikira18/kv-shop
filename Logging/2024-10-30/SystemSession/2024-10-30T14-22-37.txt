@@ -1,0 +1,34 @@
+Oct 30, 2024 2:22:38 PM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 2:22:38 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 2:23:33 PM models.Log <init>
+INFO: Trang EditServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 30, 2024 2:23:37 PM models.Log <init>
+INFO: Trang EditServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 30, 2024 2:23:39 PM models.Log <init>
+INFO: Trang EditServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 30, 2024 2:23:39 PM models.Log <init>
+INFO: Trang EditServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 30, 2024 2:23:41 PM models.Log <init>
+INFO: Trang EditServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+VietNT đã xem hàng có ID: 1 và proName: Product 1
+Oct 30, 2024 2:23:46 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 2:24:32 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 2:28:41 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 2:29:17 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 2:29:29 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 2:29:39 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 2:29:53 PM models.Log <init>
+INFO: Trang EditServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+VietNT đã xem hàng có ID: 1 và proName: Product 1
