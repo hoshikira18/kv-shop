@@ -15,7 +15,16 @@ add Size nvarchar(100),
 
 update Products
 set Price = '100000'
----------*/
+
+
+-- update from here
+
+alter table Cart_Items
+add ProSize nvarchar(50)
+alter table Order_Items
+add ProSize nvarchar(50)
+
+----------*/
 
 select top 1 p.ProID, p.Pro_Name, p.Price, p.Size, p.Description, p.Image, s.SupplierName, c.CategoryName, c.Image
 from Products p
