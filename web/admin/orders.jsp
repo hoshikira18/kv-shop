@@ -1,8 +1,9 @@
 <%-- 
-    Document   : products
-    Created on : Oct 11, 2024, 11:45:06 AM
-    Author     : khuye
+    Document   : order
+    Created on : Oct 30, 2024, 1:35:56 PM
+    Author     : VIET
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,36 +28,32 @@
                 <p>Back
             </button>
             <div class="flex items-center justify-between py-2">
-                <h2 class="text-xl font-semibold mb-4">Products List</h2>
-                <a href="/shop/admin/products/create" class="block p-2 bg-black text-white rounded-md">Create new Product</a>
+                <h2 class="text-xl font-semibold mb-4">Orders List</h2>
             </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200 h-2/3 overflow-y-scroll">
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">OrderID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">UserID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Create_At</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">View</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <c:forEach items="${ps}" var="product">
+                        <c:forEach items="${ps}" var="order">
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">${ps.indexOf(product) + 1}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <img class="w-20 h-20 rounded-md" src="${product.image}" alt="alt"/>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-nowrap">${product.proName}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">${ps.indexOf(order) + 1}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">${order.getOrderID()}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">${order.getUserID()}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">${order.getTotal()}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">${order.getCreate_at()}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">${order.getStatus()}</td>
                                 <td>
-                                    <a href="/shop/admin/edit-product/${product.proID}">Edit</button>
-                                </td>
-                                <td>
-                                    <form action="/shop/admin/delete-product" method="POST">
-                                        <input name="product-id" value="${product.proID}" hidden="true" />
-                                        <button type="submit">Delete</button>
-                                    </form>
+                                    <a class="text-blue-500" href="/shop/admin/view-orders/${order.getOrderID()}">View</a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -66,3 +63,4 @@
         </div>
     </body>
 </html>
+

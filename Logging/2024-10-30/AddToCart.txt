@@ -67,3 +67,6 @@ VietNT đã thêm item vào Cart có CartID = 11 và item có 57 và proID = 5 v
 Oct 30, 2024 1:14:06 PM models.Log <init>
 INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 VietNT đã thêm item vào Cart có CartID = 11 và item có 58 và proID = 5 với số lượng = 2
+Oct 30, 2024 1:28:50 PM models.Log <init>
+INFO: Trang AddToCart đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã thêm item vào Cart có CartID = 11 và item có 59 và proID = 26 với số lượng = 1

@@ -1,0 +1,38 @@
+Oct 30, 2024 4:12:48 PM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:12:48 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:12:50 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:14:13 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:18:25 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:18:44 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:20:21 PM models.Log <init>
+INFO: Trang updateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:20:27 PM models.Log <init>
+INFO: Trang updateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:20:37 PM models.Log <init>
+INFO: Trang updateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:21:36 PM models.Log <init>
+INFO: Trang updateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:21:44 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:21:45 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:21:47 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:21:53 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:21:55 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:22:00 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:22:12 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:22:26 PM models.Log <init>
+INFO: Trang updateServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin
+Oct 30, 2024 4:22:29 PM models.Log <init>
+INFO: Trang ListServlet đã được truy cập bởi: VietNT, có ID: 12, SĐT: 1234, Role: admin

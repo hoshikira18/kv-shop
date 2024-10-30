@@ -17,9 +17,15 @@ import java.util.List;
  */
 public class OrderDAO extends MyDAO {
 
-    public List<Order> getAllOrders() {
+    public List<Order> getAllOrders(boolean isAsc) {
         List<Order> allOrders = new ArrayList<>();
-        xSql = "select * from Orders";
+        String orderBy;
+        if (isAsc) {
+            orderBy = " order by Create_At asc";
+        } else {
+            orderBy = " order by Create_At desc";
+        }
+        xSql = "select * from Orders" + orderBy;
         try {
             ps = con.prepareStatement(xSql);
             rs = ps.executeQuery();
@@ -64,7 +70,40 @@ public class OrderDAO extends MyDAO {
         }
         return order;
     }
-    
+
+    public String[] getRelatedInfor(int idOfOrder) {
+        xSql = """
+               select o.OrderID, o.UserID, o.Total, o.Status, o.Create_At,
+                 u.UserName, u.Age, u.Address, u.Email, u.PhoneNumber from Orders o
+                 join Users u on o.UserID = u.UserID
+                 where o.OrderID = """ + idOfOrder;
+//        0:OrderID; 1:UserID; 2:Total; 3:Create_At; 4:Status;
+//        5:UserName; 6:Age; 7:Address; 8:Email; 9:PhoneNumber;
+        String[] order = new String[10];
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                order[0] = rs.getString("OrderID");
+                order[1] = rs.getString("UserID");
+                order[2] = rs.getString("Total");
+                order[3] = rs.getString("Create_At");
+                order[4] = rs.getString("Status");
+                order[5] = rs.getString("UserName");
+                order[6] = rs.getString("Age");
+                order[7] = rs.getString("Address");
+                order[8] = rs.getString("Email");
+                order[9] = rs.getString("phoneNumber");
+
+                ps.close();
+                rs.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return order;
+    }
+
     public Order getNewestOfUser(int userIDMain) {
         xSql = "select top 1 * from Orders where UserID = " + userIDMain + " order by Create_At desc";
         Order order = new Order();
@@ -151,6 +190,19 @@ public class OrderDAO extends MyDAO {
             System.out.println(e);
         }
     }
+    
+    public void updateStatus(int orderID, String status) {
+        xSql = "update Orders set Status = N'" + status + "' where OrderID = " + orderID;
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
     public void insert(Order order) {
         xSql = "insert into Orders (UserID, Total, Status)"
@@ -194,7 +246,7 @@ public class OrderDAO extends MyDAO {
 
                 Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity, proSize);
                 list.add(order_Item);
-                
+
                 ps.close();
                 rs.close();
             }
@@ -203,8 +255,8 @@ public class OrderDAO extends MyDAO {
         }
         return list;
     }
-    
-    public List<Order> getAllOrdersOfCustomer(int id){
+
+    public List<Order> getAllOrdersOfCustomer(int id) {
         List<Order> list = new ArrayList<>();
         xSql = "select * from Orders where UserID = " + id;
         try {
@@ -219,7 +271,7 @@ public class OrderDAO extends MyDAO {
 
                 Order order = new Order(orderID, userID, total, create_At, status);
                 list.add(order);
-                
+
                 ps.close();
                 rs.close();
             }
