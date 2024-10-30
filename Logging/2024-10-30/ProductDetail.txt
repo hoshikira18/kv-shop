@@ -4,3 +4,6 @@ VietNT đã xem hàng có ID: 4 và proName: Product 4
 Oct 30, 2024 12:17:02 AM models.Log <init>
 INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 VietNT đã xem hàng có ID: 4 và proName: Product 4
+Oct 30, 2024 10:30:34 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 2 và proName: Product 2

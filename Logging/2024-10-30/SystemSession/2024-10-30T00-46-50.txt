@@ -317,3 +317,5 @@ INFO: Trang CreateOrderServlet đã được truy cập bởi: VietNT, có ID: 1
 VietNT đã đặt hàng có OrderID: 118 và trạng thái thanh toán là: Direct Bank Transfer
 Oct 30, 2024 1:57:54 AM models.Log <init>
 INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 2:01:35 AM models.Log <init>
+INFO: Trang ListCartServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
