@@ -10,3 +10,5 @@ Oct 30, 2024 12:38:03 AM models.Log <init>
 INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 Oct 30, 2024 12:46:50 AM models.Log <init>
 INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 10:30:28 AM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

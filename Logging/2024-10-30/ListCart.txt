@@ -16,3 +16,5 @@ Oct 30, 2024 12:49:12 AM models.Log <init>
 INFO: Trang ListCartServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 Oct 30, 2024 12:49:22 AM models.Log <init>
 INFO: Trang ListCartServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 2:01:35 AM models.Log <init>
+INFO: Trang ListCartServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
