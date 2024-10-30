@@ -190,8 +190,9 @@ public class OrderDAO extends MyDAO {
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
+                String proSize = rs.getString("ProSize");
 
-                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity);
+                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity, proSize);
                 list.add(order_Item);
                 
                 ps.close();

@@ -28,9 +28,10 @@ public class Cart_ItemDAO extends MyDAO {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
+                String proSize = rs.getString("ProSize");
                 Date create_At = rs.getDate("Create_At");
 
-                Cart_Item cart_Item = new Cart_Item(itemID, cartID, proID, quantity, create_At);
+                Cart_Item cart_Item = new Cart_Item(itemID, cartID, proID, quantity, proSize, create_At);
                 allCart_Items.add(cart_Item);
             }
             ps.close();
@@ -53,9 +54,10 @@ public class Cart_ItemDAO extends MyDAO {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
+                String proSize = rs.getString("ProSize");
                 Date create_At = rs.getDate("Create_At");
 
-                cart_Item = new Cart_Item(itemID, cartID, proID, quantity, create_At);
+                cart_Item = new Cart_Item(itemID, cartID, proID, quantity, proSize, create_At);
                 ps.close();
                 rs.close();
             }
@@ -76,9 +78,10 @@ public class Cart_ItemDAO extends MyDAO {
                 int cartID = Integer.parseInt(rs.getString("CartID"));
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
+                String proSize = rs.getString("ProSize");
                 Date create_At = rs.getDate("Create_At");
 
-                cart_Item = new Cart_Item(itemID, cartID, proID, quantity, create_At);
+                cart_Item = new Cart_Item(itemID, cartID, proID, quantity, proSize, create_At);
                 ps.close();
                 rs.close();
             }
@@ -93,7 +96,7 @@ public class Cart_ItemDAO extends MyDAO {
         List<String[]> list = new ArrayList<>();
         List<Cart_Item> listItems = new ArrayList<>();
         List<Product> listProducts = new ArrayList<>();
-        xSql = "select CI.ItemID, CartID.CartID, P.ProID, P.Pro_Name, P.Image, Quantity, P.Price \n"
+        xSql = "select CI.ItemID, CartID.CartID, P.ProID, P.Pro_Name, P.Image, Quantity, P.Price, CI.ProSize \n"
                 + "from (select CartID from Carts where UserID = ?) as CartID, Cart_Items CI \n"
                 + "join Products P on CI.ProID = P.ProID \n"
                 + "where CartID.CartID = CI.CartID order by ProID asc";
@@ -102,15 +105,16 @@ public class Cart_ItemDAO extends MyDAO {
             ps.setString(1, String.valueOf(userID));
             rs = ps.executeQuery();
             while (rs.next()) {
-                String[] record = new String[6];
+                String[] record = new String[7];
                 record[0] = rs.getString("CartID");
                 record[1] = rs.getString("ProID");
                 record[2] = rs.getString("Pro_Name");
                 record[3] = "data:image/jpeg;base64," + rs.getString("Image");
                 record[4] = rs.getString("Quantity");
                 record[5] = rs.getString("Price");
+                record[6] = rs.getString("ProSize");
 ///////                
-/// --(int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price)--
+/// --(int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price, String ProSize)--
 //////                
                 list.add(record);
             }
@@ -137,8 +141,9 @@ public class Cart_ItemDAO extends MyDAO {
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
                 Date create_At = rs.getDate("Create_At");
+                String proSize = rs.getString("ProSize");
 
-                Cart_Item cart_Item = new Cart_Item(itemID, cartID, proID, quantity, create_At);
+                Cart_Item cart_Item = new Cart_Item(itemID, cartID, proID, quantity, proSize, create_At);
                 list.add(cart_Item);
             }
             ps.close();
@@ -163,8 +168,8 @@ public class Cart_ItemDAO extends MyDAO {
             System.out.println(e);
         }
     }
-    
-    public void update(String query){
+
+    public void update(String query) {
         xSql = query;
         try {
             ps = con.prepareStatement(xSql);
@@ -178,7 +183,7 @@ public class Cart_ItemDAO extends MyDAO {
     }
 
     public void insert(Cart_Item cart_Item) {
-        xSql = "insert into Cart_Items (CartID, ProID, Quantity)"
+        xSql = "insert into Cart_Items (CartID, ProID, Quantity, ProSize)"
                 + " values " + cart_Item.forInsert();
         try {
             ps = con.prepareStatement(xSql);
@@ -203,10 +208,25 @@ public class Cart_ItemDAO extends MyDAO {
             System.out.println(e);
         }
     }
-    
-    public void delete(int userID, int proID){
+
+    public void delete(int userID, int proID) {
         xSql = "delete from Cart_Items where ProID = " + proID
                 + " and CartID = (select CartID from "
+                + "Carts where UserID = " + userID + ")";
+        try {
+            ps = con.prepareStatement(xSql);
+            rs = ps.executeQuery();
+
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void delete(int userID, int proID, String proSize) {
+        xSql = "delete from Cart_Items where ProID = " + proID
+                + " and ProSize = '" + proSize + "' and CartID = (select CartID from "
                 + "Carts where UserID = " + userID + ")";
         try {
             ps = con.prepareStatement(xSql);

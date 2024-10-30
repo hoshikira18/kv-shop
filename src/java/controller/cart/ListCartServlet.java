@@ -54,8 +54,8 @@ public class ListCartServlet extends HttpServlet {
         List<String[]> listMain = cid.getListByUserID(u.getUserID());
         List<Product> listPro = new ArrayList<>();
 
-// (Đừng xóa, đây là NOTE)String[6] bao gom:
-// (int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price)
+// (Đừng xóa, đây là NOTE)String[7] bao gom:
+// (int CartID, int ProID, String Pro_Name, String Image, int Quantity, double Price, String Size)
         int cartID = cart.getCartID();
         out.print(cartID);
         double sum = 0;

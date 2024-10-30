@@ -10,3 +10,18 @@ VietNT đã xóa CartItem có proID = 26khỏi Cart
 Oct 30, 2024 12:25:41 AM models.Log <init>
 INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 VietNT đã xóa CartItem có proID = 3khỏi Cart
+Oct 30, 2024 11:46:24 AM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 10khỏi Cart
+Oct 30, 2024 11:47:09 AM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 10khỏi Cart
+Oct 30, 2024 1:08:50 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 10khỏi Cart
+Oct 30, 2024 1:14:12 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 5khỏi Cart
+Oct 30, 2024 1:14:18 PM models.Log <init>
+INFO: Trang DeleteItemServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xóa CartItem có proID = 26khỏi Cart

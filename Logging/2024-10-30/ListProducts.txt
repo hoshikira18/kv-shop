@@ -12,3 +12,15 @@ Oct 30, 2024 12:20:40 AM models.Log <init>
 INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 Oct 30, 2024 12:26:37 AM models.Log <init>
 INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 11:10:40 AM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 11:46:02 AM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 11:46:31 AM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 11:47:24 AM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:13:27 PM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:13:48 PM models.Log <init>
+INFO: Trang ListProductsServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

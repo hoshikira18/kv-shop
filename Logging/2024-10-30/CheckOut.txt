@@ -4,3 +4,21 @@ Oct 30, 2024 12:18:14 AM models.Log <init>
 INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
 Oct 30, 2024 12:49:26 AM models.Log <init>
 INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 11:45:00 AM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 12:59:16 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:02:24 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:02:38 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:03:03 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:03:38 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:03:48 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:04:08 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 1:14:23 PM models.Log <init>
+INFO: Trang CheckOutServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer

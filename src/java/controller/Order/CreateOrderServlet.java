@@ -43,9 +43,9 @@ public class CreateOrderServlet extends HttpServlet {
         OrderDAO od = new OrderDAO();
         od.insert(new Order(Integer.parseInt(userID), sum, payMethod));
         Order newOrder = od.getNewestOfUser(Integer.parseInt(userID));
-        String xSQL1 = "insert into Order_Items (OrderID, ProID, Quantity)"
+        String xSQL1 = "insert into Order_Items (OrderID, ProID, Quantity, ProSize)"
                 + " select " + newOrder.getOrderID() + ", c.ProID, "
-                + "c.Quantity from Cart_Items c where c.CartID = " + cartID 
+                + "c.Quantity, c.ProSize from Cart_Items c where c.CartID = " + cartID 
                 + "\ndelete Cart_Items where CartID = " + cartID;
 
         Cart_ItemDAO cid = new Cart_ItemDAO();

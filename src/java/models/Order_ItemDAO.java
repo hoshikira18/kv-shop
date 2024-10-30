@@ -27,8 +27,9 @@ public class Order_ItemDAO extends MyDAO{
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
+                String proSize = rs.getString("ProSize");
 
-                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity);
+                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity, proSize);
                 allOrder_Items.add(order_Item);
             }
             ps.close();
@@ -51,8 +52,9 @@ public class Order_ItemDAO extends MyDAO{
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
+                String proSize = rs.getString("ProSize");
 
-                order_Item = new Order_Item(itemID, orderID, proID, quantity);
+                order_Item = new Order_Item(itemID, orderID, proID, quantity,proSize);
                 ps.close();
                 rs.close();
             }
@@ -73,8 +75,9 @@ public class Order_ItemDAO extends MyDAO{
                 int orderID = Integer.parseInt(rs.getString("OrderID"));
                 int proID = Integer.parseInt(rs.getString("ProID"));
                 int quantity = Integer.parseInt(rs.getString("Quantity"));
+                String proSize = rs.getString("ProSize");
 
-                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity);
+                Order_Item order_Item = new Order_Item(itemID, orderID, proID, quantity, proSize);
                 list.add(order_Item);
             }
             ps.close();
@@ -101,7 +104,7 @@ public class Order_ItemDAO extends MyDAO{
     }
 
     public void insert(Order_Item order_Item) {
-        xSql = "insert into Order_Items (UserID, Total)"
+        xSql = "insert into Order_Items (OrderID, ProID, Quantity, Prosize)"
                 + " values " + order_Item.forInsert();
         try {
             ps = con.prepareStatement(xSql);

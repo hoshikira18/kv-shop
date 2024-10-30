@@ -1,0 +1,7 @@
+Oct 30, 2024 11:26:22 AM models.Log <init>
+INFO: Trang SignInServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 11:26:22 AM models.Log <init>
+INFO: Trang HomeServlet đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+Oct 30, 2024 11:26:26 AM models.Log <init>
+INFO: Trang ProductDetail đã được truy cập bởi: VietNT, có ID: 11, SĐT: 123, Role: customer
+VietNT đã xem hàng có ID: 3 và proName: Product 3
